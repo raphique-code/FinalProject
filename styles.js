@@ -1,13 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import {view} from 'react-native';
+import { View } from 'react-native';
 import constants from 'expo-constants';
 import styled from 'styled-components/native';
 
 const statusBarHeight = constants.statusBarHeight;
 // colors
-export const Colors= {
+export const Colors = {
   primary: '#DA7737',
   background: '#1A130E',
   offWhite: '#F4ECE7',
@@ -15,7 +15,7 @@ export const Colors= {
 
 };
 
-const {primary,background,offWhite, darklight} = Colors;
+const { primary, background, offWhite, darklight } = Colors;
 
 
 
@@ -38,7 +38,7 @@ export const InnerContainer = styled.View`
 export const PageLogo = styled.Image`
   width: 500px;
   height: 500px;
-  postion: absolute;
+  
   
 
 `;
@@ -76,7 +76,7 @@ export const StyledTextInput = styled.TextInput`
   color: ${offWhite};
 
 `;
- 
+
 export const StyledInputLabel = styled.Text`
   color: ${primary};
   font-size: 13px;

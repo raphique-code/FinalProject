@@ -1,10 +1,10 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import {Formik} from 'formik';
-import {View} from 'react-native';
-import {Octicons} from 'react-native-vector-icons';
+import { Formik } from 'formik';
+import { View } from 'react-native';
+import { Octicons } from 'react-native-vector-icons';
 
-import {Colors} from './styles'
+import { Colors } from './styles'
 
 import {
     StyledContainer,
@@ -14,33 +14,29 @@ import {
     Subtitle,
     StyledFormArea,
     LeftIcon,
-    StyledInputLabel, 
+    StyledInputLabel,
     StyledTextInput,
     RightIcon,
     colors
-//the file is located in one level above the current folder
+    //the file is located in one level above the current folder
 } from './styles'
-<<<<<<< HEAD
-
-=======
-import {View} from 'react-native';
->>>>>>> 678ef3928fce33e35db53dcbfcd50a1824f04666
-const {primary,background,offWhite, darklight} = Colors;
-const Login = () =>{
-    return(
+const { primary, background, offWhite, darklight } = Colors;
+const Login = () => {
+    return (
         <StyledContainer>
-            <StatusBar style="dark"/>
+            <StatusBar style="dark" />
             <InnerContainer>
-                <PageLogo resizeMode="cover"source={require('./assets/logoV-full.png')} />
+                <PageLogo resizeMode="cover" source={require('./assets/logoV-full.png')} />
                 <PageTitle> nathan and deliver
                 </PageTitle>
                 <Subtitle>Account Login</Subtitle>
                 <Formik
-                    initialValues={{email: '', password: ''}}
-                    onSubmit={(values) =>{console.log(values);
+                    initialValues={{ email: '', password: '' }}
+                    onSubmit={(values) => {
+                        console.log(values);
                     }}
 
-                >{({handleChange,handleBlur,handleSubmit,values })=> (
+                >{({ handleChange, handleBlur, handleSubmit, values }) => (
                     <StyledFormArea>
                         <MyTextInput
                             label="Email Address"
@@ -71,14 +67,14 @@ const Login = () =>{
     );
 }
 
-const MyTextInput = ({label, icon, ...props}) => {
-    return(
+const MyTextInput = ({ label, icon, ...props }) => {
+    return (
         <View>
             <LeftIcon>
-                <Octicons name={icon} size={30} color={primary}/>
+                <Octicons name={icon} size={30} color={primary} />
             </LeftIcon>
             <StyledInputLabel>{label}</StyledInputLabel>
-            <StyledTextInput {...props}/>
+            <StyledTextInput {...props} />
         </View>
     );
 
