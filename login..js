@@ -20,7 +20,7 @@ import {
     colors
 //the file is located in one level above the current folder
 } from './styles'
-import {view} from 'react-native';
+import {View} from 'react-native';
 const {primary,background,offWhite, darklight} = Colors;
 const Login = () =>{
     return(
