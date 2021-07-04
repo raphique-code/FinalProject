@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {Formik} from 'formik';
 
-import {Octicons} from '@expo/Vector-icon';
+import {Octicons} from 'react-native-vector-icons';
 
 import {Colors} from './styles'
 
@@ -21,7 +21,7 @@ import {
 //the file is located in one level above the current folder
 } from './styles'
 import {view} from 'react-native';
-const {primary} = Colors;
+const {primary,background,offWhite, darklight} = Colors;
 const Login = () =>{
     return(
         <StyledContainer>
@@ -42,7 +42,7 @@ const Login = () =>{
                             label="Email Address"
                             icon="mail"
                             placeholder="Nathan@gmail.com"
-                            placeholderTextColor={darkLight}
+                            placeholderTextColor={darklight}
                             onChangeText={handleChange('email')}
                             onBlur={handleChange('email')}
                             Value={values.email}
@@ -53,7 +53,7 @@ const Login = () =>{
                             label="pasword"
                             icon="lock"
                             placeholder="********"
-                            placeholderTextColor={darkLight}
+                            placeholderTextColor={darklight}
                             onChangeText={handleChange('password')}
                             onBlur={handleChange('password')}
                             Value={values.password}
@@ -76,7 +76,7 @@ const MyTextInput = ({label, icon, ...props}) => {
             <StyledInputLabel>{label}</StyledInputLabel>
             <StyledTextInput {...props}/>
         </View>
-    )
+    );
 
 }
 export default Login;

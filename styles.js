@@ -11,10 +11,11 @@ export const Colors= {
   primary: '#DA7737',
   background: '#1A130E',
   offWhite: '#F4ECE7',
+  darklight: '#9ca3af',
 
 };
 
-const {primary,background,offWhite} = Colors;
+const {primary,background,offWhite, darklight} = Colors;
 
 
 
@@ -50,7 +51,7 @@ export const PageTitle = styled.Text`
   padding: 10px;
 `;
 
-export const SubTitle = styled.Text`
+export const Subtitle = styled.Text`
   font-size: 18px;
   margin-bottom: 20px;
   letter-spacing: 1px;
@@ -59,7 +60,7 @@ export const SubTitle = styled.Text`
 `;
 
 export const StyledFormArea = styled.View`
-width: 90%;
+  width: 90%;
 
 `;
 
@@ -74,10 +75,9 @@ export const StyledTextInput = styled.TextInput`
   margin-bottom: 10px;
   color: ${offWhite};
 
-
 `;
  
-export const StyledTextInputLabel = styled.Text`
+export const StyledInputLabel = styled.Text`
   color: ${primary};
   font-size: 13px;
   text-align: left;
