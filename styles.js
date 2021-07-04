@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
-import { View } from 'react-native';
+import { view } from 'react-native';
 import constants from 'expo-constants';
 import styled from 'styled-components/native';
 
