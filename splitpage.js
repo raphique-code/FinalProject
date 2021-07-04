@@ -1,9 +1,7 @@
-import { Formik } from 'formik';
 import React from 'react';
-import { Octicons } from 'react-native-vector-icons';
-import { TouchableOpacity, Stylesheet, Text, View } from 'react-native'
-import { Colors, Buttons } from './styles'
-
+import { StatusBar } from 'expo-status-bar';
+import { TouchableOpacity, Text, View} from 'react-native'
+import Butt from './CustomButton';
 import {
     StyledContainer,
     InnerContainer,
@@ -12,28 +10,34 @@ import {
     Subtitle,
     StyledFormArea,
     LeftIcon,
-    StyledInputLabel,
+    StyledInputLabel, 
     StyledTextInput,
     RightIcon,
-    colors,
-    Buttons
-    //the file is located in one level above the current folder
-} from './styles';
-import { View } from 'react-native';
-const { primary, background, offWhite, darklight } = Colors;
-const splitpage = () => {
-    return (
+    Colors,
+    Buttons,
+    ButtonContainers
+} from './styles'; //the file is located in one level above the current folder
+
+const {primary,background,offWhite, darklight} = Colors;
+const Splitpage = () =>{
+    return(
         <StyledContainer>
-            <StatusBar style="dark" />
+            <StatusBar style="dark"/>
             <InnerContainer>
-                <PageLogo resizeMode="cover" source={require('./assets/logoV-full.png')} />
-                <PageTitle> split page
-                </PageTitle>
-                <Subtitle>Sign in as</Subtitle>
+                <View style={ButtonContainers.container}>    
+                    <PageLogo resizeMode="cover"source={require('./assets/logoV-full.png')} /> 
+                </View>
+                <PageTitle> Sign In as: </PageTitle>
+                <View style={ButtonContainers.container}>
+                    <Butt title="Driver"/>
+                    <Butt title= "Customer"/>
+                </View>
             </InnerContainer>
         </StyledContainer>
 
     );
 }
 
-export default splitpage;
+//place logo in View container to mae it center
+
+export default Splitpage;

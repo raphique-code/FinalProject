@@ -17,7 +17,8 @@ import {
     StyledInputLabel,
     StyledTextInput,
     RightIcon,
-    colors
+    colors,
+    ButtonContainers
     //the file is located in one level above the current folder
 } from './styles'
 const { primary, background, offWhite, darklight } = Colors;
@@ -26,8 +27,10 @@ const Login = () => {
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <PageLogo resizeMode="cover" source={require('./assets/logoV-full.png')} />
-                <PageTitle> nathan and deliver
+                <View style={ButtonContainers.container}>    
+                    <PageLogo resizeMode="cover"source={require('./assets/logoV-full.png')} /> 
+                </View>
+                <PageTitle> Log In
                 </PageTitle>
                 <Subtitle>Account Login</Subtitle>
                 <Formik
