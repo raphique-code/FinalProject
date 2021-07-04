@@ -20,7 +20,11 @@ import {
     colors
 //the file is located in one level above the current folder
 } from './styles'
+<<<<<<< HEAD
 
+=======
+import {View} from 'react-native';
+>>>>>>> 678ef3928fce33e35db53dcbfcd50a1824f04666
 const {primary,background,offWhite, darklight} = Colors;
 const Login = () =>{
     return(
