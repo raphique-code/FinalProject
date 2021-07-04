@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React from 'react';
 import {Formik} from 'formik';
-
+import {View} from 'react-native';
 import {Octicons} from 'react-native-vector-icons';
 
 import {Colors} from './styles'
@@ -20,7 +20,7 @@ import {
     colors
 //the file is located in one level above the current folder
 } from './styles'
-import {view} from 'react-native';
+
 const {primary,background,offWhite, darklight} = Colors;
 const Login = () =>{
     return(
