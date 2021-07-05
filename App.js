@@ -3,8 +3,8 @@ import React from 'react';
 import { Stylesheet, Text, View} from 'react-native'
 
 //screen
-import Login from './login.';
-import Splitpage from './splitpage';
+import Login from './screens/login.';
+import Splitpage from './screens/splitpage';
 
 
 export default function App() {

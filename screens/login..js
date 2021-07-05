@@ -4,7 +4,7 @@ import { Formik } from 'formik';
 import { View } from 'react-native';
 import { Octicons } from 'react-native-vector-icons';
 
-import { Colors } from './styles'
+import { Colors } from '../components/styles'
 
 import {
     StyledContainer,
@@ -20,7 +20,7 @@ import {
     colors,
     ButtonContainers
     //the file is located in one level above the current folder
-} from './styles'
+} from '../components/styles'
 const { primary, background, offWhite, darklight } = Colors;
 const Login = () => {
     return (
@@ -28,7 +28,7 @@ const Login = () => {
             <StatusBar style="dark" />
             <InnerContainer>
                 <View style={ButtonContainers.container}>    
-                    <PageLogo resizeMode="cover"source={require('./assets/logoV-full.png')} /> 
+                    <PageLogo resizeMode="cover"source={require('./../assets/logoV-full.png')} /> 
                 </View>
                 <PageTitle> Log In
                 </PageTitle>

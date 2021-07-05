@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity, Text, View} from 'react-native'
-import Butt from './CustomButton';
+import Butt from '../components/CustomButton';
 import {
     StyledContainer,
     InnerContainer,
@@ -16,7 +16,7 @@ import {
     Colors,
     Buttons,
     ButtonContainers
-} from './styles'; //the file is located in one level above the current folder
+} from '../components/styles'; //the file is located in one level above the current folder
 
 const {primary,background,offWhite, darklight} = Colors;
 const Splitpage = () =>{
@@ -25,7 +25,7 @@ const Splitpage = () =>{
             <StatusBar style="dark"/>
             <InnerContainer>
                 <View style={ButtonContainers.container}>    
-                    <PageLogo resizeMode="cover"source={require('./assets/logoV-full.png')} /> 
+                    <PageLogo resizeMode="cover"source={require('./../assets/logoV-full.png')} /> 
                 </View>
                 <PageTitle> Sign In as: </PageTitle>
                 <View style={ButtonContainers.container}>
