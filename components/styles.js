@@ -66,15 +66,15 @@ export const StyledFormArea = styled.View`
 `;
 
 export const StyledTextInput = styled.TextInput`
-  background-color: ${primary};
+  background-color: ${offWhite};
   padding: 15px;
   padding-left: 55px;
   border-radius: 5px;
   font-size: 16;
-  height: 60;
+  height: 65;
   margin-vertical: 3px;
   margin-bottom: 10px;
-  color: ${offWhite};
+  color: ${background};
 
 `;
  
@@ -87,7 +87,7 @@ export const StyledInputLabel = styled.Text`
 
 export const LeftIcon = styled.View`
   left: 15px;
-  top: 38px;
+  top: 68px;
   postion: absolute;
   z-index: 1;
 

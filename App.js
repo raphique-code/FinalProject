@@ -10,8 +10,8 @@ import Splitpage from './screens/splitpage';
 export default function App() {
 
     //return <map/>
-    return <Splitpage/>; //(role choosing page-ELisa)
-    //return <Login />; // this change was made by raphique
+    //return <Splitpage/>; //(role choosing page-ELisa)
+    return <Login />; // this change was made by raphique
 
 
 
