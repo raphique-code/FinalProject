@@ -1,7 +1,7 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import { View } from 'react-native';
+import { View, TouchableOpacity, Touchable } from 'react-native';
 import { Octicons, Ionicons, fontisto } from '@expo/vector-icons';
 
 
@@ -31,8 +31,27 @@ import {
     //the file is located in one level above the current folder
 } from '../components/styles'
 const { primary, background, offWhite, darklight, green } = Colors;
-const Login = () => {
+const Signup = () => {
     const [hidePassword, setHidePassword] = useState(true)
+    const [show, setShow] = useState(false);
+    const [date, setDate] = useState(new Date(2000, 0, 1));
+    const [message, setMessage] = useState();
+    const [messageType, setMessageType] = useState();
+
+    // Actual value to be sent
+    const [dob, setDob] = useState();
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(false);
+        setDate(currentDate);
+        setDob(currentDate);
+    };
+
+    const showDatePicker = () => {
+        setShow('date');
+    };
+
     return (
         <StyledContainer>
             <StatusBar style="dark" />
@@ -75,10 +94,12 @@ const Login = () => {
                             placeholderTextColor={darklight}
                             onChangeText={handleChange('dateOfBirth')}
                             onBlur={handleBlur('dateOfBirth')}
-
+                            value={values.dateOfBirth}
+                            value={dob ? dob.toDateString() : ''}
                             icon="calendar"
                             editable={false}
                             isDate={true}
+                            showDatePicker={showDatePicker}
 
                         />
 
@@ -134,7 +155,7 @@ const Login = () => {
     );
 }
 
-const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, ...props }) => {
+const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, isDate, showDatePicker, ...props }) => {
     return (
         <View>
             <LeftIcon>
@@ -142,6 +163,10 @@ const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, .
             </LeftIcon>
             <StyledInputLabel>{label}</StyledInputLabel>
             <StyledTextInput {...props} />
+            {!isDate && <StyledTextInput {...props} />}
+            {isDate && <TouchableOpacity onPress={showDatePicker}>
+                <StyledTextInput{...props} />
+            </TouchableOpacity>}
             {isPassword && (
                 <RightIcon
                     onPress={() => {
@@ -173,4 +198,4 @@ const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, .
 
 }
 */
-export default Login;
+export default Signup;
