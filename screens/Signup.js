@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Formik } from 'formik';
 import { View } from 'react-native';
-import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
+import { Octicons, Ionicons, fontisto } from '@expo/vector-icons';
 
 
 //react-native-vector-icons
@@ -37,20 +37,28 @@ const Login = () => {
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <View style={ButtonContainers.container}>
-                    <PageLogo resizeMode="contain" source={require('./../assets/logoV-full.png')} />
-                </View>
+
                 <PageTitle> Account Login</PageTitle>
 
                 <Subtitle></Subtitle>
                 <Formik
-                    initialValues={{ email: '', password: '' }}
+                    initialValues={{ fullName: '', email: '', dateOfBirth: '', password: '', confirmPassword: '' }}
                     onSubmit={(values) => {
                         console.log(values);
                     }}
 
                 >{({ handleChange, handleBlur, handleSubmit, values }) => (
                     <StyledFormArea>
+                        <MyTextInput
+                            label="Full Name"
+                            placeholder="Nathan juan"
+                            placeholderTextColor={darklight}
+                            onChangeText={handleChange('name')}
+                            onBlur={handleBlur('name')}
+                            value={values.name}
+                            icon="person"
+                        />
+
                         <MyTextInput
                             label="Email Address"
                             icon="mail"
@@ -60,6 +68,18 @@ const Login = () => {
                             onBlur={handleChange('email')}
                             Value={values.email}
                             keyboardTypes="email-address"
+                        />
+                        <MyTextInput
+                            label="Date of Birth"
+                            placeholder="YYYY - MM - DD"
+                            placeholderTextColor={darklight}
+                            onChangeText={handleChange('dateOfBirth')}
+                            onBlur={handleBlur('dateOfBirth')}
+
+                            icon="calendar"
+                            editable={false}
+                            isDate={true}
+
                         />
 
                         <MyTextInput
@@ -75,6 +95,19 @@ const Login = () => {
                             hidePassword={hidePassword}
                             setHidePassword={setHidePassword}
                         />
+                        <MyTextInput
+                            label=" Confirm Password"
+                            placeholder="* * * * * * * *"
+                            placeholderTextColor={darklight}
+                            onChangeText={handleChange('confirmPassword')}
+                            onBlur={handleBlur('confirmPassword')}
+                            value={values.confirmPassword}
+                            secureTextEntry={hidePassword}
+                            icon="lock"
+                            isPassword={true}
+                            hidePassword={hidePassword}
+                            setHidePassword={setHidePassword}
+                        />
                         <MsgBox>...</MsgBox>
 
                         <StyledButton onPress={handleSubmit}>
@@ -83,10 +116,7 @@ const Login = () => {
                             </ButtonText>
                         </StyledButton>
                         <Line />
-                        <StyledButton onPress={handleSubmit}>
-                            <Fontisto name="google" color={offWhite} size={25} />
-                            <ButtonText google={true}>Sign in with Google</ButtonText>
-                        </StyledButton>
+
 
                         <ExtraView>
                             <ExtraText>Don't have an account already? </ExtraText>
