@@ -1,7 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import { TouchableOpacity, Text, View} from 'react-native'
-import Butt from '../components/CustomButton';
+import Butt from '../components/CustomButton2';
 import {
     StyledContainer,
     InnerContainer,

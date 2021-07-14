@@ -4,8 +4,8 @@ import { View, Picker, StyleSheet,Text, Modal,
 import {DropDownContainers, StyledContainer, WhiteContainer, Subtitle, ButtonContainersHorizontal} from '../components/styles';
 import {ModalPicker} from '../components/modalPicker';
 import { StatusBar } from 'expo-status-bar';
-import ButtBlack from '../components/BlackButtons';
-import Butt from '../components/CustomButton';
+import ButtBlack from '../components/BlackButtons2';
+import Butt from '../components/CustomButton2';
 
 const PackageDetails2 = () => {
   const [selectedValue, setSelectedValue] = useState("java");

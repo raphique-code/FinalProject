@@ -1,14 +1,9 @@
 import { StatusBar } from 'expo-status-bar';
 import React, { useState } from 'react';
 import { Formik } from 'formik';
-import { View } from 'react-native';
-import { Octicons, Ionicons, Fontisto } from '@expo/vector-icons';
+import { View, TouchableOpacity, Touchable } from 'react-native';
+import { Octicons, Ionicons, fontisto } from '@expo/vector-icons';
 
-<<<<<<< HEAD
-import { Colors } from '../components/styles';
-import Butt from '../components/CustomButton';
-=======
->>>>>>> 8183c48fff2242b3eab786cf603f60d1a01e156b
 
 //react-native-vector-icons
 import {
@@ -36,31 +31,53 @@ import {
     //the file is located in one level above the current folder
 } from '../components/styles'
 const { primary, background, offWhite, darklight, green } = Colors;
-const Login = () => {
+const Signup = () => {
     const [hidePassword, setHidePassword] = useState(true)
+    const [show, setShow] = useState(false);
+    const [date, setDate] = useState(new Date(2000, 0, 1));
+    const [message, setMessage] = useState();
+    const [messageType, setMessageType] = useState();
+
+    // Actual value to be sent
+    const [dob, setDob] = useState();
+
+    const onChange = (event, selectedDate) => {
+        const currentDate = selectedDate || date;
+        setShow(false);
+        setDate(currentDate);
+        setDob(currentDate);
+    };
+
+    const showDatePicker = () => {
+        setShow('date');
+    };
+
     return (
         <StyledContainer>
             <StatusBar style="dark" />
             <InnerContainer>
-                <View style={ButtonContainers.container}>
-                    <PageLogo resizeMode="contain" source={require('./../assets/logoV-full.png')} />
-                </View>
-<<<<<<< HEAD
-                <PageTitle> Log In
-                </PageTitle>
-=======
+
                 <PageTitle> Account Login</PageTitle>
 
                 <Subtitle></Subtitle>
->>>>>>> 8183c48fff2242b3eab786cf603f60d1a01e156b
                 <Formik
-                    initialValues={{ email: '', password: '' }}
+                    initialValues={{ fullName: '', email: '', dateOfBirth: '', password: '', confirmPassword: '' }}
                     onSubmit={(values) => {
                         console.log(values);
                     }}
 
                 >{({ handleChange, handleBlur, handleSubmit, values }) => (
                     <StyledFormArea>
+                        <MyTextInput
+                            label="Full Name"
+                            placeholder="Nathan juan"
+                            placeholderTextColor={darklight}
+                            onChangeText={handleChange('name')}
+                            onBlur={handleBlur('name')}
+                            value={values.name}
+                            icon="person"
+                        />
+
                         <MyTextInput
                             label="Email Address"
                             icon="mail"
@@ -71,20 +88,41 @@ const Login = () => {
                             Value={values.email}
                             keyboardTypes="email-address"
                         />
+                        <MyTextInput
+                            label="Date of Birth"
+                            placeholder="YYYY - MM - DD"
+                            placeholderTextColor={darklight}
+                            onChangeText={handleChange('dateOfBirth')}
+                            onBlur={handleBlur('dateOfBirth')}
+                            value={values.dateOfBirth}
+                            value={dob ? dob.toDateString() : ''}
+                            icon="calendar"
+                            editable={false}
+                            isDate={true}
+                            showDatePicker={showDatePicker}
+
+                        />
 
                         <MyTextInput
-<<<<<<< HEAD
-                            label="password"
-                            icon="lock"
-                            placeholder="********"
-=======
                             label="Password"
                             placeholder="* * * * * * * *"
->>>>>>> 8183c48fff2242b3eab786cf603f60d1a01e156b
                             placeholderTextColor={darklight}
                             onChangeText={handleChange('password')}
                             onBlur={handleBlur('password')}
                             value={values.password}
+                            secureTextEntry={hidePassword}
+                            icon="lock"
+                            isPassword={true}
+                            hidePassword={hidePassword}
+                            setHidePassword={setHidePassword}
+                        />
+                        <MyTextInput
+                            label=" Confirm Password"
+                            placeholder="* * * * * * * *"
+                            placeholderTextColor={darklight}
+                            onChangeText={handleChange('confirmPassword')}
+                            onBlur={handleBlur('confirmPassword')}
+                            value={values.confirmPassword}
                             secureTextEntry={hidePassword}
                             icon="lock"
                             isPassword={true}
@@ -99,10 +137,7 @@ const Login = () => {
                             </ButtonText>
                         </StyledButton>
                         <Line />
-                        <StyledButton onPress={handleSubmit}>
-                            <Fontisto name="google" color={offWhite} size={25} />
-                            <ButtonText google={true}>Sign in with Google</ButtonText>
-                        </StyledButton>
+
 
                         <ExtraView>
                             <ExtraText>Don't have an account already? </ExtraText>
@@ -114,16 +149,13 @@ const Login = () => {
 
                 )}
                 </Formik>
-                <View style={ButtonContainers.container}>
-                    <Butt title="Log In"/>
-                </View>
             </InnerContainer>
         </StyledContainer >
 
     );
 }
 
-const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, ...props }) => {
+const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, isDate, showDatePicker, ...props }) => {
     return (
         <View>
             <LeftIcon>
@@ -131,6 +163,10 @@ const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, .
             </LeftIcon>
             <StyledInputLabel>{label}</StyledInputLabel>
             <StyledTextInput {...props} />
+            {!isDate && <StyledTextInput {...props} />}
+            {isDate && <TouchableOpacity onPress={showDatePicker}>
+                <StyledTextInput{...props} />
+            </TouchableOpacity>}
             {isPassword && (
                 <RightIcon
                     onPress={() => {
@@ -162,4 +198,4 @@ const MyTextInput = ({ label, icon, isPassword, hidePassword, setHidePassword, .
 
 }
 */
-export default Login;
+export default Signup;
