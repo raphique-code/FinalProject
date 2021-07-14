@@ -17,6 +17,19 @@ export const Colors= {
 
 const {primary,background,offWhite,darklight} = Colors;
 
+export const OrangeContainer = styled.View`
+  flex: 1;
+  padding: 25px;
+  padding-top: ${statusBarHeight + 10}px;
+  background-color: ${primary};
+`;
+
+export const WhiteContainer = styled.View`
+  flex: 1;
+  padding: 25px;
+  padding-top: ${statusBarHeight + 10}px;
+  background-color: ${offWhite};
+`;
 
 
 
@@ -25,12 +38,13 @@ export const StyledContainer = styled.View`
   padding: 25px;
   padding-top: ${statusBarHeight + 10}px;
   background-color: ${background};
-`
+`;
+
 
 export const InnerContainer = styled.View`
   flex: 1;
   width: 100%;
-  align-item: center;
+  align-items: center;
   
 
 `;
@@ -38,8 +52,8 @@ export const InnerContainer = styled.View`
 export const PageLogo = styled.Image`
   width: 200px;
   height: 200px;
-  postion: absolute;
-  align-item: center;
+  position: absolute;
+  align-items: center;
   
 
 `;
@@ -70,8 +84,8 @@ export const StyledTextInput = styled.TextInput`
   padding: 15px;
   padding-left: 55px;
   border-radius: 5px;
-  font-size: 16;
-  height: 65;
+  font-size: 16px;
+  height: 65px;
   margin-vertical: 3px;
   margin-bottom: 10px;
   color: ${background};
@@ -87,22 +101,22 @@ export const StyledInputLabel = styled.Text`
 
 export const LeftIcon = styled.View`
   left: 15px;
-  top: 68px;
-  postion: absolute;
+  top: 38px;
+  position: absolute;
   z-index: 1;
 
 `;
 export const RightIcon = styled.TouchableOpacity`
   left: 15px;
   top: 38px;
-  postion: absolute;
+  position: absolute;
   z-index: 1;
 
 `;
 
 export const Buttons = StyleSheet.create({
     container:{
-      pading:15
+      padding:15
     },
     button:{
       flexDirection: 'row', 
@@ -117,8 +131,32 @@ export const Buttons = StyleSheet.create({
       alignItems: 'center',
     },
     buttonText:{
-      color: '#F4ECE7'
+      color: '#F4ECE7',
+      fontWeight: "bold"
     }
+
+});
+
+export const ButtonsBlack = StyleSheet.create({
+  container:{
+    padding:15
+  },
+  button:{
+    flexDirection: 'row', 
+    height: 50, 
+    borderRadius:10,
+    marginTop: 30,
+    width: 150, 
+    elevation:2,
+    padding:10,
+    backgroundColor: '#1A130E',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  buttonText:{
+    color: '#DA7737',
+    fontWeight: "bold"
+  }
 
 });
 
@@ -132,3 +170,53 @@ export const ButtonContainers = StyleSheet.create(
       },
   }
 );
+
+export const ButtonContainersHorizontal = StyleSheet.create(
+  {
+      container: {
+          flex: 1,
+          flexDirection: 'row',
+          alignItems: 'flex-end',
+          justifyContent: 'center'
+
+      },
+  }
+);
+
+export const DropDownContainers = StyleSheet.create(
+  {
+    container: {
+      flex: 1,
+      backgroundColor: '#DA7737',
+      justifyContent: 'flex-start',
+      alignItems: 'center',
+      padding: 20
+    },
+    Text:{
+      marginVertical: 20,
+      fontSize: 20,
+
+    },
+    TextWhite:{
+      marginVertical: 20,
+      fontSize: 25,
+      color: '#F4ECE7'
+    },
+    TextOrange:{
+      marginVertical: 20,
+      fontSize: 25,
+      color: '#DA7737'
+    },
+    TextBlack:{
+      marginVertical: 20,
+      fontSize: 25,
+      color: '#1A130E',
+    },
+    TouchableOpacity:{
+      backgroundColor: '#F4ECE7',
+      alignSelf: 'stretch',
+      paddingHorizontal: 20,
+      marginHorizontal: 20,
+      borderRadius: 10
+    }
+});

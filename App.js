@@ -5,13 +5,15 @@ import { Stylesheet, Text, View} from 'react-native'
 //screen
 import Login from './screens/login.';
 import Splitpage from './screens/splitpage';
-
+import PackageDetails from './screens/packageDetails';
+import PackageDetails2 from './screens/packageDetails2';
 
 export default function App() {
 
     //return <map/>
     //return <Splitpage/>; //(role choosing page-ELisa)
-    return <Login />; // this change was made by raphique
+    //return <Login />; // this change was made by raphique
+    return <PackageDetails2/>;
 
 
 

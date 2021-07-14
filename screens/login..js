@@ -4,7 +4,8 @@ import { Formik } from 'formik';
 import { View } from 'react-native';
 import { Octicons } from 'react-native-vector-icons';
 
-import { Colors } from '../components/styles'
+import { Colors } from '../components/styles';
+import Butt from '../components/CustomButton';
 
 import {
     StyledContainer,
@@ -32,7 +33,6 @@ const Login = () => {
                 </View>
                 <PageTitle> Log In
                 </PageTitle>
-                <Subtitle>Account Login</Subtitle>
                 <Formik
                     initialValues={{ email: '', password: '' }}
                     onSubmit={(values) => {
@@ -53,7 +53,7 @@ const Login = () => {
                         />
 
                         <MyTextInput
-                            label="pasword"
+                            label="password"
                             icon="lock"
                             placeholder="********"
                             placeholderTextColor={darklight}
@@ -64,6 +64,9 @@ const Login = () => {
                         />
                     </StyledFormArea>)}
                 </Formik>
+                <View style={ButtonContainers.container}>
+                    <Butt title="Log In"/>
+                </View>
             </InnerContainer>
         </StyledContainer>
 
