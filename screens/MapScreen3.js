@@ -1,7 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
-import MapView from 'react-native-maps';
+// For MapScreen, i didnt use the tutorial from youtube. I combine Foodmate code https://github.com/Mcuicac/foodmate
+// and use https://www.youtube.com/watch?v=diUDjNwZ8Lg&ab_channel=ByProgrammers for designing button.
+
+// I started from making the MapScreen screen's
+import React, { useState, useEffect, useRef } from 'react'; // import react native and built in functions
+import MapView from 'react-native-maps'; 
 import { StyleSheet, Dimensions, View, Text, TouchableOpacity } from 'react-native';
-import * as Location from 'expo-location';
+import * as Location from 'expo-location'; // used expo features to handle the location
 
 export default function MapScreen(props) {
     const [userPosition, setUserPosition] = useState(null);
@@ -10,26 +14,28 @@ export default function MapScreen(props) {
     useEffect(() => {
         getUserPosition();
 
-        // props.navigation.navigate('Create');
+    
     }, []);
 
+    // the code below is to get and display the user location
     useEffect(() => {
         if (userPosition && mapRef.current) {
             setTimeout(() => {
                 mapRef.current.animateToRegion({
                     latitude: userPosition.latitude,
                     longitude: userPosition.longitude,
-                    latitudeDelta: 0.006322,
-                    longitudeDelta: 0.000621,
+                    latitudeDelta: 0.006322, // to set user's location on the screen (horizontal)
+                    longitudeDelta: 0.000621, // (vertical)
                 }, 800);
             }, 100);
         }
     }, [userPosition, mapRef]);
-
+    
+    // the code below is to ask users permission for retrieving their location
     async function getUserPosition() {
         try {
-            await Location.requestPermissionsAsync();
-            const position = await Location.getCurrentPositionAsync({});
+            await Location.requestPermissionsAsync(); 
+            const position = await Location.getCurrentPositionAsync({}); 
 
             console.log({ position })
             setUserPosition({
@@ -42,8 +48,10 @@ export default function MapScreen(props) {
         }
     }
 
+    // the code below is to implement google map API
+    // https://github.com/react-native-maps/react-native-maps (reference)
     return (
-        <View style={styles.mapStyle}>
+        <View style={styles.mapStyle}> 
             <MapView
                 style={styles.mapStyle}
                 provider="google"
@@ -51,15 +59,17 @@ export default function MapScreen(props) {
                 showsUserLocation={true}
                 showsMyLocationButton={true}
             />
-            {renderDeliveryInfo()}
+            {renderDeliveryInfo() /*call the renderDeliveryInfo function*/ }
         </View>
     )
 }
 
+// the code below is to make the create order button
 function renderDeliveryInfo() {
     return (
         <View
             style={{
+                // to set the main screen position for the button
                 position: 'absolute',
                 bottom: 100,
                 left: 0,
@@ -70,6 +80,7 @@ function renderDeliveryInfo() {
         >
             <View
                 style={{
+                    // to get the size of the button and set the button margin
                     width: Dimensions.get('window').width * 0.9,
                     paddingVertical: 30,
                     paddingHorizontal: 20,
@@ -108,6 +119,7 @@ function renderDeliveryInfo() {
     )
 }
 
+// the code below is to set the style of the map (width and height of the map)
 const styles = StyleSheet.create({
     mapStyle: {
         width: Dimensions.get('window').width,
