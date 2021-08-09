@@ -45,29 +45,16 @@ export const StyledContainer = styled.View`
 export const InnerContainer = styled.View`
   flex: 1;
   width: 100%;
-<<<<<<< HEAD
   align-items: center;
-=======
-  
-  align-item: center;
->>>>>>> 8183c48fff2242b3eab786cf603f60d1a01e156b
   
 
 `;
 
 export const PageLogo = styled.Image`
-<<<<<<< HEAD
   width: 200px;
   height: 200px;
   position: absolute;
   align-items: center;
-=======
-  width: 300px;
-  height: 230px;
-  postion: absolute;
-
-  align-item: center;
->>>>>>> 8183c48fff2242b3eab786cf603f60d1a01e156b
   
 
 `;
@@ -124,16 +111,9 @@ export const LeftIcon = styled.View`
 `;
 
 export const RightIcon = styled.TouchableOpacity`
-<<<<<<< HEAD
   left: 15px;
   top: 38px;
   position: absolute;
-=======
-  right: 15px;
-  top: 0px;
-  width: 15px;
-  postion: absolute;
->>>>>>> 8183c48fff2242b3eab786cf603f60d1a01e156b
   z-index: 1;
   background-color: ${offWhite}
 
@@ -215,7 +195,6 @@ margin - vertical: 10px;
 
 
 export const Buttons = StyleSheet.create({
-<<<<<<< HEAD
     container:{
       padding:15
     },
@@ -235,26 +214,6 @@ export const Buttons = StyleSheet.create({
       color: '#F4ECE7',
       fontWeight: "bold"
     }
-=======
-  container: {
-    pading: 15
-  },
-  button: {
-    flexDirection: 'row',
-    height: 50,
-    borderRadius: 10,
-    marginTop: 30,
-    width: 150,
-    elevation: 2,
-    padding: 10,
-    backgroundColor: '#DA7737',
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  buttonText: {
-    color: '#F4ECE7'
-  }
->>>>>>> 8183c48fff2242b3eab786cf603f60d1a01e156b
 
 });
 

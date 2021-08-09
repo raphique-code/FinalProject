@@ -12,18 +12,14 @@ import PackageDetails2 from './screens/packageDetails2';
 
 export default function App() {
 
-<<<<<<< HEAD
     //return <map/>
     //return <Splitpage/>; //(role choosing page-ELisa)
     //return <Login />; // this change was made by raphique
-    return <PackageDetails2/>;
-=======
+    //return <PackageDetails2/>;
     //return <map />
     //return <Splitpage />; //(role choosing page-ELisa)
     //return <Login />; // this change was made by raphique
-
     return <Signup />;
->>>>>>> 8183c48fff2242b3eab786cf603f60d1a01e156b
 
 
 
