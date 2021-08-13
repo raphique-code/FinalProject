@@ -45,18 +45,16 @@ export const Users = [
 ];
 
 const { primary, background, offWhite, darklight, green,primary_D,primary_DD } = colors;
-const Signup = ({navigation}) => {
+const SignInScreen = ({navigation}) => {
 
     const [data,setData] = React.useState({
 
         email: '',
         password: '',
-        confirm_password: '',
         check_textInputChange: false,
         secureTextEntry: true,
         isValidUser: true,
-        isValidPassword: true,
-        confirm_secureTextEntry: true,
+        isValidPassword: true
     });
 
     const textInputChange = (val) => {
@@ -129,14 +127,6 @@ const Signup = ({navigation}) => {
             });
         }
     }
-
-    const handleConfirmPasswordChange = (val) => {
-        setData({
-            ...data,
-            confirm_password: val
-        });
-    }
-
     const updateSecureTextEntry = () => {
         setData({
             ...data,
@@ -144,12 +134,7 @@ const Signup = ({navigation}) => {
         });
     }
 
-    const updateConfirmSecureTextEntry = () => {
-        setData({
-            ...data,
-            confirm_secureTextEntry: !data.confirm_secureTextEntry
-        });
-    }
+   
     return (
         <View style={styles.container}>
         <StatusBar backgroundColor='#B0602E' barStyle="light-content"/>
@@ -238,44 +223,6 @@ const Signup = ({navigation}) => {
                   }
               </TouchableOpacity>
           </View>
-          <Text style={[styles.text_footer, {
-              color: colors.text,
-              marginTop: 35
-          }]}>Confirm Password</Text>
-          <View style={styles.action}>
-              <Feather 
-                  name="lock"
-                  color={colors.text}
-                  size={20}
-              />
-              <TextInput 
-                  placeholder="Confirm Your Password"
-                  placeholderTextColor="#666666"
-                  secureTextEntry={data.secureTextEntry ? true : false}
-                  style={[styles.textInput, {
-                      color: colors.text
-                  }]}
-                  autoCapitalize="none"
-                  onChangeText={(val) => handleConfirmPasswordChange(val)}
-              />
-              <TouchableOpacity
-                  onPress={updateSecureTextEntry}
-              >
-                  {data.secureTextEntry ? 
-                  <Feather 
-                      name="eye-off"
-                      color="grey"
-                      size={20}
-                  />
-                  :
-                  <Feather 
-                      name="eye"
-                      color="grey"
-                      size={20}
-                  />
-                  }
-              </TouchableOpacity>
-          </View>
           { data.isValidPassword ? null : 
           <Animatable.View animation="fadeInLeft" duration={500}>
           <Text style={styles.errorMsg}>Password must be 8 characters long.</Text>
@@ -286,48 +233,39 @@ const Signup = ({navigation}) => {
           <TouchableOpacity>
               <Text style={{color: primary_DD, marginTop:15}}>Forgot password?</Text>
           </TouchableOpacity>
-          <View style={styles.textPrivate}>
-                <Text style={styles.color_textPrivate}>
-                    By signing up you agree to our
-                </Text>
-                <Text style={[styles.color_textPrivate, {fontWeight: 'bold'}]}>{" "}Terms of service</Text>
-                <Text style={styles.color_textPrivate}>{" "}and</Text>
-                <Text style={[styles.color_textPrivate, {fontWeight: 'bold'}]}>{" "}Privacy policy</Text>
-          </View>
           <View style={styles.button}>
-                <TouchableOpacity
-                    style={styles.signIn}
-                    onPress={() => {}}
-                >
-                <LinearGradient
-                    colors={[primary, primary_D]}
-                    style={styles.signIn}
-                >
-                    <Text style={[styles.textSign, {
-                        color:'#fff'
-                    }]}>Sign Up</Text>
-                </LinearGradient>
-                </TouchableOpacity>
+              <TouchableOpacity
+                  style={styles.signIn}
+                  onPress={() => navigation.navigate('PackageDetails2')}>
+                    <LinearGradient
+                        colors={[primary, primary_D]}
+                        style={styles.signIn}
+                    >
+                        <Text style={[styles.textSign, {
+                            color:'#fff'
+                        }]}>Sign In</Text>
+                    </LinearGradient>
+              </TouchableOpacity>
 
-                <TouchableOpacity
-                    onPress={() => navigation.goBack()}
-                    style={[styles.signIn, {
-                        borderColor: primary_DD,
-                        borderWidth: 1,
-                        marginTop: 15
-                    }]}
-                >
-                    <Text style={[styles.textSign, {
-                        color: primary_DD
-                    }]}>Sign In</Text>
-                </TouchableOpacity>
-            </View>
+              <TouchableOpacity
+                  onPress={() => navigation.navigate('Signup')}
+                  style={[styles.signIn, {
+                      borderColor: primary_DD,
+                      borderWidth: 1,
+                      marginTop: 15
+                  }]}
+              >
+                  <Text style={[styles.textSign, {
+                      color: primary_DD
+                  }]}>Sign Up</Text>
+              </TouchableOpacity>
+          </View>
       </Animatable.View>
     </View>
     );
 };
 
-export default Signup;
+export default SignInScreen;
 
 const styles = StyleSheet.create({
     container: {

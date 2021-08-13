@@ -1,13 +1,24 @@
 import React, { useState } from "react";
-import { View, Picker, StyleSheet,Text, Modal, 
-    TouchableOpacity, SafeAreaView } from "react-native";
-import {DropDownContainers, StyledContainer, WhiteContainer, Subtitle, ButtonContainersHorizontal} from '../components/styles';
-import {ModalPicker} from '../components/modalPicker';
-import { StatusBar } from 'expo-status-bar';
-import ButtBlack from '../components/BlackButtons2';
-import Butt from '../components/CustomButton2';
+import {LinearGradient} from 'expo-linear-gradient';
+import { colors,PageLogo } from '../components/styles';
 
-const PackageDetails2 = () => {
+    import { 
+      View, 
+      Text, 
+      Picker,
+      Modal,
+      TouchableOpacity, 
+      TextInput,
+      Platform,
+      SafeAreaView,
+      StyleSheet ,
+      StatusBar,
+      Alert
+  } from 'react-native';
+import {DropDownContainers, StyledContainer, WhiteContainer, Subtitle, ButtonContainersHorizontal} from '../components/styles';
+const { primary, background, offWhite, darklight, green,primary_D,primary_DD } = colors;
+
+const PackageDetails2 = ({navigation}) => {
   const [selectedValue, setSelectedValue] = useState("java");
   return (
     <WhiteContainer>
@@ -17,7 +28,7 @@ const PackageDetails2 = () => {
                     borderBottomColor: 'black',
                     borderBottomWidth: 1,
                     justifyContent: 'space-between', }}/>
-        <View style = {styles.container}>
+        <View style = {styles2.container}>
             <Picker
             selectedValue={selectedValue}
             style={{ height: 60, width: 300  }}
@@ -35,7 +46,7 @@ const PackageDetails2 = () => {
                     borderBottomColor: 'black',
                     borderBottomWidth: 1,
                     justifyContent: 'space-between', }}/>
-        <View style = {styles.container}>
+        <View style = {styles2.container}>
             <Picker
             selectedValue={selectedValue}
             style={{ height: 60, width: 300  }}
@@ -55,15 +66,27 @@ const PackageDetails2 = () => {
                 JUMBO   = 2   X 1.2 X 1.2 M . up to 500 kg{"\n"}
         </Text>
         <View style={ButtonContainersHorizontal.container}>
-                    <ButtBlack title="BACK"/>
-                    <Butt title= "NEXT"/>
-                </View>
+                <TouchableOpacity
+                          style={styles.signIn}
+                          onPress={() => navigation.navigate('ReceiverDetails')}>
+                            <LinearGradient
+                                colors={[primary, primary_D]}
+                                style={styles.signIn}
+                            >
+                                <Text style={[styles.textSign, {
+                                    color:'#fff'
+                                }]}>Next</Text>
+                            </LinearGradient>
+                      </TouchableOpacity>
+
+                
+        </View>
         
     </WhiteContainer>
   );
 }
 
-const styles = StyleSheet.create({
+const styles2 = StyleSheet.create({
   container: {
     backgroundColor:'#F4ECE7',
     alignItems: 'center',
@@ -77,6 +100,77 @@ const styles = StyleSheet.create({
     elevation:2,
     justifyContent: 'center',
   }
+  
 });
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    backgroundColor: background
+  },
+  header: {
+      flex: 1,
+      justifyContent: 'flex-end',
+      paddingHorizontal: 20,
+      paddingBottom: 50,
+      alignItems: 'center',
+      justifyContent: 'center'
+  },
+  footer: {
+      flex: 3,
+      backgroundColor: '#fff',
+      borderTopLeftRadius: 30,
+      borderTopRightRadius: 30,
+      paddingHorizontal: 20,
+      paddingVertical: 30
+  },
+  text_header: {
+      color: '#fff',
+      fontWeight: 'bold',
+      fontSize: 30
+  },
+  text_footer: {
+      color: '#05375a',
+      fontSize: 18
+  },
+  action: {
+      flexDirection: 'row',
+      marginTop: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: '#f2f2f2',
+      paddingBottom: 5
+  },
+  actionError: {
+      flexDirection: 'row',
+      marginTop: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: '#FF0000',
+      paddingBottom: 5
+  },
+  textInput: {
+      flex: 1,
+      marginTop: Platform.OS === 'ios' ? 0 : -12,
+      paddingLeft: 10,
+      color: '#05375a',
+  },
+  errorMsg: {
+      color: '#FF0000',
+      fontSize: 14,
+  },
+  button: {
+      alignItems: 'center',
+      marginTop: 50
+  },
+  signIn: {
+      width: '100%',
+      height: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10
+  },
+  textSign: {
+      fontSize: 18,
+      fontWeight: 'bold'
+  }
+});
 export default PackageDetails2;

@@ -1,13 +1,24 @@
 import * as React from 'react';
-import { View, StyleSheet, TextInput, Text } from 'react-native';
+
+import { 
+  View, 
+  Text, 
+  TouchableOpacity, 
+  TextInput,
+  Platform,
+  StyleSheet ,
+  StatusBar,
+  Alert
+} from 'react-native';
+import {LinearGradient} from 'expo-linear-gradient';
+import { colors,PageLogo } from '../components/styles';
 import Constants from 'expo-constants';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
-import ButtBlack from '../components/BlackButtons2';
-import Butt from '../components/CustomButton2';
-import {DropDownContainers, StyledContainer, WhiteContainer, Subtitle, ButtonContainersHorizontal} from '../components/styles2';
-const GOOGLE_PLACES_API_KEY = 'AIzaSyCr7M9Y948P_wcJ400eix6EfLjKRRzVCbQ'; // never save your real api key in a snack!
 
-const SenderDetails = () => {
+import {DropDownContainers, StyledContainer, WhiteContainer, Subtitle, ButtonContainersHorizontal} from '../components/styles';
+const GOOGLE_PLACES_API_KEY = 'AIzaSyCr7M9Y948P_wcJ400eix6EfLjKRRzVCbQ'; // never save your real api key in a snack!
+const { primary, background, offWhite, darklight, green,primary_D,primary_DD } = colors;
+const SenderDetails = ({navigation}) => {
     const [text, onChangeText] = React.useState(null);
     const [number, onChangeNumber] = React.useState(null);
   return (
@@ -20,7 +31,7 @@ const SenderDetails = () => {
                     borderBottomWidth: 1,
                     justifyContent: 'space-between', }}/>
             <TextInput
-                style={styles.container}
+                style={styles2.container}
                 onChangeText={onChangeText}
                 value={text}
                 placeholder="Name"        
@@ -33,7 +44,7 @@ const SenderDetails = () => {
                     borderBottomWidth: 1,
                     justifyContent: 'space-between', }}/>
             <TextInput
-                style={styles.container}
+                style={styles2.container}
                 onChangeText={onChangeNumber}
                 value={number}
                 placeholder="Phone Number"
@@ -83,15 +94,41 @@ const SenderDetails = () => {
             }} // this in only required for use on the web. See https://git.io/JflFv more for details.
         />
          <View style={ButtonContainersHorizontal.container}>
-                    <ButtBlack title="BACK"/>
-                    <Butt title= "NEXT"/>
-                </View>
+              <TouchableOpacity
+                  style={styles.signIn}
+                  onPress={() => navigation.navigate('ReceiverDetails')}>
+                    <LinearGradient
+                        colors={[primary, primary_D]}
+                        style={styles.signIn}
+                    >
+                        <Text style={[styles.textSign, {
+                            color:'#fff'
+                        }]}>Back</Text>
+                    </LinearGradient>
+
+                    
+              </TouchableOpacity>
+              <TouchableOpacity
+                  style={styles.signIn}
+                  onPress={() => navigation.navigate('SenderDetails')}>
+                    <LinearGradient
+                        colors={[primary, primary_D]}
+                        style={styles.signIn}
+                    >
+                        <Text style={[styles.textSign, {
+                            color:'#fff'
+                        }]}>Next</Text>
+                    </LinearGradient>
+              </TouchableOpacity>
+
+                   
+        </View>
     </WhiteContainer>
 
   );
 };
 
-const styles = StyleSheet.create({
+const styles2 = StyleSheet.create({
     container: {
         backgroundColor:'#F4ECE7',
         alignItems: 'center',
@@ -108,3 +145,74 @@ const styles = StyleSheet.create({
 });
 
 export default SenderDetails;
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1, 
+    backgroundColor: background
+  },
+  header: {
+      flex: 1,
+      justifyContent: 'flex-end',
+      paddingHorizontal: 20,
+      paddingBottom: 50,
+      alignItems: 'center',
+      justifyContent: 'center'
+  },
+  footer: {
+      flex: 3,
+      backgroundColor: '#fff',
+      borderTopLeftRadius: 30,
+      borderTopRightRadius: 30,
+      paddingHorizontal: 20,
+      paddingVertical: 30
+  },
+  text_header: {
+      color: '#fff',
+      fontWeight: 'bold',
+      fontSize: 30
+  },
+  text_footer: {
+      color: '#05375a',
+      fontSize: 18
+  },
+  action: {
+      flexDirection: 'row',
+      marginTop: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: '#f2f2f2',
+      paddingBottom: 5
+  },
+  actionError: {
+      flexDirection: 'row',
+      marginTop: 10,
+      borderBottomWidth: 1,
+      borderBottomColor: '#FF0000',
+      paddingBottom: 5
+  },
+  textInput: {
+      flex: 1,
+      marginTop: Platform.OS === 'ios' ? 0 : -12,
+      paddingLeft: 10,
+      color: '#05375a',
+  },
+  errorMsg: {
+      color: '#FF0000',
+      fontSize: 14,
+  },
+  button: {
+      alignItems: 'center',
+      marginTop: 50
+  },
+  signIn: {
+      width: '50%',
+      height: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10
+  },
+  textSign: {
+      fontSize: 18,
+      fontWeight: 'bold'
+  }
+});
