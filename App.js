@@ -17,9 +17,9 @@ import rootReducers from "./frontend/src/redux/reducers";
 import firebase from "firebase";
 
 const store = createStore(rootReducers,applyMiddleware(thunk))
-if(firebase.apps.length == 0){
-   firebase.initializeApp(Constants.manifest.web.config.firebase)
-}
+//if(firebase.apps.length == 0){
+firebase.initializeApp(Constants.manifest.web.config.firebase)
+//}
 
 
 //screen
@@ -65,7 +65,7 @@ export default function App() {
     return( //<ReceiverDetails/>
         
 
-        <provider store ={store}>
+        <Provider store ={store}>
             
             <NavigationContainer>
                 <AuthScreen>
@@ -78,7 +78,7 @@ export default function App() {
                     </Stack.Navigator>    
                 </AuthScreen>
             </NavigationContainer>
-        </provider>
+        </Provider>
         
 
         
