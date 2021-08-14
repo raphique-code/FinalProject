@@ -31,9 +31,11 @@ export const getCurrentUserData = () => dispatch => {
 export const login = (email, password) => dispatch => new Promise((resolve, reject) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => {
+            console.log("in login")
             resolve()
         })
         .catch(() => {
+            console.log("in login but didnt work")
             reject()
         })
 })

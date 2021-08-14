@@ -33,7 +33,7 @@
         "databaseURL": "https://finalproject-83fcd-default-rtdb.firebaseio.com",
         "projectId": "finalproject-83fcd",
         "storageBucket": "finalproject-83fcd.appspot.com",
-       "SSmessagingSenderId": "246398072527",
+        "messagingSenderId": "246398072527",
         "appId": "1:246398072527:web:27d4edd5ec0b51287629ba",
         "measurementId": "G-VC8J9DBBBD"
         }

@@ -18,6 +18,8 @@ export default function Cus_AuthDetails({authPage, Cus_setDetailsPage}){
                 console.log('login successful')
             })
             .catch(() => {
+                 console.log(email)
+                console.log(password)
                 console.log('login unsuccessful')
             })
     }
@@ -27,17 +29,21 @@ export default function Cus_AuthDetails({authPage, Cus_setDetailsPage}){
                 console.log('register successful')
             })
             .catch(() => {
+                console.log(email)
+                console.log(password)
                 console.log('register unsuccessful')
             })
     }
 
     return (
         <View style={styles.container}>
+            
             <TouchableOpacity onPress={() => Cus_setDetailsPage(false)}>
                 <Feather name="arrow-left" size={24} color="black" />
             </TouchableOpacity>
             <TextInput
                 onChangeText={(text) => setEmail(text)}
+                
                 style={styles.textInput}
                 placeholder='Email'
             />
@@ -54,5 +60,6 @@ export default function Cus_AuthDetails({authPage, Cus_setDetailsPage}){
                 <Text style={styles.buttonText}>{authPage == 0 ? 'Sign In' : 'Sign Up'}</Text>
             </TouchableOpacity>
         </View >
+    
     )
 }
