@@ -28,6 +28,21 @@ export const getCurrentUserData = () => dispatch => {
         })
 }
 
+export const getCurrentUserData_driver = () => dispatch => {
+    firebase.firestore()
+        .collection('driver')
+        .doc(firebase.auth().currentUser.uid)
+        .onSnapshot((res) => {
+            if (res.exists) {
+                return dispatch({
+                    type: USER_STATE_CHANGE,
+                    currentUser: res.data(),
+                    loaded: true
+                })
+            }
+        })
+}
+
 export const login = (email, password) => dispatch => new Promise((resolve, reject) => {
     firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => {
