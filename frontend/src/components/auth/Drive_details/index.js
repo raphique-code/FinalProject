@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, TextInput } from 'react-native'
 import { Feather } from '@expo/vector-icons';
 import styles from '../Cus_details/styles';
 import { useDispatch } from 'react-redux'
-import {login, register} from '/home/raphique/FinalProject/frontend/src/redux/actions'
+import { login,register } from '../../../redux/actions';
 
 
 export default function Drive_AuthDetails({authPage,  Drive_setDetailsPage}){
