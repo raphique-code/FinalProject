@@ -7,22 +7,23 @@ const styles = StyleSheet.create({
         paddingTop: 20,
     },
     textInput: {
-        borderColor: 'lightgray',
+        
+        borderTopWidth: 1,
+        borderLeftWidth: 1,
+        borderRightWidth: 1,
+        borderColor: "black",
         borderBottomWidth: 1,
-        borderStyle: 'solid',
         paddingVertical: 10,
         paddingHorizontal: 20,
         marginTop: 20,
+        height: '40%'
     },
     button: {
-        marginTop: 80,
-        borderColor: 'lightgray',
-        borderWidth: 1,
-        borderStyle: 'solid',
-        paddingVertical: 10,
-        paddingHorizontal: 20,
+        width: '100%',
+        height: 50,
+        justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: 'red'
+        borderRadius: 10
     },
     buttonText: {
         color: 'white',

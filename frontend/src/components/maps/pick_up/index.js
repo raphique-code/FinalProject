@@ -57,7 +57,7 @@ thursday 11:00 3 to 4:30
 classroom rules thursday grade ka grade 1 a thursday 5:40 15 minutes earlier
 */
 
-export default function Map_func() {
+export default function Pick_up(setMaps_nav,setPick_up) {
     const [searchLoc, setSearchLoc] = React.useState({latitude: 25.0170, longitude: 121.4628, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
   const [searchDes, setSearchDes] = React.useState({latitude: 24.8138, longitude: 120.9675, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
   const [userPos, setUserPos] = React.useState({lat: null, long: null})

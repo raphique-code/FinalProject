@@ -24,7 +24,7 @@ import AutoGetLoc from "./src/components/maps/maps_nav";
 
 const store = createStore(reducers,applyMiddleware(thunk))
 //if(firebase.apps.length == 0){
-//firebase.initializeApp(Constants.manifest.web.config.firebase)
+firebase.initializeApp(Constants.manifest.web.config.firebase)
 //}
 
 
@@ -35,6 +35,8 @@ import MapViewDirections from 'react-native-maps-directions';
 import AuthScreen from "./src/screens/auth";
 import Maps_nav from "./src/components/maps/maps_nav";
 import Pick_up from "./src/components/maps/map_func";
+import Example from "./src/components/maps/test";
+import Maps_control from "./src/screens/map_control";
 
 
 
@@ -46,10 +48,16 @@ export default function App() {
 
     return( 
 
-            <View style={{flex: 1}}>
-               
-                <Pick_up/>
-            </View>
+              
+        <Provider store ={store}>
+        <NavigationContainer>
+            <AuthScreen>
+               <text>placeholder</text>
+            </AuthScreen>
+        </NavigationContainer>
+    </Provider>
+
+          
                 
            
             );
@@ -59,7 +67,7 @@ export default function App() {
   
 
         
-/*
+/*<Maps_control/>
         
         <Provider store ={store}>
             <NavigationContainer>
@@ -67,7 +75,12 @@ export default function App() {
                    <text>placeholder</text>
                 </AuthScreen>
             </NavigationContainer>
-        </Provider
+        </Provider>
+          <View style={{flex: 1}}>
+               
+            
+            <AuthScreen/>
+            </View>
         */
 
         
@@ -77,15 +90,10 @@ export default function App() {
 //}
 
 /*
-import constants from "jest-haste-map/build/constants";
-import { StatusBar } from "expo-status-bar";
-import { ActivityIndicator } from 'react-native';
-import { useFocusEffect } from '@react-navigation/native';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+
 import * as React from 'react';
 import MapView, { Callout, PROVIDER_GOOGLE } from 'react-native-maps';
+// import { Permissions } from "expo"; kita gk pakek soalnya useEffect nya beda sama sebelumnya
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import * as Location from 'expo-location';
 import { Marker } from "react-native-maps";
@@ -93,13 +101,13 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import MapViewDirections from 'react-native-maps-directions';
 import { getDistance } from "geolib";
 
-export default function App() {
+export default function App () {
   
   const [searchLoc, setSearchLoc] = React.useState({latitude: 25.0170, longitude: 121.4628, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
   const [searchDes, setSearchDes] = React.useState({latitude: 24.8138, longitude: 120.9675, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
   const [userPos, setUserPos] = React.useState({lat: null, long: null})
   const calculateDistance = getDistance(searchLoc, searchDes)
- 
+  console.log("Distance:", calculateDistance)
 
   React.useEffect(() => {
     Location.installWebGeolocationPolyfill()
@@ -114,7 +122,7 @@ export default function App() {
      });
     }
   );
-
+ff
       return (
         <View style={{ marginTop: 0, flex: 1}}>
           <GooglePlacesAutocomplete

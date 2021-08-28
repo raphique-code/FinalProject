@@ -26,7 +26,7 @@ export default function AuthMenu({ authPage, setAuthPage, Drive_setDetailsPage,C
 
             <View style={styles.button}>
              
-                <TouchableOpacity style={styles.signIn}
+                <TouchableOpacity style={styles.button}
                     onPress={() => Cus_setDetailsPage(true)}>
 
                     <LinearGradient
@@ -44,7 +44,7 @@ export default function AuthMenu({ authPage, setAuthPage, Drive_setDetailsPage,C
 
             <View style={styles.button}>
              
-                <TouchableOpacity style={styles.signIn}
+                <TouchableOpacity style={styles.button}
                     onPress={() => Drive_setDetailsPage(true)}>
 
                     <LinearGradient

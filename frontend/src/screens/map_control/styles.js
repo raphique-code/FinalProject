@@ -22,13 +22,10 @@ export const colors = {
   };
 const { primary, background, offWhite, darklight, green,primary_D,primary_DD } = colors;
 
-export const styles = StyleSheet.create({
+const styles = StyleSheet.create({
     container: {
       flex: 1, 
-      backgroundColor: background,
-      
-      
-    
+      backgroundColor: background
     },
     header: {
         flex: 1,
@@ -64,7 +61,7 @@ export const styles = StyleSheet.create({
     },
     actionError: {
         flexDirection: 'row',
-        marginTop: 40,
+        marginTop: 10,
         borderBottomWidth: 1,
         borderBottomColor: '#FF0000',
         paddingBottom: 5
@@ -81,11 +78,7 @@ export const styles = StyleSheet.create({
     },
     button: {
         alignItems: 'center',
-        marginTop: 50,
-        margin: 10,
-        
-        width: "90%"
-
+        marginTop: 50
     },
     signIn: {
         width: '100%',
@@ -100,3 +93,4 @@ export const styles = StyleSheet.create({
     }
 });
 
+export default styles;

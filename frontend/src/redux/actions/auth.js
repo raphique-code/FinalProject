@@ -30,7 +30,7 @@ export const getCurrentUserData = () => dispatch => {
 
 export const getCurrentUserData_driver = () => dispatch => {
     firebase.firestore()
-        .collection('driver')
+        .collection('user')
         .doc(firebase.auth().currentUser.uid)
         .onSnapshot((res) => {
             if (res.exists) {
@@ -58,9 +58,11 @@ export const login = (email, password) => dispatch => new Promise((resolve, reje
 export const register = (email, password) => dispatch => new Promise((resolve, reject) => {
     firebase.auth().createUserWithEmailAndPassword(email, password)
         .then(() => {
+            console.log("in register  work")
             resolve()
         })
         .catch((error) => {
+            console.log("in register didnt work")
             reject(error)
         })
 })

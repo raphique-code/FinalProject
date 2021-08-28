@@ -4,6 +4,7 @@ import styles from './styles';
 import AuthMenu from '../../components/auth/menu';
 import Cus_AuthDetails from '../../components/auth/Cus_details';
 import Drive_AuthDetails from '../../components/auth/Drive_details';
+import Maps_nav from '../../components/maps/maps_nav';
 
 
 

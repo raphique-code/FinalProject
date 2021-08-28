@@ -15,9 +15,6 @@ import { Marker } from "react-native-maps";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import MapViewDirections from "react-native-maps-directions";
 import { getDistance } from "geolib";
-import { useState } from "react";
-//import styles from "./styles";
-
 /*
 
 components needed:
@@ -69,13 +66,13 @@ thursday 11:00 3 to 4:30
 classroom rules thursday grade ka grade 1 a thursday 5:40 15 minutes earlier
 */
 
-export default function Maps_nav(setMaps_nav,setPick_up) {
+export default function Maps_nav() {
     
   const [searchLoc, setSearchLoc] = React.useState({latitude: 24.989856, longitude: 121.313283, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
   const [searchDes, setSearchDes] = React.useState({latitude: 24.990086, longitude: 121.344370, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
   const [userPos, setUserPos] = React.useState({lat: null, long: null})
   const calculateDistance = getDistance(searchLoc, searchDes)
-  const[temp, setTemp] = React.useState('')
+ //var temp= 1
 
   React.useEffect(() => {
     Location.installWebGeolocationPolyfill()
@@ -86,11 +83,14 @@ export default function Maps_nav(setMaps_nav,setPick_up) {
                 long: pos.coords.longitude,
            };
           setUserPos(newUserPos) // store data in usestate
-       
-          //  console.log(newUserPos) // Display your values
-          //  console.log(temp)
-         
           
+          if(temp == 1)
+          {
+            
+            console.log(newUserPos) // Display your values
+            console.log(temp)
+          }
+          temp = 0
           //console.log(newUserPos) // Display your values
      });
     }
@@ -99,15 +99,7 @@ export default function Maps_nav(setMaps_nav,setPick_up) {
   return( 
 
           <View style={styles.container}>
-            <StatusBar
-        animated={true}
-        backgroundColor="#61dafb"
-        barStyle= "dark-content"
-        
-        />
 
-
-          
           <MapView
             provider={PROVIDER_GOOGLE}
             //showsTraffic={true}
@@ -161,14 +153,12 @@ export default function Maps_nav(setMaps_nav,setPick_up) {
             destination={searchDes}
             apikey={"AIzaSyCfTyHPV_ZFkfogI2IXsFhMefmdZ4WSjms"}
             strokeWidth={5}
-            strokeColor= 'orange'  //"mediumseagreen"
+            strokeColor="mediumseagreen"
             mode='DRIVING'
 
             onReady={result => {
               console.log(`Distance: ${result.distance} km`)
               console.log(`Duration: ${result.duration} min.`)
-              setTemp(Math.ceil(result.duration))
-
             }}
 
             onError={(errorMessage) => {
@@ -177,33 +167,6 @@ export default function Maps_nav(setMaps_nav,setPick_up) {
           />
 
           </MapView>
-         
-
-          <View style ={styles.inner_container}>
-            <Text style={styles.display_text_three}>pickup</Text>
-              
-            <View style ={styles.Box_button_top}>
-            </View>
-            <Text style={styles.display_text_three}>dropOff</Text>
-            <View style ={styles.Box_button_bottom}>
-
-            </View>
-
-
-            </View>
-        
-
-          <View style ={styles.inner_container_one}>
-
-              <Text style = {styles.display_text_two}>
-              Est. Time Of Trip
-              </Text>
-              <Text style={styles.display_text}>
-
-              {temp} min.
-              </Text>
-             
-            </View>
 
           
 
@@ -213,137 +176,58 @@ export default function Maps_nav(setMaps_nav,setPick_up) {
       }
 
      
-      const styles = StyleSheet.create({
-        container: {
-          flex: 1,
-          backgroundColor: 'grey'
-          
+
+
+
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+      backgroundColor: 'grey'
+  
+    },
+    container_SB: {  
+    
+      backgroundColor: 'blue',
+      fontSize: 20,
+      alignContent: "center",
+      justifyContent: "center",
+      padding: 20,
       
-        },
-        container_SB: {  
-        
-          backgroundColor: 'blue',
-          fontSize: 20,
-          alignContent: "center",
-          justifyContent: "center",
-          padding: 20,
-          
+
+  
+      flex: 1
+    },
+    inner_container_one: {
+      marginBottom: 60,
+      backgroundColor: 'red',
+      marginLeft: 10,
+      marginRight: 10,
+      
+    },
+
+    inner_container: {
+      marginBottom: 10,
+
+      marginLeft: 10,
+      marginRight: 10,
+        position: 'absolute',
+      
+      
+      
+      backgroundColor: 'red'
+      },
     
       
-          flex: 1
-        },
-        inner_container_one: {
-          marginBottom: 0,
-          margin: 580,
-          backgroundColor: 'azure',
-          position: 'absolute',
-          marginLeft: 10,
-          marginRight: 10,
-          borderRadius: 10
-          
-        },
-    
-        inner_container: {
-          marginBottom: 10,
-          marginTop: 20,
-          marginLeft: 12,
-          marginRight: 10,
-          position: 'absolute',
-          width: "94%",
-          height: "20%",
-          alignContent: "center",
-          borderRadius: 20,
-          backgroundColor: 'azure'
-          },
-        
-        display_text: {
-    
-          fontSize : 20,
-          fontWeight: 'bold',
-          marginBottom: 5,
-          marginLeft: 10,
-          marginRight: 10,
-    
-    
-        },
-        
-        display_text_two: {
-    
-          fontSize : 15,
-          fontWeight: 'normal',
-         
-          marginLeft: 10,
-          marginTop: 5,
-          marginRight: 10,
-    
-    
-    
-        },
-        display_text_three: {
-    
-          fontSize : 15,
-          fontWeight: 'normal',
-         
-          marginLeft: 15,
-          marginTop: 5,
-          marginRight: 10,
-    
-    
-    
-        },
-        display_text_four: {
-    
-          fontSize : 15,
-          fontWeight: 'normal',
-         
-          marginLeft: 10,
-          marginTop: 5,
-          marginRight: 10,
-    
-    
-    
-        },
-        
-    
-        Box_button_top: {
-         // marginBottom: 10,
-          marginTop: 2,
-          marginLeft: 12,
-          marginRight: 10,
-          //position: 'absolute',
-          width: "94%",
-          height: "25%",
-          alignContent: "center",
-          borderRadius: 8,
-          backgroundColor: 'gainsboro'
-       
-        },
-    
-        Box_button_bottom: {
-          marginBottom: 10,
-          marginTop: 2,
-          marginLeft: 12,
-          marginRight: 10,
-          //position: 'absolute',
-          width: "94%",
-          height: "25%",
-          alignContent: "center",
-          borderRadius: 8,
-          backgroundColor: 'gainsboro'
-        },
-          
-          
-        map: {
-          flex: 3,
-          marginTop: 10,
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-        },
-    });
-    
-
-
-
+      
+      
+    map: {
+      flex: 3,
+      marginTop: 10,
+    width: Dimensions.get('window').width,
+    height: Dimensions.get('window').height,
+    },
+});
 
 
 
