@@ -21,7 +21,7 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
  */
 const { primary, background, offWhite, darklight, green,primary_D,primary_DD } = colors;
 
-export default function AuthMenu({ authPage, setAuthPage, Drive_setDetailsPage,Cus_setDetailsPage }) {
+export default function AuthMen({ authPage, setAuthPage, Drive_setDetailsPage,Cus_setDetailsPage }) {
     return (
         <View style={styles.container}>
 

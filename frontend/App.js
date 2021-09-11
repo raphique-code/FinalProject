@@ -4,7 +4,7 @@ import { useEffect, useState} from "react/cjs/react.production.min";
 import constants from "jest-haste-map/build/constants";
 import { StatusBar } from "expo-status-bar";
 import React from 'react';
-
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { ActivityIndicator } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
@@ -23,9 +23,9 @@ import firebase from "firebase";
 import AutoGetLoc from "./src/components/maps/maps_nav";
 
 const store = createStore(reducers,applyMiddleware(thunk))
-//if(firebase.apps.length == 0){
+if(firebase.apps.length == 0){
 firebase.initializeApp(Constants.manifest.web.config.firebase)
-//}
+}
 
 
 import MapViewDirections from 'react-native-maps-directions';
@@ -40,29 +40,29 @@ import Maps_control from "./src/screens/map_control";
 
 
 
+
 const Stack = createStackNavigator();
 
 export default function App() {
     
-
+  const[temp, setTemp] = React.useState('20')
 
     return( 
+      <Provider store ={store}>
+      <NavigationContainer>
+          <AuthScreen>
+            
+             
+          </AuthScreen>
+      </NavigationContainer>
+  </Provider>
+
 
               
-        <Provider store ={store}>
-        <NavigationContainer>
-            <AuthScreen>
-               <text>placeholder</text>
-            </AuthScreen>
-        </NavigationContainer>
-    </Provider>
-
-          
-                
            
             );
         }
-        
+              
        
   
 

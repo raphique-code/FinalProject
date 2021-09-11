@@ -24,8 +24,8 @@ const { primary, background, offWhite, darklight, green,primary_D,primary_DD } =
 
 export const styles = StyleSheet.create({
     container: {
-      
-      backgroundColor: background
+     
+      backgroundColor: "black"
       
       
     
@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         marginTop: 50,
         margin: 10,
-        
+        backgroundColor: "gray",
         width: "90%"
 
     },
