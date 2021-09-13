@@ -7,6 +7,12 @@ const styles = StyleSheet.create({
         height: "100%",
         //marginTop: 30
     },
+    small_word: {
+      color: "blue",
+      fontSize: 15,
+      marginTop: 10
+    },
+
     container_SB: {  
         backgroundColor: '#F4ECE7',
         fontSize: 20,
@@ -142,12 +148,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         //backgroundColor:'pink'
-    },
-
-    small_word: {
-      color: "blue",
-      fontSize: 15,
-      marginTop: 10
     },
 
 

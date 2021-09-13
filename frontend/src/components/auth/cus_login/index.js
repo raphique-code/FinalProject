@@ -7,7 +7,7 @@ import { login } from '../../../redux/actions';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { register } from '../../../redux/actions';
 import styles from './styles';
-export default function Cus_AuthDetails({authPage, Cus_setDetailsPage, setCus_login}){
+export default function Cus_login({authPage, Cus_setDetailsPage,setCus_login}){
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -38,6 +38,9 @@ export default function Cus_AuthDetails({authPage, Cus_setDetailsPage, setCus_lo
 
             })
             .catch(() => {
+                console.log(email)
+                console.log(password)
+                console.log("can not use same email twice")
                 //can not use same email twice
                 console.log('register unsuccessful')
             })
@@ -48,7 +51,7 @@ export default function Cus_AuthDetails({authPage, Cus_setDetailsPage, setCus_lo
         <View style={styles.container}>
 
             <View style={styles.header}>
-                <TouchableOpacity  onPress={() => Cus_setDetailsPage(false)} >
+                <TouchableOpacity  onPress={() => setCus_login(false)} >
                     <AntDesign 
                         name="arrowleft" // panah
                         color="black"
@@ -56,7 +59,7 @@ export default function Cus_AuthDetails({authPage, Cus_setDetailsPage, setCus_lo
                         style= {{paddingTop: 10, paddingBottom: 20, paddingRight: 58, paddingLeft: 20}}
                     />
                 </TouchableOpacity>
-                <Text style={[styles.orderDetails, {marginLeft: 53, marginTop: 3}]}> Sign Up </Text>
+                <Text style={[styles.orderDetails, {marginLeft: 53, marginTop: 3}]}> login </Text>
             </View>
 
             <View style = {styles.container_SB}>
@@ -96,20 +99,19 @@ export default function Cus_AuthDetails({authPage, Cus_setDetailsPage, setCus_lo
                 <View style={styles.containerBottom3}>
                     <TouchableOpacity  style={styles.start}
                         
-                        onPress={() => handleRegister()}>
-                        <Text style={styles.buttonText}>Sign Up</Text>
+                        onPress={() => handleLogin() }>
+                        <Text style={styles.buttonText}>Sign In</Text>
                     </TouchableOpacity>
+
                 </View>
                 <View>
                     <Text>
-                       Already have an account? <TouchableOpacity  
-                        
+                        Dont have an account? <TouchableOpacity  
                         onPress={() => {setCus_login(true); Cus_setDetailsPage(false)}}>
-                        <Text style={styles.small_word}> Sign in </Text>
+                        <Text style={styles.small_word}> Sign up </Text>
                     </TouchableOpacity>
                     </Text>
                 </View>
-                    
                 
             </View>            
         </View >
@@ -130,7 +132,5 @@ onChangeText={(text) => setPassword(text)}
 style={styles.textInput}
 secureTextEntry
 placeholder='Password'
-
-onPress={() => authPage == 1? handleLogin() : handleRegister()}>
 />
 */

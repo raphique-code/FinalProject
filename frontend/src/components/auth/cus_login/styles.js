@@ -14,10 +14,17 @@ const styles = StyleSheet.create({
         justifyContent: "flex-start",
         padding: 20,
         height: "100%"
-        
+    
 
         
       },
+
+      small_word: {
+        color: "blue",
+        fontSize: 15,
+        marginTop: 10
+      },
+  
     textInput: {
         
         borderTopWidth: 1,
@@ -142,12 +149,6 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
         //backgroundColor:'pink'
-    },
-
-    small_word: {
-      color: "blue",
-      fontSize: 15,
-      marginTop: 10
     },
 
 

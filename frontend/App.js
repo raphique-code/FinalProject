@@ -20,9 +20,13 @@ import reducers from './src/redux/reducers';
 import MapView from "react-native-maps";
 
 import firebase from "firebase";
+import Route from "./src/components/navigation/main";
+
+//import * as firebase from 'firebase'
 import AutoGetLoc from "./src/components/maps/maps_nav";
 
 const store = createStore(reducers,applyMiddleware(thunk))
+
 if(firebase.apps.length == 0){
 firebase.initializeApp(Constants.manifest.web.config.firebase)
 }
@@ -49,13 +53,8 @@ export default function App() {
 
     return( 
       <Provider store ={store}>
-      <NavigationContainer>
-          <AuthScreen>
-            
-             
-          </AuthScreen>
-      </NavigationContainer>
-  </Provider>
+         <Route/>
+      </Provider>
 
 
               

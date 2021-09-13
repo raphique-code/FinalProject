@@ -24,11 +24,8 @@ const { primary, background, offWhite, darklight, green,primary_D,primary_DD } =
 
 export const styles = StyleSheet.create({
     container: {
-      
+      width: "100%",
       backgroundColor: background
-      
-      
-    
     },
     header: {
         flex: 1,
