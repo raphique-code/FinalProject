@@ -84,15 +84,7 @@ export default function Cus_login({authPage, Cus_setDetailsPage,setCus_login}){
                                 placeholder='*********'
                             />
                      </View>
-                     <View style={styles.containerBottom}>
-                        <Text style={styles.subText2}>Phone Number</Text>
-                            <TextInput
-                                style={styles.input}
-                                onChangeText={(text) => setCustPhone(text)}
-                                placeholder='09** *** ***'
-                                keyboardType="numeric"
-                            />
-                    </View>
+                    
 
                 </View>
         
@@ -107,7 +99,7 @@ export default function Cus_login({authPage, Cus_setDetailsPage,setCus_login}){
                 <View>
                     <Text>
                         Dont have an account? <TouchableOpacity  
-                        onPress={() => {setCus_login(true); Cus_setDetailsPage(false)}}>
+                        onPress={() => {setCus_login(false); Cus_setDetailsPage(true)}}>
                         <Text style={styles.small_word}> Sign up </Text>
                     </TouchableOpacity>
                     </Text>

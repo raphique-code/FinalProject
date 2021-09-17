@@ -84,15 +84,7 @@ export default function Drive_login({authPage, Drive_setDetailsPage, setDrive_lo
                                 placeholder='*********'
                             />
                      </View>
-                     <View style={styles.containerBottom}>
-                        <Text style={styles.subText2}>Phone Number</Text>
-                            <TextInput
-                                style={styles.input}
-                                onChangeText={(text) => setCustPhone(text)}
-                                placeholder='09** *** ***'
-                                keyboardType="numeric"
-                            />
-                    </View>
+                    
 
                 </View>
         

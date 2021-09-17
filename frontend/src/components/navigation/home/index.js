@@ -1,23 +1,44 @@
 import React, { useEffect } from 'react'
 import { View, Text } from 'react-native'
-import { useDispatch, useSelector } from 'react-redux'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+
 //import { userAuthStateListener } from '../../redux/actions';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import styles from './styles';
 import { userAuthStateListener } from '../../../redux/actions';
 import AuthScreen from '../../../screens/auth';
+import { useDispatch } from 'react-redux';
+import { signOutUser } from '../../../redux/actions';
 //import HomeScreen from '../home';
 //import SavePostScreen from '../../screens/savePost';
 
-const Stack = createStackNavigator()
+
 
 export default function HomeScreen(){
+    const Stack = createStackNavigator()
+    
+    const dispatch = useDispatch()
+
+    const signOut = () => {
+        dispatch(signOutUser())
+            .then(() => {
+                console.log('log out successful ')
+            })
+            .catch(() => {
+              
+                console.log('log out unsuccessful')
+            })
+    }
 
     return(
 
             <View style= {styles.container}>
-                <Text>home</Text>
+                <TouchableOpacity  style={styles.start}
+                        
+                        onPress={() => signOut()}>
+                        <Text style={styles.buttonText} >Log out</Text>
+                </TouchableOpacity>
             </View>
     )
     }

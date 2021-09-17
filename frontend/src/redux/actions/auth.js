@@ -66,3 +66,11 @@ export const register = (email, password) => dispatch => new Promise((resolve, r
             reject(error)
         })
 })
+
+export const signOutUser = () => dispatch => {
+    firebase.auth().signOut().then(function() {
+        console.log(" logged out ")
+    }).catch(function(error) {
+        console.log(" did not log out ")
+    });
+}
