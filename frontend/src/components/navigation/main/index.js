@@ -7,7 +7,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import styles from './styles';
 import { userAuthStateListener } from '../../../redux/actions';
 import AuthScreen from '../../../screens/auth';
-import HomeScreen from '../home';
+import HomeNav from '../home';
 //import HomeScreen from '../home';
 //import SavePostScreen from '../../screens/savePost';
 
@@ -40,7 +40,7 @@ export default function Route(){
             {currentUserObj.currentUser == null ?
                 <Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
                 :
-                <Stack.Screen name="home" component={HomeScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
             }
         </Stack.Navigator>
     </NavigationContainer>

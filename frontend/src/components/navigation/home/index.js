@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react'
-import { View, Text } from 'react-native'
+import { useState } from 'react';
+import PackageDetails from '../package_details';
+import Logout from '../logout';
+import React, { useEffect } from 'react';
+import { View, Text } from 'react-native';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-
 //import { userAuthStateListener } from '../../redux/actions';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -12,36 +14,42 @@ import { useDispatch } from 'react-redux';
 import { signOutUser } from '../../../redux/actions';
 //import HomeScreen from '../home';
 //import SavePostScreen from '../../screens/savePost';
+import Maps_nav from '../../maps/maps_nav';
 
 
 
-export default function HomeScreen(){
-    const Stack = createStackNavigator()
-    
-    const dispatch = useDispatch()
-
-    const signOut = () => {
-        dispatch(signOutUser())
-            .then(() => {
-                console.log('log out successful ')
-            })
-            .catch(() => {
-              
-                console.log('log out unsuccessful')
-            })
-    }
-
+export default function HomeNav(){
+      
+    const [home, setHome] = useState(0);
+    const [signOut, setSignOut] = useState(false)
+    const [Drive_detailsPage, Drive_setDetailsPage] = useState(false)
+    const [Package_details, setPackage_detail] = useState(false)
+    const [cus_login, setCus_login] = useState(false)
+    const [drive_login, setDrive_login] = useState(false)
     return(
+        <View style = {{marginTop:30}}>
 
-            <View style= {styles.container}>
-                <TouchableOpacity  style={styles.start}
-                        
-                        onPress={() => signOut()}>
-                        <Text style={styles.buttonText} >Log out</Text>
-                </TouchableOpacity>
-            </View>
+            
+
+            {Package_details?
+            
+            <PackageDetails setPackage_detail={setPackage_detail} setHome={setHome} />
+
+            :
+ 
+            signOut?
+
+            <Logout  setSignOut={setSignOut} setHome={setHome}/>
+
+            :
+            
+            <Logout  setSignOut={setSignOut} setHome={setHome}/>
+                    
+            }       
+        </View>
     )
-    }
+
+}
 
 /*
 const EmptyScreen = () => {

@@ -2,12 +2,14 @@ import React from 'react';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import Octicons from 'react-native-vector-icons/Octicons';
-import styles from './styles';
+//import Octicons from 'react-native-vector-icons/Octicons';
+import Octicons from "react-native-vector-icons"
+
 import firebase from "./firebase"
 import { Feather } from '@expo/vector-icons';
+import styles from "./styles"
 
-export default function PackageDetails( authPage,  setPackage_detail) {
+export default function PackageDetails( setPackage_detail, setHome) {
   const ref2 =  firebase.firestore().collection("order");
   const[boxSize, setBoxSize]= React.useState(null)
   const[boxPrice, setBoxPrice]= React.useState(null)
@@ -21,7 +23,7 @@ export default function PackageDetails( authPage,  setPackage_detail) {
     ref2.doc('order1').update(data);
   }
 
-    return( 
+return( 
   
         <View style={styles.container}>
           <View style={styles.header}>

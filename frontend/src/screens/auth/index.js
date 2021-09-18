@@ -8,7 +8,7 @@ import Drive_AuthDetails from '../../components/auth/Drive_details';
 
 import Maps_nav from '../../components/maps/maps_nav';
 import AuthMen from '../../components/auth/test';
-import PackageDetails from '../../components/package_details';
+import PackageDetails from '../../components/navigation/package_details';
 import Cus_login from '../../components/auth/cus_login';
 import Drive_login from '../../components/auth/Drive_login';
 
@@ -48,8 +48,9 @@ export default function AuthScreen(){
 
             <Drive_login  authPage={authPage} Drive_setDetailsPage={Drive_setDetailsPage} setDrive_login={setDrive_login}/>
 
-
             :
+
+            
           
             
             <AuthMenu authPage={authPage} 
