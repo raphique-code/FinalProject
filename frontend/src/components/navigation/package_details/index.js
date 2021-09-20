@@ -1,18 +1,21 @@
 import React from 'react';
-import { ActivityIndicator, TouchableOpacity } from 'react-native';
+
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-//import Octicons from 'react-native-vector-icons/Octicons';
-import Octicons from "react-native-vector-icons"
+import Octicons from 'react-native-vector-icons/Octicons';
 
+import { TouchableOpacity } from 'react-native-gesture-handler';
 import firebase from "./firebase"
 import { Feather } from '@expo/vector-icons';
 import styles from "./styles"
+import { useDispatch, useSelector } from 'react-redux'
+import { signOutUser } from '../../../redux/actions';
 
-export default function PackageDetails( setPackage_detail, setHome) {
+export default function PackageDetails( ) {
   const ref2 =  firebase.firestore().collection("order");
   const[boxSize, setBoxSize]= React.useState(null)
   const[boxPrice, setBoxPrice]= React.useState(null)
+  const dispatch = useDispatch()
 
   let data = {
     BoxSize: boxSize,
@@ -22,17 +25,31 @@ export default function PackageDetails( setPackage_detail, setHome) {
   function writeDoc () {
     ref2.doc('order1').update(data);
   }
+  //onPress={() => setPackage_detail(false)} 
+
+  const signOut = () => {
+    dispatch(signOutUser())
+        .then(() => {
+            console.log('log out successful ')
+        })
+        .catch(() => {
+          
+            console.log('log out unsuccessful')
+        })
+}
+
 
 return( 
   
         <View style={styles.container}>
           <View style={styles.header}>
-              <TouchableOpacity  onPress={() => setPackage_detail(false)} >
+              <TouchableOpacity  onPress={() => signOut()}>
                   <Feather
                       name="log-out" // panah
                       color="black"
                       size={30}
                       style= {{paddingTop: 10, paddingBottom: 20, paddingRight: 80, paddingLeft: 20}}
+                      
                   />
               </TouchableOpacity>
             <Text style={[styles.subText, {marginTop: 10}]}> Package Details </Text>

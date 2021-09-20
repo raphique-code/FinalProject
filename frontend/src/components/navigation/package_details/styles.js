@@ -3,17 +3,27 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'grey',
+      backgroundColor: 'black',
      
     
     },
+    header: {
+      flexDirection: 'row',
+      height: 50,
+      backgroundColor: '#F4ECE7',
+      borderBottomWidth: 2,
+      borderColor: 'grey',
+      marginTop: 30
+    },
+    
     
     container_SB: {  
       backgroundColor: '#F4ECE7',
       fontSize: 20,
       alignContent: "center",
-      justifyContent: "flex-start",
-      padding: 20,
+      //justifyContent: "flex-start",
+      padding: 13,
+     
       flex: 1
     },
     
@@ -92,16 +102,9 @@ const styles = StyleSheet.create({
         fontSize: 15,
       color: '#F4ECE7',
       marginLeft: 25
-    },
-    
-    header: {
-      flexDirection: 'row',
-      height: 50,
-      backgroundColor: '#F4ECE7',
-      borderBottomWidth: 2,
-      borderColor: 'grey'
     }
     
+  
     
     });
 

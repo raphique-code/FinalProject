@@ -41,7 +41,7 @@ import Maps_nav from "./src/components/maps/maps_nav";
 import Pick_up from "./src/components/maps/map_func";
 import Example from "./src/components/maps/test";
 import Maps_control from "./src/screens/map_control";
-
+import PackageDetails from "./src/components/navigation/package_details";
 
 
 
@@ -52,9 +52,18 @@ export default function App() {
   const[temp, setTemp] = React.useState('20')
 
     return( 
-      <Provider store ={store}>
-         <Route/>
-      </Provider>
+
+      <View>
+        <Provider store ={store}>
+        <PackageDetails/>
+        </Provider>
+      </View>
+
+      
+
+      //<Provider store ={store}>
+        // <Route/>
+    // </Provider>
 
 
               

@@ -17,23 +17,21 @@ import { signOutUser } from '../../../redux/actions';
 import Maps_nav from '../../maps/maps_nav';
 
 
-
+//setPackage_detail={setPackage_detail} setHome={setHome}
 export default function HomeNav(){
       
     const [home, setHome] = useState(0);
     const [signOut, setSignOut] = useState(false)
-    const [Drive_detailsPage, Drive_setDetailsPage] = useState(false)
-    const [Package_details, setPackage_detail] = useState(false)
+    const [Drive_detailsPage, Drive_setDetailsPage] = useState(true)
+    const [Package_details, setPackage_detail] = useState(true)
     const [cus_login, setCus_login] = useState(false)
     const [drive_login, setDrive_login] = useState(false)
     return(
         <View style = {{marginTop:30}}>
 
-            
-
             {Package_details?
             
-            <PackageDetails setPackage_detail={setPackage_detail} setHome={setHome} />
+            <PackageDetails/>
 
             :
  

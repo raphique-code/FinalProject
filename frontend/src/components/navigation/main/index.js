@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { View, Text } from 'react-native'
+
 import { useDispatch, useSelector } from 'react-redux'
 //import { userAuthStateListener } from '../../redux/actions';
 import { NavigationContainer } from '@react-navigation/native';
@@ -8,6 +9,11 @@ import styles from './styles';
 import { userAuthStateListener } from '../../../redux/actions';
 import AuthScreen from '../../../screens/auth';
 import HomeNav from '../home';
+import PackageDetails from '../package_details';
+import { useState } from 'react';
+import Home from '../home copy';
+import Logout from '../logout';
+
 //import HomeScreen from '../home';
 //import SavePostScreen from '../../screens/savePost';
 
@@ -19,6 +25,7 @@ export default function Route(){
     console.log(currentUserObj)
 
     const dispatch = useDispatch();
+    const [Package_details, setPackage_detail] = useState(false)
 
     useEffect(() => {
         dispatch(userAuthStateListener());
@@ -40,7 +47,13 @@ export default function Route(){
             {currentUserObj.currentUser == null ?
                 <Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
                 :
-                <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
+                Package_details?
+
+                <Stack.Screen name="home" component={PackageDetails} options={{ headerShown: false }} />
+                :
+
+                <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
+                
             }
         </Stack.Navigator>
     </NavigationContainer>
