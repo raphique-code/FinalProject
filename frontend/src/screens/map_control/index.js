@@ -10,6 +10,7 @@ import Maps_nav from '../../components/maps/maps_nav';
 export default function Maps_control(){
     const [maps_nav, setMaps_nav] = useState(true);
     const [pick_up, setPick_up] = useState(false)
+    const [drop_off, setDrop_off] = useState(false)
     const [Drive_detailsPage, Drive_setDetailsPage] = useState(false)
     return(
         <View style = {{marginTop:30}}>
@@ -20,11 +21,9 @@ export default function Maps_control(){
 
             :
 
-            maps_nav}
-
             <Maps_nav setMaps_nav = {setMaps_nav} setPick_up={setPick_up}/> 
 
-                   
+            }
 
         </View>
     )

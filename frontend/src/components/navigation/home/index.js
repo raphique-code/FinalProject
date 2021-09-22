@@ -15,6 +15,7 @@ import { signOutUser } from '../../../redux/actions';
 //import HomeScreen from '../home';
 //import SavePostScreen from '../../screens/savePost';
 import Maps_nav from '../../maps/maps_nav';
+import Maps_control from '../../../screens/map_control';
 
 
 //setPackage_detail={setPackage_detail} setHome={setHome}
@@ -23,15 +24,17 @@ export default function HomeNav(){
     const [home, setHome] = useState(0);
     const [signOut, setSignOut] = useState(false)
     const [Drive_detailsPage, Drive_setDetailsPage] = useState(true)
-    const [Package_details, setPackage_detail] = useState(true)
+    const [Package_details, setPackage_detail] = useState(false)
+    const [maps_con,setMaps_con] = useState (false)
     const [cus_login, setCus_login] = useState(false)
     const [drive_login, setDrive_login] = useState(false)
+    
     return(
-        <View style = {{marginTop:30}}>
+        <View style = {{height: "100%"}}>
 
             {Package_details?
             
-            <PackageDetails/>
+            <PackageDetails setPackage_detail={setPackage_detail} setSignOut={setSignOut} setMaps_con={setMaps_con}/>
 
             :
  
@@ -40,8 +43,14 @@ export default function HomeNav(){
             <Logout  setSignOut={setSignOut} setHome={setHome}/>
 
             :
+
+            maps_con?
             
-            <Logout  setSignOut={setSignOut} setHome={setHome}/>
+            <Maps_control setMaps_con={setMaps_con} />
+
+            :
+                
+            null
                     
             }       
         </View>

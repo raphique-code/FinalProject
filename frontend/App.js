@@ -53,21 +53,17 @@ export default function App() {
 
     return( 
 
-      <View>
-        <Provider store ={store}>
-        <PackageDetails/>
-        </Provider>
+      <View style = {{height: "100%"}}>
+        <Maps_control/>
       </View>
 
       
 
       //<Provider store ={store}>
-        // <Route/>
-    // </Provider>
+     //  <Route/>
+      //</Provider>
 
-
-              
-           
+            
             );
         }
               
@@ -79,7 +75,7 @@ export default function App() {
         
         <Provider store ={store}>
             <NavigationContainer>
-                <AuthScreen>
+                <AuthScreen> 
                    <text>placeholder</text>
                 </AuthScreen>
             </NavigationContainer>

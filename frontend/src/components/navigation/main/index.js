@@ -11,8 +11,8 @@ import AuthScreen from '../../../screens/auth';
 import HomeNav from '../home';
 import PackageDetails from '../package_details';
 import { useState } from 'react';
-import Home from '../home copy';
 import Logout from '../logout';
+import Maps_control from '../../../screens/map_control';
 
 //import HomeScreen from '../home';
 //import SavePostScreen from '../../screens/savePost';
@@ -40,23 +40,24 @@ export default function Route(){
     }
     
 
-
+// was edited 
     return(
+        <View style={{margin:10, height:"100%"}}>
         <NavigationContainer>
         <Stack.Navigator>
             {currentUserObj.currentUser == null ?
-                <Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
-                :
-                Package_details?
 
-                <Stack.Screen name="home" component={PackageDetails} options={{ headerShown: false }} />
+                //<Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
+                <Stack.Screen name="home" component={Maps_control} options={{ headerShown: false }} />
                 :
+                <Stack.Screen name="home" component={Maps_control} options={{ headerShown: false }} />
 
-                <Stack.Screen name="home" component={Home} options={{ headerShown: false }} />
+               // <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
                 
             }
         </Stack.Navigator>
     </NavigationContainer>
+    </View>
     )
     
 }

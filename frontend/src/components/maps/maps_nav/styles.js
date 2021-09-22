@@ -1,7 +1,13 @@
+import { StyleSheet } from "react-native";
+import { Dimensions } from "react-native";
+
 export const styles = StyleSheet.create({
     container: {
       flex: 1,
-      backgroundColor: 'grey'
+      //backgroundColor: 'grey',
+      backgroundColor: 'black',
+      
+
       
   
     },
@@ -20,7 +26,8 @@ export const styles = StyleSheet.create({
     inner_container_one: {
       marginBottom: 0,
       margin: 580,
-      backgroundColor: 'azure',
+     // backgroundColor: 'azure',
+      backgroundColor: 'black',
       position: 'absolute',
       marginLeft: 10,
       marginRight: 10,
@@ -41,8 +48,9 @@ export const styles = StyleSheet.create({
       borderRadius: 20,
       
       
+      //backgroundColor: 'azure'
+      backgroundColor: 'black'
       
-      backgroundColor: 'azure'
       },
     
     display_text: {

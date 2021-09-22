@@ -16,6 +16,7 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import MapViewDirections from "react-native-maps-directions";
 import { getDistance } from "geolib";
 import { useState } from "react";
+import { styles } from "./styles";
 //import styles from "./styles";
 
 /*
@@ -180,17 +181,13 @@ export default function Maps_nav(setMaps_nav,setPick_up) {
          
 
           <View style ={styles.inner_container}>
-            <Text style={styles.display_text_three}>pickup</Text>
-              
-            <View style ={styles.Box_button_top}>
-            </View>
-            <Text style={styles.display_text_three}>dropOff</Text>
-            <View style ={styles.Box_button_bottom}>
-
-            </View>
-
-
-            </View>
+              <Text style={styles.display_text_three}>pickup</Text>
+              <View style ={styles.Box_button_top}>
+                </View>
+                  <Text style={styles.display_text_three}>dropOff</Text>
+                <View style ={styles.Box_button_bottom}>
+              </View>
+          </View>
         
 
           <View style ={styles.inner_container_one}>
@@ -211,7 +208,7 @@ export default function Maps_nav(setMaps_nav,setPick_up) {
           </View>
           );
       }
-
+/*
      
       const styles = StyleSheet.create({
         container: {
@@ -344,6 +341,6 @@ export default function Maps_nav(setMaps_nav,setPick_up) {
 
 
 
-
+*/
 
 
