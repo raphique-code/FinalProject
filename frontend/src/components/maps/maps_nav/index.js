@@ -17,6 +17,8 @@ import MapViewDirections from "react-native-maps-directions";
 import { getDistance } from "geolib";
 import { useState } from "react";
 import { styles } from "./styles";
+import { Feather } from "@expo/vector-icons";
+import { TouchableOpacity } from "react-native-gesture-handler";
 //import styles from "./styles";
 
 /*
@@ -70,7 +72,7 @@ thursday 11:00 3 to 4:30
 classroom rules thursday grade ka grade 1 a thursday 5:40 15 minutes earlier
 */
 
-export default function Maps_nav(setMaps_nav,setPick_up) {
+export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off}) {
     
   const [searchLoc, setSearchLoc] = React.useState({latitude: 24.989856, longitude: 121.313283, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
   const [searchDes, setSearchDes] = React.useState({latitude: 24.990086, longitude: 121.344370, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
@@ -181,12 +183,32 @@ export default function Maps_nav(setMaps_nav,setPick_up) {
          
 
           <View style ={styles.inner_container}>
-              <Text style={styles.display_text_three}>pickup</Text>
-              <View style ={styles.Box_button_top}>
-                </View>
-                  <Text style={styles.display_text_three}>dropOff</Text>
-                <View style ={styles.Box_button_bottom}>
-              </View>
+
+              <TouchableOpacity style ={styles.Box_button_top} onPress={() => {setPick_up(true); setMaps_nav(false)}}>
+              <Feather
+                      name="search" // panah
+                      color="black"
+                      size={30}
+                      style= {{paddingTop: 5, paddingBottom: 5, paddingRight: 5, paddingLeft: 5}}
+                      
+                      
+                  />
+              <Text style={styles.display_text_three}>Pickup</Text>
+              </TouchableOpacity>
+ 
+              <TouchableOpacity style ={styles.Box_button_bottom} onPress={() => {setDrop_off(true); setMaps_nav(false)}} >
+              <Feather
+                      name="search" // panah
+                      color="black"
+                      size={30}s
+                    
+                      style= {{paddingTop: 5, paddingBottom: 5, paddingRight: 5, paddingLeft: 5}}
+                      
+                      
+                  />
+              <Text style={styles.display_text_three}>DropOff</Text>
+              </TouchableOpacity>    
+
           </View>
         
 

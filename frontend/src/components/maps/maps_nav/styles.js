@@ -4,8 +4,9 @@ import { Dimensions } from "react-native";
 export const styles = StyleSheet.create({
     container: {
       flex: 1,
-      //backgroundColor: 'grey',
-      backgroundColor: 'black',
+      backgroundColor: 'grey',
+      marginTop: 20
+    
       
 
       
@@ -18,16 +19,15 @@ export const styles = StyleSheet.create({
       alignContent: "center",
       justifyContent: "center",
       padding: 20,
-      
-
-  
-      flex: 1
+      flex: 1,
+      marginTop: 20
+    
     },
     inner_container_one: {
       marginBottom: 0,
       margin: 580,
-     // backgroundColor: 'azure',
-      backgroundColor: 'black',
+     backgroundColor: 'azure',
+    
       position: 'absolute',
       marginLeft: 10,
       marginRight: 10,
@@ -46,10 +46,9 @@ export const styles = StyleSheet.create({
       height: "20%",
       alignContent: "center",
       borderRadius: 20,
+      justifyContent: "space-evenly",
+      backgroundColor: 'azure'
       
-      
-      //backgroundColor: 'azure'
-      backgroundColor: 'black'
       
       },
     
@@ -77,20 +76,42 @@ export const styles = StyleSheet.create({
 
     },
 
+    display_text_three:{
+
+      fontSize : 15,
+      fontWeight: 'normal',
+      marginTop: 12,
+      marginLeft: 10,
+      margin: 5,
+      marginRight: 10,
+
+
+    },
+
     Box_button_top: {
 
    
-      marginLeft: 5,
-      marginTop: 5,
-      marginRight: 5,
+      marginLeft: 10,
+      marginTop: 30,
+      marginRight: 10,
+      borderRadius: 10,
+      height:"45%",
+      backgroundColor: 'gainsboro',
+      flexDirection: 'row',
+
     },
 
     Box_button_bottom: {
 
    
-      marginLeft: 5,
-      marginBottom: 5,
-      marginRight: 5,
+      marginLeft: 10,
+      marginBottom: 10,
+      marginTop: 15,
+      marginRight: 10,
+      borderRadius: 10,
+      height:"47%", 
+      backgroundColor: 'gainsboro',
+      flexDirection: 'row',
     },
       
       

@@ -16,7 +16,7 @@ import { signOutUser } from '../../../redux/actions';
 
 
 
-export default function Logout(setSignOut,setHome){
+export default function Logout({setSignOut,setHome}){
     const Stack = createStackNavigator()
     
     const dispatch = useDispatch()

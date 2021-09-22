@@ -1,152 +1,194 @@
+//customer input pickup address and details in this screen 
+
 import * as React from 'react';
-import MapView, { Callout, PROVIDER_GOOGLE } from 'react-native-maps';
-import { StyleSheet, Text,TextInput, View, Dimensions } from 'react-native';
-import * as Location from 'expo-location';
-import { Marker } from "react-native-maps";
+import { StyleSheet, Text, View, TextInput, KeyboardAvoidingView  } from 'react-native';
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import MapViewDirections from 'react-native-maps-directions';
-import { getDistance } from "geolib";
-/*
-
-components needed:
-
-auto complete
-a map
-maker (inside mapview)
-mapview directions (inside mapview)
-
-features:
-
-customer features:
-On map open current location 
-Input pickup and dropoff
-Line and estimated time (interval updates)
-Time estimates will have from driver to pickup and pickup to drop off.
-Separate time count downs
-Delivery complete (prompt)
-cancel button before pickup
-on creation on an order order can only be deleted if customer click cancle or driver click drop off confiez
-
-Features driver:
-Set working radius 
-Click customer
-Prompt package details and full route and payment 
-Prompt Accept or decline orders
-Navigation of pickup and drop off
-Promt Start route ( start navigating)
-Before pickup cancel option available 
-Pick up confirmation 
-Drop off confirmation
-transport type
-accept brings uses google map nav to pick loc
-pick confirmation uses  google map nav to dropOff loc
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import { TouchableOpacity } from 'react-native-gesture-handler';
+//import styles from '../../../screens/auth/styles';
+import firebase from "../../navigation/package_details/firebase"
+import styles from "./styles"
 
 
-copy address
-todays stats
-todays distanced
-number of customers
-number of cancels
-number of drop off
-todays earnings 
-rules
-terms and agreement
+export default function Pick_Up({setPick_up,setDrop_off,setMaps_nav}) {
 
+  const ref2 =  firebase.firestore().collection("order");
+const [searchLoc, setSearchLoc] = React.useState({latitude: 25.0170, longitude: 121.4628, searchDetails: " "})
+  
+const homePlace = {
+    description: 'Home',
+    geometry: { location: { lat: searchLoc.latitude, lng: searchLoc.longitude } },
+  };
+  
+const workPlace = {
+    description: 'Work',
+    geometry: { location: { lat: 48.8496818, lng: 2.2940881 } },
+  };
+//enablePoweredByContainer: false, to disble powered by google in the module folder, google places auto complete.js
 
-thursday 11:00 3 to 4:30
-classroom rules thursday grade ka grade 1 a thursday 5:40 15 minutes earlier
-*/
+const [rname, onChangeRname] = React.useState(null);
+const [addrinfo, onChangeAddrinfo] = React.useState(null);
+const [housenumber, onChangeHousenumber] = React.useState(null);
+const [phonenumber, onChangePhonenumber] = React.useState(null);
 
-export default function Pick_up(setMaps_nav,setPick_up) {
-    const [searchLoc, setSearchLoc] = React.useState({latitude: 25.0170, longitude: 121.4628, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
-  const [searchDes, setSearchDes] = React.useState({latitude: 24.8138, longitude: 120.9675, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
-  const [userPos, setUserPos] = React.useState({lat: null, long: null})
-  const calculateDistance = getDistance(searchLoc, searchDes)
+const ref = React.useRef();
+function clear(){ ref.current?.setAddressText('');}
 
+let data ={
 
+  PickUpName:rname,
+  PickUpPhoneNumber:phonenumber,
+  pickUpLatLang: new firebase.firestore.GeoPoint (searchLoc.latitude, searchLoc.longitude),
+  PickUpAddrDetails: searchLoc.searchDetails,
+  PickUpHouseNum:housenumber,
+  PickUpAdditionalInfo:addrinfo
+
+}
+
+function writeDoc () {
+  ref.doc('order1').update(data);
+}
 
     return( 
   
-            <View style={styles.container}>
-            
-                 
-               <GooglePlacesAutocomplete placeholder="Pick Up" fetchDetails={true} GooglePlacesSearchQuery={{rankby: "distance"}}
-               
-                onPress={(data, details = null) => {console.log(data, details)
-                  setSearchLoc({
-                    latitude: details.geometry.location.lat,
-                    longitude: details.geometry.location.lng,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421
-                  }) }}
-  
-                query={{
-                  key: "AIzaSyCfTyHPV_ZFkfogI2IXsFhMefmdZ4WSjms",
-                  language: "en",
-                  components: "country:tw",
-                  location: `${setSearchLoc.latitude}, ${setSearchLoc.longitude}`
+            <KeyboardAvoidingView style={styles.container}>
+              <View style={styles.header}>
+                <TouchableOpacity onPress={() => setPick_up(false)}>
+                  <AntDesign 
+                      name="arrowleft" // panah
+                      color="black"
+                      size={30}
+                      style= {{paddingTop: 10, paddingBottom: 20, paddingRight: 120, paddingLeft: 10}}
+                  />
+                </TouchableOpacity>
+                <Text style={[styles.subText, {marginTop: 6}]}>Pick Up</Text>
+              </View>
+
+
+
+              <View style={styles.containerAddr}>
+                <Text style={styles.subText2}>Sender Name</Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeRname}
+                    value={rname}
+                    placeholder='e.g Juan'
+                />
+
+                <Text style={styles.subText2}>Additional Address Information</Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={onChangeAddrinfo}
+                    value={addrinfo}
+                    placeholder='e.g Next to 7-11'
+                />
+
+
+              <View style={styles.inputAddr}>
+                <View style={styles.conLeft}>
+                  <Text style={styles.subText2}>House No.</Text>
+                  <TextInput
+                    style={styles.input2}
+                    onChangeText={onChangeHousenumber}
+                    value={housenumber}
+                    keyboardType="numeric"
+                    placeholder='e.g 666'
+                />
+                </View>
                 
+
+                <View style={styles.conRight}>
+                  <Text style={styles.subText2}>Phone No.</Text>
+                  <TextInput
+                    style={styles.input}
+                    onChangeText={onChangePhonenumber}
+                    value={phonenumber}
+                    keyboardType="numeric"
+                    placeholder='e.g 09xxxxx0989'
+                />
+                </View>
+
+                </View>
+              </View>
+
+
+
+
+               <View  style={styles.container_SB}>
+               <Text style={styles.subText3}>Address</Text>
+                    <GooglePlacesAutocomplete placeholder="Pick Up Address" fetchDetails={true} GooglePlacesSearchQuery={{rankby: "distance"}}
+                    
+                      onPress={(data, details = null) => {console.log(data, details)
+                        setSearchLoc({
+                          latitude: details.geometry.location.lat,
+                          longitude: details.geometry.location.lng,
+                          searchDetails:details.formatted_address,
+                        }) 
+                        //console.log( searchDetails);
                       }}
-                listViewDisplayed= "auto"
+                        
+                      query={{
+                        key: "AIzaSyCfTyHPV_ZFkfogI2IXsFhMefmdZ4WSjms",
+                        language: "en",
+                        components: "country:tw",
+                        location: `${setSearchLoc.latitude}, ${setSearchLoc.longitude}`
                       
-                styles={{
-                  textInputContainer: {
-                   borderBottomWidth:1,
-                    borderTopWidth: 1,
-                    borderLeftWidth: 1,
-                    borderRightWidth: 1,
-                    borderColor: "black"},
-  
-                    listView: {
-                      position: 'absolute',
-                      backgroundColor: 'pink'
-                    }
-                  }}
+                            }}
+                      //listViewDisplayed= "auto"
+                      predefinedPlaces={[homePlace, workPlace]}
+                      renderRightButton={() => (	
+                      <TouchableOpacity onPress={clear}>
+                        <AntDesign 
+                        name="close"
+                        color="black"
+                        size={30}
+                        style= {{ width: 38, height: 30, marginTop:9}}
+                        />
+                      </TouchableOpacity> 
+                      )}
+                   
+                            
+                      styles={{
+                        textInput: {backgroundColor: '#F4ECE7', marginBottom: 0},
+
+                        textInputContainer: {
+                        borderWidth: 1,
+                        borderRadius: 3,
+                        borderColor: "black",
+                        position: 'absolute'},
                       
-                 />
-  
-       
-           
-           </View>
+                        row: {backgroundColor: '#F4ECE7'},
+                        
+                        listView: {
+                        position: 'absolute',
+                        marginTop: 55,
+                        zIndex: 10},
+
+                        separator:{
+                        borderWidth: 0.5,
+                        borderColor: '#F4ECE7'},
+                        }}
+                            
+                      />
+                
+                    <TouchableOpacity
+                        onPress = {() => writeDoc()}
+                        style={[styles.confirm, {
+                            borderColor: '#F0843C',
+                            borderWidth: 1,
+                            marginTop: 15
+                        }]}
+                    >
+                        <Text style={[styles.textSign, {
+                            color: '#fff'
+                        }]}>Confirm</Text>
+                    </TouchableOpacity>
+                
+              </View> 
+           </KeyboardAvoidingView>
     )};
 
 
-const styles = StyleSheet.create({
-    container: {
-      flex: 1,
-      backgroundColor: 'grey'
-  
-    },
-    container_SB: {  
-   
-      backgroundColor: 'blue',
-      fontSize: 20,
-      alignContent: "center",
-      justifyContent: "center",
-      padding: 20,
-      
 
-  
-      flex: 1
-    },
-    inner_container_one: {
-     marginBottom: 60,
-     backgroundColor: 'red',
-     marginLeft: 10,
-     marginRight: 10,
-     
-    },
 
-    inner_container: {
-      marginBottom: 10,
 
-      marginLeft: 10,
-      marginRight: 10,
-       position: 'absolute',
-      
-     
-     
-      backgroundColor: 'red'
-    }
-});
-   
