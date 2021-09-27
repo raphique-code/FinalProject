@@ -1,6 +1,8 @@
 import { StyleSheet } from "react-native";
 import { Dimensions } from "react-native";
+
 const styles = StyleSheet.create({
+
   container: {
     flex: 1,
     backgroundColor: 'grey',
@@ -19,41 +21,41 @@ const styles = StyleSheet.create({
     flex: 1
   },
 
-    inner_container_one: {
-     marginBottom: 100,
-     backgroundColor: 'pink',
-     marginLeft: 10,
-     marginRight: 10,
-     height: "30%",
-     flexDirection: 'row',
-     width: 338,
-     alignContent: 'center',
-    },
+  inner_container_one: {
+    marginBottom: 100,
+    backgroundColor: 'pink',
+    marginLeft: 10,
+    marginRight: 10,
+    height: "30%",
+    flexDirection: 'row',
+    width: 338,
+    alignContent: 'center',
+  },
 
-    inner_container: {
-      marginBottom: 10,
-      marginLeft: 10,
-      marginRight: 10,
-      position: 'absolute',
-      backgroundColor: 'red'
-    },
+  inner_container: {
+    marginBottom: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    position: 'absolute',
+    backgroundColor: 'red'
+  },
 
-    recentsearch:{
-      height: 100,
-      width: 350,
-      backgroundColor: 'red',
-      borderRadius: 4,
-      zIndex: 0
-    },
+  recentsearch:{
+    height: 100,
+    width: 350,
+    backgroundColor: 'red',
+    borderRadius: 4,
+    zIndex: 0
+  },
 
-    confirm: {
-      width: '100%',
-      height: 50,
-      justifyContent: 'center',
-      alignItems: 'center',
-      borderRadius: 10,
-      backgroundColor:'#F0843C'
-    },
+  confirm: {
+    width: '100%',
+    height: 50,
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 10,
+    backgroundColor:'#F0843C'
+  },
 
     textSign: {
       fontSize: 18,
@@ -145,3 +147,4 @@ conRight: {
 
 
 });
+export default styles;

@@ -145,3 +145,4 @@ conRight: {
 
 
 });
+export default styles;

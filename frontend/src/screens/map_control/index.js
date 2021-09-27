@@ -5,6 +5,8 @@ import Pick_up from '../../components/maps/pick_up';
 
 import Maps_nav from '../../components/maps/maps_nav';
 import Drop_off from '../../components/maps/drop_off';
+import OrderSummary from '../../components/maps/order_summary';
+
 
 
 

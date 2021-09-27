@@ -6,12 +6,24 @@ export const styles = StyleSheet.create({
       flex: 1,
       backgroundColor: 'grey',
       marginTop: 20
-    
-      
-
-      
-  
     },
+
+    confirm: {
+      width: '100%',
+      height: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10,
+      backgroundColor:'#F0843C',
+      
+    },
+  
+    
+    textSign: {
+      fontSize: 18,
+      fontWeight: 'bold'
+  },
+
     container_SB: {  
     
       backgroundColor: 'blue',
@@ -51,6 +63,21 @@ export const styles = StyleSheet.create({
       
       
       },
+
+      inner_container_two: {
+        marginBottom: 10,
+        marginTop: 20,
+  
+        marginLeft: 12,
+        marginRight: 10,
+        position: 'absolute',
+        width: "94%",
+        height: "10%",
+        alignContent: "center",
+        borderRadius: 20,
+        justifyContent: "space-evenly",
+        backgroundColor: 'azure'
+        },
     
     display_text: {
 

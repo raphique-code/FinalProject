@@ -72,7 +72,7 @@ thursday 11:00 3 to 4:30
 classroom rules thursday grade ka grade 1 a thursday 5:40 15 minutes earlier
 */
 
-export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off}) {
+export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_summary}) {
     
   const [searchLoc, setSearchLoc] = React.useState({latitude: 24.989856, longitude: 121.313283, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
   const [searchDes, setSearchDes] = React.useState({latitude: 24.990086, longitude: 121.344370, latitudeDelta: 0.0922, longitudeDelta: 0.0421})
@@ -209,7 +209,25 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off}) {
               <Text style={styles.display_text_three}>DropOff</Text>
               </TouchableOpacity>    
 
+            
+
           </View>
+          <View style ={[styles.inner_container_two,{marginTop:400}]}>
+
+          <TouchableOpacity
+                        onPress={() => {setOrder_summary(true); setMaps_nav(false)}}
+                        style={[styles.confirm, {
+                            borderColor: '#F0843C',
+                            borderWidth: 1,
+                            marginTop: 15
+                        }]}
+                    >
+                        <Text style={[styles.textSign, {
+                            color: '#fff'
+                        }]}>Confirm</Text>
+                    </TouchableOpacity>
+          </View>
+        
         
 
           <View style ={styles.inner_container_one}>
@@ -223,7 +241,9 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off}) {
               </Text>
              
             </View>
+            
 
+                  
           
 
    
