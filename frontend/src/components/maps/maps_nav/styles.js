@@ -72,11 +72,13 @@ export const styles = StyleSheet.create({
         marginRight: 10,
         position: 'absolute',
         width: "94%",
-        height: "10%",
+        height: 50,
         alignContent: "center",
         borderRadius: 20,
-        justifyContent: "space-evenly",
-        backgroundColor: 'azure'
+        justifyContent: "center",
+        backgroundColor: 'azure',
+        elevation: 10,
+        shadowColor: '#52006A'
         },
     
     display_text: {

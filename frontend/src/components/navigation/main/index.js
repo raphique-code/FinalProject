@@ -13,6 +13,7 @@ import PackageDetails from '../package_details';
 import { useState } from 'react';
 import Logout from '../logout';
 import Maps_control from '../../../screens/map_control';
+import { USER_TYPE } from '../../../redux/constants';
 
 //import HomeScreen from '../home';
 //import SavePostScreen from '../../screens/savePost';
@@ -40,25 +41,38 @@ export default function Route(){
     }
     
 
-// was edited 
-    return(
-        <View style={{margin:10, height:"100%"}}>
-        <NavigationContainer>
-        <Stack.Navigator>
-            {currentUserObj.currentUser == null ?
+// was edited
 
-                //<Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
-                <Stack.Screen name="home" component={Maps_control} options={{ headerShown: false }} />
-                :
-                <Stack.Screen name="home" component={Maps_control} options={{ headerShown: false }} />
+if ( USER_TYPE==1)
+        { 
+          return(
+            <View style={{margin:10, height:"100%"}}>
+            <NavigationContainer>
+            <Stack.Navigator>
+                {currentUserObj.currentUser == null ?
 
-               // <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
-                
-            }
-        </Stack.Navigator>
-    </NavigationContainer>
-    </View>
-    )
+                    //<Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
+                    <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
+                    :
+                    <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} /> 
+                    
+                    //this is just used to show what map functions do
+
+                // <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
+                    
+                }
+            </Stack.Navigator>
+        </NavigationContainer>
+        </View>
+        )}
+
+        else{
+            return (
+                <View style= {styles.container}>
+                    <Text>empty user</Text>
+                </View>
+            )
+        }
     
 }
 

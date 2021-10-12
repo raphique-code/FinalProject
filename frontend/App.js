@@ -15,6 +15,7 @@ import { Provider } from "react-redux";
 import { createStore,applyMiddleware } from "redux";
 import thunk from "redux-thunk";
 
+
 import Constants  from "expo-constants";
 import reducers from './src/redux/reducers';
 import MapView from "react-native-maps";
@@ -42,27 +43,42 @@ import Pick_up from "./src/components/maps/map_func";
 import Example from "./src/components/maps/test";
 import Maps_control from "./src/screens/map_control";
 import PackageDetails from "./src/components/navigation/package_details";
-
+import Split_page from "./src/components/navigation/splitpage";
+import Driver_First from "./src/components/Driver_components/drive_first";
+import DriverEdit_Profile from "./src/components/Driver_components/driver_editProfile";
+import DriversCustomer_List from "./src/components/Driver_components/driver_customerList";
+import Driver_OrderDetails from "./src/components/Driver_components/driver_orderDetails";
 
 
 const Stack = createStackNavigator();
+
+export const index_context = React.createContext
 
 export default function App() {
     
   const[temp, setTemp] = React.useState('20')
 
+
+
     return( 
 
-      <View style = {{height: "100%"}}>
-        <Maps_control/>
-      </View>
+      //<View style = {{height: "100%"}}>
+      <Provider store ={store}>
+        {//<Driver_OrderDetails/>
+        //<DriversCustomer_List/>
+        //<DriverEdit_Profile/>
+
+       // <Driver_First/>
+       <Split_page/>
+       // <Route/>}
+      }
+      </Provider>
+
+      //</View>
 
       
 
-      //<Provider store ={store}>
-     //  <Route/>
-      //</Provider>
-
+  
             
             );
         }

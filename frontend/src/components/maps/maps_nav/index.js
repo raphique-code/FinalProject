@@ -212,14 +212,14 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
             
 
           </View>
-          <View style ={[styles.inner_container_two,{marginTop:400}]}>
+          <View style ={[styles.inner_container_two,{marginTop:670}]}>
 
           <TouchableOpacity
                         onPress={() => {setOrder_summary(true); setMaps_nav(false)}}
                         style={[styles.confirm, {
                             borderColor: '#F0843C',
                             borderWidth: 1,
-                            marginTop: 15
+                            //marginTop: 15
                         }]}
                     >
                         <Text style={[styles.textSign, {

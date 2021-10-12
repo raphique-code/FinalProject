@@ -11,7 +11,7 @@ import styles from "./styles"
 import { useDispatch, useSelector } from 'react-redux'
 import { signOutUser } from '../../../redux/actions';
 
-export default function PackageDetails({setPackage_detail, setSignOut, setMaps_con}) {
+export default function PackageDetails({setPackage_detail, setSignOut,  setMaps_nav}) {
   const ref2 =  firebase.firestore().collection("order");
   const[boxSize, setBoxSize]= React.useState(null)
   const[boxPrice, setBoxPrice]= React.useState(null)
@@ -47,7 +47,7 @@ return(
           </View>
 
            <View  style={styles.container_SB}>
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Small Box"); writeDoc(); setBoxPrice(60); setPackage_detail(false); setMaps_con(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Small Box"); writeDoc(); setBoxPrice(60); setPackage_detail(false);  setMaps_nav(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -64,7 +64,7 @@ return(
 
 
 
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Medium Box"); writeDoc(); setBoxPrice(75);setPackage_detail(false);setMaps_con(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Medium Box"); writeDoc(); setBoxPrice(75);setPackage_detail(false); setMaps_nav(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -80,7 +80,7 @@ return(
               </TouchableOpacity>
 
 
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Large Box"); writeDoc(); setBoxPrice(100); setPackage_detail(false); setMaps_con(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Large Box"); writeDoc(); setBoxPrice(100); setPackage_detail(false);  setMaps_nav(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -96,7 +96,7 @@ return(
               </TouchableOpacity>
               
               
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Extra Large Box"); writeDoc();setBoxPrice(130); setPackage_detail(false); setMaps_con(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Extra Large Box"); writeDoc();setBoxPrice(130); setPackage_detail(false);  setMaps_nav(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"

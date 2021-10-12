@@ -15,8 +15,9 @@ import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { Divider } from 'react-native-elements';
 import { Fontisto, Ionicons } from '@expo/vector-icons';
+import styles from './styles';
 
-export default function OrderSummary() {
+export default function OrderSummary({setMaps_nav, setOrder_summary,setOrderProgress}) {
 
     const [selectedValue, setSelectedValue] = React.useState("Payment Option");
     const basePrice = 10;
@@ -30,7 +31,7 @@ export default function OrderSummary() {
   
         <View style={styles.container}>
             <View style={styles.header}>
-              <TouchableOpacity style={{marginTop: 10, marginLeft: 15}}>
+              <TouchableOpacity style={{marginTop: 10, marginLeft: 15}}  onPress={() =>{setOrder_summary(false); setMaps_nav(true)}}>
                   <AntDesign 
                       name="arrowleft" // panah
                       color="black"
@@ -78,9 +79,9 @@ export default function OrderSummary() {
                 </View> 
 
 
-                <View style= {{height: '58%', justifyContent: 'flex-end'}}>
-                  <TouchableOpacity style={styles.containerFinish}>
-                    <Text style={styles.buttonText}>Order Driver</Text>
+                <View style= {{height: '58%', justifyContent: 'flex-end', marginBottom: 20}}>
+                  <TouchableOpacity style={styles.containerFinish} onPress={() => {setOrderProgress(true); setOrder_summary(false)}}>
+                    <Text style={styles.buttonText}>Order Driver</Text> 
                   </TouchableOpacity>
                 </View>
 

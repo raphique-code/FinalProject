@@ -1,7 +1,28 @@
 import firebase from 'firebase'
 //require('firebase/firebase-auth')
 require('firebase/firebase-auth')
-import { USER_STATE_CHANGE } from '../constants'
+import { USER_STATE_CHANGE, USER_TYPE } from '../constants'
+
+export const customer = () => dispatch => {
+
+    
+        return dispatch({
+            type: USER_TYPE,
+            currentUserType: 'customer',
+           
+        })
+     
+}
+export const driver = () => dispatch => {
+
+    
+    return dispatch({
+        type: USER_TYPE,
+        currentUserType: 'driver',
+       
+    })
+ 
+}
 
 export const userAuthStateListener = () => dispatch => {
     firebase.auth().onAuthStateChanged((user) => {

@@ -1,10 +1,9 @@
-import { StyleSheet } from "react-native";
-
-const styles = StyleSheet.create({
+import { StyleSheet } from 'react-native';
+export const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: 'grey',
-     
+      marginTop: 30
     
     },
     
@@ -52,35 +51,9 @@ const styles = StyleSheet.create({
       fontSize: 15,
       color: '#1A130E',
       //fontWeight: 'bold',
-      //lineHeight: 33.75,
-      marginTop: 7,
-      marginBottom: 7,
-      marginRight: 20,
-    },
-
-    subText2: { // font color: orange
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 20,
-        fontWeight: 'bold',
-        color: '#F0843C',
-        //lineHeight: 40,
-        marginLeft: 20,
-        marginTop: 5,
-        marginBottom: 2.9,
-      },
-
-
-    subText3: { // font color: orange
-    justifyContent: 'center',
-    alignItems: 'center',
-    fontSize: 20,
-    fontWeight: 'bold',
-    color: '#F0843C',
-    //lineHeight: 40,
-    marginLeft: 1,
-    marginTop: 30,
-    marginBottom: 1,
+      lineHeight: 40,
+      marginBottom: 10,
+      marginLeft: 30
     },
 
     kmMin: {
@@ -96,7 +69,7 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         lineHeight: 40,
         marginBottom: 10,
-        marginLeft: 90
+        marginLeft: 30
       },
 
     
@@ -109,7 +82,16 @@ const styles = StyleSheet.create({
         color: '#F0843C'
       },
 
-      
+      subText2: { // font color: orange
+        justifyContent: 'center',
+        alignItems: 'center',
+        fontSize: 20,
+        color: '#1A130E',
+        fontWeight: 'bold',
+        color: '#F0843C',
+        marginLeft: 20,
+        marginTop: 5
+      },
 
       buttonText: {
         justifyContent: 'center',
@@ -124,22 +106,22 @@ const styles = StyleSheet.create({
         height: '100%',
         width: '50%',
         alignItems: 'flex-start',
-        flex: 1,
-        backgroundColor: '#F4ECE7'
+        flex: 5,
+        //backgroundColor: 'red',
     },
 
     containerRight: {
         height: '100%',
         width: '50%',
-        alignItems: 'flex-end',
+        alignItems: 'center',
         flex: 1,
-        backgroundColor: '#F4ECE7'
-},
+        //backgroundColor: 'blue'
+    },
 
 
     containerMiddle: {
         backgroundColor: '#F4ECE7',
-        height: 200,
+        height: 150,
         elevation: 10,
         shadowColor: '#52006A',
         borderRadius: 3,
@@ -199,7 +181,7 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       backgroundColor:'#F0843C',
       //flexDirection: 'row',
-      marginBottom: 50,
+      marginBottom: 20,
       //paddingRight: 100
     },
 
@@ -215,11 +197,12 @@ const styles = StyleSheet.create({
     mapContainer: {
         marginTop: 10,
         marginBottom: 10,
-        height: 350
+        height: '48%'
     },
   
     bottomButtonShortLeft: {
       width: '50%',
+      height:'10%',
       //flexDirection: 'row',
       backgroundColor: '#F4ECE7',
       alignItems: 'flex-start'
@@ -228,11 +211,10 @@ const styles = StyleSheet.create({
 
     bottomButtonShortRight: {
       width: '50%',
+      height:'10%',
       //flexDirection: 'row',
       backgroundColor: '#F4ECE7',
       alignItems: 'flex-end'
     },
     
     });
-    export default styles;
-    

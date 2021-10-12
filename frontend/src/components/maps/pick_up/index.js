@@ -53,7 +53,7 @@ function writeDoc () {
   
             <KeyboardAvoidingView style={styles.container}>
               <View style={styles.header}>
-                <TouchableOpacity onPress={() => setPick_up(false)}>
+                <TouchableOpacity onPress={() => {{setPick_up(false);setMaps_nav(true)}}}>
                   <AntDesign 
                       name="arrowleft" // panah
                       color="black"
