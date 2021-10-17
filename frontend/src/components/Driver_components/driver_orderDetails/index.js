@@ -19,7 +19,7 @@ import { styles } from './styles';
 //in node modules folder, open react-native-navigation-direction index.js, in line 43, add  || _transportType === 'm'
 // line 47, return 'm'
 
-export default function Driver_OrderDetails() {
+export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Profile, setDriverCustomer_list, setDriver_OrderDetails }) {
 
   
   
@@ -114,7 +114,7 @@ export default function Driver_OrderDetails() {
   
         <View style={styles.container}>
             <View style={styles.header}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => {setDriverCustomer_list(true);  setDriver_OrderDetails(false)}}>
                   <AntDesign 
                       name="arrowleft" // panah
                       color="black"

@@ -16,12 +16,12 @@ const PickUp= "3";
 const DropOff = "6";
 const ServiceFee = "300"
 
-export default function DriversCustomer_List() {
+export default function DriversCustomer_List({ setDriver_first, setDriverEdit_Profile, setDriverCustomer_list, setDriver_OrderDetails }) {
     return( 
   
         <View style={styles.container}>
           <View style={styles.header}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => {setDriver_first(true); setDriverCustomer_list(false)}} >
                   <AntDesign 
                       name="arrowleft" // panah
                       color="black"
@@ -33,7 +33,7 @@ export default function DriversCustomer_List() {
           </View>
 
            <View  style={styles.container_SB}>
-              <TouchableOpacity style={styles.confirm}>
+              <TouchableOpacity style={styles.confirm}  onPress= {() => {setDriver_OrderDetails (true); setDriverCustomer_list(false)}}>
                 <AntDesign 
                         name="user" // logo user
                         color="black"

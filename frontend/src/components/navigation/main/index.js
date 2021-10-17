@@ -9,6 +9,7 @@ import styles from './styles';
 import { userAuthStateListener } from '../../../redux/actions';
 import AuthScreen from '../../../screens/auth';
 import HomeNav from '../home';
+import D_HomeNav from '../D-home';
 import PackageDetails from '../package_details';
 import { useState } from 'react';
 import Logout from '../logout';
@@ -23,7 +24,9 @@ const Stack = createStackNavigator()
 export default function Route(){
 
     const currentUserObj = useSelector(state => state.auth)
+    const currentUserObj_2 = useSelector(state => state.type)
     console.log(currentUserObj)
+    console.log(currentUserObj_2)
 
     const dispatch = useDispatch();
     const [Package_details, setPackage_detail] = useState(false)
@@ -43,7 +46,7 @@ export default function Route(){
 
 // was edited
 
-if ( USER_TYPE==1)
+if ( currentUserObj.currentUserType !== "customer")
         { 
           return(
             <View style={{margin:10, height:"100%"}}>
@@ -51,9 +54,10 @@ if ( USER_TYPE==1)
             <Stack.Navigator>
                 {currentUserObj.currentUser == null ?
 
-                    //<Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
-                    <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
+                    // first one is for login<Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
+                    <Stack.Screen name="home" component={D_HomeNav} options={{ headerShown: false }} />
                     :
+                    // second one is after login
                     <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} /> 
                     
                     //this is just used to show what map functions do
@@ -68,9 +72,25 @@ if ( USER_TYPE==1)
 
         else{
             return (
-                <View style= {styles.container}>
-                    <Text>empty user</Text>
-                </View>
+                <View style={{margin:10, height:"100%"}}>
+                <NavigationContainer>
+                <Stack.Navigator>
+                    {currentUserObj.currentUser == null ?
+    
+                        // first one is for login<Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
+                        <Stack.Screen name="home" component={D_HomeNav} options={{ headerShown: false }} />
+                        :
+                        // second one is after login
+                        <Stack.Screen name="home" component={D_HomeNav} options={{ headerShown: false }} /> 
+                        
+                        //this is just used to show what map functions do
+    
+                    // <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
+                        
+                    }
+                </Stack.Navigator>
+            </NavigationContainer>
+            </View>
             )
         }
     

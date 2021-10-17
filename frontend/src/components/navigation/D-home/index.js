@@ -22,13 +22,16 @@ import Pick_Up from '../../maps/pick_up';
 import DropOff from '../../maps/drop_off';
 import OrderSummary from '../../maps/order_summary';
 import OrderProgress from '../../maps/order_Progress';
-
+import Driver_First from '../../Driver_components/drive_first';
+import DriversCustomer_List from '../../Driver_components/driver_customerList';
+import Driver_OrderDetails from '../../Driver_components/driver_orderDetails';
+import DriverEdit_Profile from '../../Driver_components/driver_editProfile';
 
 
 
 
 //setPackage_detail={setPackage_detail} setHome={setHome}
-export default function HomeNav(){
+export default function D_HomeNav(){
       
     const [home, setHome] = useState(0);
     const [signOut, setSignOut] = useState(false)
@@ -43,45 +46,37 @@ export default function HomeNav(){
     const [Drive_detailsPage, Drive_setDetailsPage] = useState(false);
     const [order_summary, setOrder_summary] = useState (false);
     const [orderProgress, setOrderProgress]= useState (false);
+    const [driver_first, setDriver_first]= useState (true);
+    const [driverCustomer_list, setDriverCustomer_list]= useState (false);
+    const [driver_OrderDetails, setDriver_OrderDetails]= useState (false);
+    const [driverEdit_Profile, setDriverEdit_Profile]= useState (false);
+
     
     return(
         <View style = {{height: "100%"}}>
 
             {
             
-            maps_nav?
+            driver_first?
 
-            <Maps_nav setMaps_nav = {setMaps_nav} setPick_up={setPick_up} setDrop_off={setDrop_off} setOrder_summary={setOrder_summary}/> 
-
+            <Driver_First setDriver_first = {setDriver_first} setDriverCustomer_list = {setDriverCustomer_list} setDriverEdit_Profile = {setDriverEdit_Profile}/> 
             :
-            signOut?
-
-            <Logout  setSignOut={setSignOut} setHome={setHome}/>
-
-            :
-            pick_up?
+            driverEdit_Profile?
         
-            <Pick_Up setMaps_nav = {setMaps_nav} setPick_up={setPick_up} setDrop_off={setDrop_off}/> // only pass the set if you need to change value if not pass the read only variable
-
+            <DriverEdit_Profile setDriver_first = {setDriver_first} setDriverCustomer_list = {setDriverCustomer_list} setDriverEdit_Profile = {setDriverEdit_Profile}  setDriver_OrderDetails = {setDriver_OrderDetails}/> // only pass the set if you need to change value if not pass the read only variable
             :
-            drop_off?
-
-            <DropOff setMaps_nav = {setMaps_nav} setPick_up={setPick_up} setDrop_off={setDrop_off}/>
-            :
-
-            order_summary?
-
-            <OrderSummary  setMaps_nav = {setMaps_nav} setOrder_summary={setOrder_summary} setOrderProgress={setOrderProgress}/>
-
-            :
-            orderProgress?
-
-            <OrderProgress setMaps_nav = {setMaps_nav} setOrder_summary= {setOrder_summary} setOrderProgress={setOrderProgress}/>
-
-            :
- 
             
-            <PackageDetails setPackage_detail={setPackage_detail} setSignOut={setSignOut}  setMaps_nav={ setMaps_nav}/>
+            driverCustomer_list?
+
+            <DriversCustomer_List setDriver_first = {setDriver_first} setDriverEdit_Profile = {setDriverEdit_Profile} setDriverCustomer_list = {setDriverCustomer_list} setDriver_OrderDetails = {setDriver_OrderDetails}/>
+
+            :
+            driver_OrderDetails?
+
+            <Driver_OrderDetails setDriver_first = {setDriver_first} setDriverEdit_Profile = {setDriverEdit_Profile} setDriverCustomer_list = {setDriverCustomer_list} setDriver_OrderDetails = {setDriver_OrderDetails}/>
+            :
+
+            <OrderSummary  setMaps_nav = {setMaps_nav} setOrder_summary = {setOrder_summary} setOrderProgress={setOrderProgress}/>
 
  
                     

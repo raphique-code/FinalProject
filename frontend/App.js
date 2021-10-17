@@ -64,13 +64,13 @@ export default function App() {
 
       //<View style = {{height: "100%"}}>
       <Provider store ={store}>
-        {//<Driver_OrderDetails/>
-        //<DriversCustomer_List/>
-        //<DriverEdit_Profile/>
+      {//<Driver_OrderDetails/>
+      //<DriversCustomer_List/>
+      //<DriverEdit_Profile/>
 
-       // <Driver_First/>
-       <Split_page/>
-       // <Route/>}
+      // <Driver_First/>
+      //<Split_page/>
+       <Route/>
       }
       </Provider>
 
@@ -80,7 +80,7 @@ export default function App() {
 
   
             
-            );
+          );
         }
               
        

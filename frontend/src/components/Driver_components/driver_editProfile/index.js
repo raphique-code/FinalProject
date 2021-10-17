@@ -20,7 +20,7 @@ import { Fontisto, Ionicons } from '@expo/vector-icons';
 
 
 
-export default function DriverEdit_Profile() {
+export default function DriverEdit_Profile({setDriver_first, setDriverCustomer_list, setDriverEdit_Profile}) {
     const ref =  firebase.firestore().collection("driverProfile");
     const [name, onChangeName] = React.useState(null);
     const [license, onChangeLicense] = React.useState(null);
@@ -43,7 +43,7 @@ export default function DriverEdit_Profile() {
     return(
         <View style={styles.container}>
             <View style={styles.header}>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={() => {setDriver_first(true); setDriverEdit_Profile(false)}}>
                   <AntDesign 
                       name="arrowleft" // panah
                       color="black"
@@ -99,7 +99,8 @@ export default function DriverEdit_Profile() {
                 </View>
 
                 <View style={{height: '35%', justifyContent: 'flex-end'}}>
-                  <TouchableOpacity onPress= {() => writeDoc()} style={styles.containerSave}>
+                  <TouchableOpacity onPress= {() => {writeDoc(); setDriver_first(true); setDriverEdit_Profile(false)}} 
+                    style={styles.containerSave}>
                     <Text style={styles.buttonText}>Save</Text>
                   </TouchableOpacity>
                 </View>

@@ -8,7 +8,7 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { SliderPicker } from 'react-native-slider-picker';
 import { styles } from './styles';
 
-export default function Driver_First() {
+export default function Driver_First({setDriver_first, setDriverCustomer_list, setDriverEdit_Profile}) {
     
     const [state, setState] = React.useState({value: 1})
 
@@ -24,7 +24,10 @@ export default function Driver_First() {
                         style= {{paddingTop: 40, paddingBottom: 15, paddingLeft: 70, paddingRight: 15, width: 235}}
                     />
                     
-                    <TouchableOpacity style={styles.confirm}>
+                    <TouchableOpacity style={styles.confirm}
+                    
+                    onPress={() => {setDriver_first(false); setDriverEdit_Profile(true)}}
+                    >
                         <Text style={styles.edit}>EDIT PROFILE</Text> 
                     </TouchableOpacity>
                 </View>
@@ -70,7 +73,8 @@ export default function Driver_First() {
 
 
 
-                    <TouchableOpacity style={styles.start}>
+                    <TouchableOpacity style={styles.start}
+                    onPress={() => {setDriver_first(false);  setDriverCustomer_list(true)} }>
                         <Text style={styles.edit2}>START</Text> 
                     </TouchableOpacity>
                 </View>
