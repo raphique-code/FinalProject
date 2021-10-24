@@ -14,7 +14,7 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Provider } from "react-redux";
 import { createStore,applyMiddleware } from "redux";
 import thunk from "redux-thunk";
-
+import Maps_Re from "./src/components/maps/test";
 
 import Constants  from "expo-constants";
 import reducers from './src/redux/reducers';
@@ -48,6 +48,7 @@ import Driver_First from "./src/components/Driver_components/drive_first";
 import DriverEdit_Profile from "./src/components/Driver_components/driver_editProfile";
 import DriversCustomer_List from "./src/components/Driver_components/driver_customerList";
 import Driver_OrderDetails from "./src/components/Driver_components/driver_orderDetails";
+import DropOff from "./src/components/maps/drop_off";
 
 
 const Stack = createStackNavigator();
@@ -62,9 +63,12 @@ export default function App() {
 
     return( 
 
-      //<View style = {{height: "100%"}}>
+     // <View style = {{height: "100%", margin: 40}}>
       <Provider store ={store}>
       {//<Driver_OrderDetails/>
+      //<Maps_Re/>
+      //<Pick_up/>
+      //<DropOff/>
       //<DriversCustomer_List/>
       //<DriverEdit_Profile/>
 

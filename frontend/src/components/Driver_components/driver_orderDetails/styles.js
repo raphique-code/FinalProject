@@ -197,7 +197,7 @@ export const styles = StyleSheet.create({
     mapContainer: {
         marginTop: 10,
         marginBottom: 10,
-        height: '48%'
+        height: '100%'
     },
   
     bottomButtonShortLeft: {

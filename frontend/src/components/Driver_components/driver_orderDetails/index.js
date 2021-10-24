@@ -14,6 +14,7 @@ import { Fontisto, Ionicons } from '@expo/vector-icons';
 import {OpenMapDirections} from 'react-native-navigation-directions';
 import firebase from "../../navigation/package_details/firebase";
 import { styles } from './styles';
+import openMap from 'react-native-open-maps';
 
 
 //in node modules folder, open react-native-navigation-direction index.js, in line 43, add  || _transportType === 'm'
@@ -27,6 +28,8 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
   const [dropOff, setDropOff] = React.useState('');
   const [pickUpLatLang, setPickUpLatLang] = React.useState('')
   const [dropOffLatLang, setDropOffLatLang] = React.useState('')
+  const [conDropOff, setConDropOff] = React.useState(false)
+  const [conPickUp, setConPickUp] = React.useState(false)
   
   //copy address
 
@@ -52,6 +55,19 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
 
   // read code
   const ref =  firebase.firestore().collection("order").doc('order1');
+  const ref2 =  firebase.firestore().collection("order");
+
+  let data ={
+
+   ConfirmDropOff: conDropOff,
+
+   ConfirmPickOff: conPickUp
+
+  }
+
+  function writeDoc () {
+    ref2.doc('order1').update(data);
+  }
 
 
   function getOrder() {//membaca function 1 doc dalam user1, trus push semua data ke array yg namanya items,
@@ -64,6 +80,10 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
           console.log(dropOffLatLang.longitude)
 
       });
+  }
+  const _goToYosemite =()=>{
+    openMap({start: dropOff,
+     end:pickUp});
   }
 
   React.useEffect(() => {
@@ -161,7 +181,9 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                     </View>   
                 </View>
             
-
+                <TouchableOpacity  onPress={()=> _goToYosemite()}  style = {{height: "48%", marginBottom: 0}}>
+                  
+                  
                 <View style={styles.mapContainer}>
                   <MapView
                     provider={PROVIDER_GOOGLE}
@@ -218,6 +240,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
 
                   </MapView>
                 </View>
+                </TouchableOpacity>
 
                 <View style={styles.containerBottom}>
                   <View style={styles.conatinerLeft2}>
@@ -251,13 +274,13 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
 
                 <View style={{flexDirection: 'row'}}>
                   <View style={styles.bottomButtonShortLeft}>
-                    <TouchableOpacity onPress={() => { _callPickUp() }} style={styles.pickUpDropOffButton}> 
+                    <TouchableOpacity onPress={() => { _callPickUp(); setConPickUp(true); writeDoc()}} style={styles.pickUpDropOffButton}> 
                       <Text style={styles.buttonText}>Pick Up</Text>
                     </TouchableOpacity>
                   </View>
                   
                   <View style={styles.bottomButtonShortRight}>
-                    <TouchableOpacity onPress={() => { _callDropOff() }} style={styles.pickUpDropOffButton}>
+                    <TouchableOpacity onPress={() => { _callDropOff(); setConDropOff(true); writeDoc()}} style={styles.pickUpDropOffButton}>
                     <Text style={styles.buttonText}>Drop Off</Text>
                     </TouchableOpacity>
                   </View>
@@ -265,7 +288,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                 
 
                 <View>
-                  <TouchableOpacity style={styles.containerFinish}>
+                  <TouchableOpacity onPress={() => setConDropOff(true)} style={styles.containerFinish}>
                     <Text style={styles.buttonText}>Complete Order</Text>
                   </TouchableOpacity>
                 </View>

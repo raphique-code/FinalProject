@@ -34,7 +34,7 @@ export default function Route(){
     useEffect(() => {
         dispatch(userAuthStateListener());
     }, [])
-
+/*
     if (!currentUserObj.loaded) {
         return (
             <View style= {styles.container}>
@@ -43,10 +43,10 @@ export default function Route(){
         )
     }
     
-
+*/
 // was edited
 
-if ( currentUserObj.currentUserType !== "customer")
+if ( currentUserObj.currentUserType == "customer")
         { 
           return(
             <View style={{margin:10, height:"100%"}}>
@@ -55,7 +55,7 @@ if ( currentUserObj.currentUserType !== "customer")
                 {currentUserObj.currentUser == null ?
 
                     // first one is for login<Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
-                    <Stack.Screen name="home" component={D_HomeNav} options={{ headerShown: false }} />
+                    <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
                     :
                     // second one is after login
                     <Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} /> 
