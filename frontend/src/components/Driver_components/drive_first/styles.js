@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
       borderWidth: 2,
       borderRadius: 10,
       flexDirection: 'row',
-      marginBottom: 20,
+      marginBottom: 5,
     },
 
     start: {
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
         borderWidth: 2,
         borderRadius: 10,
         flexDirection: 'row',
-        marginTop: 20,
+        marginTop: 5,
         marginBottom: 80,
         width: '100%'
         

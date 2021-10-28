@@ -7,8 +7,10 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import { SliderPicker } from 'react-native-slider-picker';
 import { styles } from './styles';
+import { signOutUser } from '../../../redux/actions';
+import { Feather } from '@expo/vector-icons';
 
-export default function Driver_First({setDriver_first, setDriverCustomer_list, setDriverEdit_Profile}) {
+export default function Driver_First({setSignOut,setDriver_first, setDriverCustomer_list, setDriverEdit_Profile}) {
     
     const [state, setState] = React.useState({value: 1})
 
@@ -16,12 +18,26 @@ export default function Driver_First({setDriver_first, setDriverCustomer_list, s
   
         <View style={styles.container}>
             <View  style={styles.container_SB}>
+                
+
                 <View style={styles.containerTop}>
+                <View style={styles.header}>
+                    <TouchableOpacity style={{marginTop: 1}} onPress={() => {setSignOut(true); setDriver_first(false)}}>
+                        <Feather
+                            name="log-out" // panah
+                            color="black"
+                            size={30}
+                            style= {{paddingTop: 10, paddingBottom:10, paddingRight: 80, paddingLeft: 5}}
+                            
+                        />
+                    </TouchableOpacity>
+                   
+                </View>
                     <FontAwesome
                         name="user-circle-o" // driver icon + edit profile button
                         color="black"
                         size={100}
-                        style= {{paddingTop: 40, paddingBottom: 15, paddingLeft: 70, paddingRight: 15, width: 235}}
+                        style= {{paddingTop: 5, paddingBottom: 15, paddingLeft: 70, paddingRight: 15, width: 235}}
                     />
                     
                     <TouchableOpacity style={styles.confirm}

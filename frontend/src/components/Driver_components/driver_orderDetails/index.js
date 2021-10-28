@@ -294,7 +294,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                 
 
                 <View>
-                  <TouchableOpacity onPress={() => {setConDropOff(true);writeDoc()}} style={styles.containerFinish}>
+                  <TouchableOpacity onPress={() => {setConDropOff(true);writeDoc();setDriver_first(true);  setDriver_OrderDetails(false)}} style={styles.containerFinish}>
                     <Text style={styles.buttonText}>Complete Order</Text>
                   </TouchableOpacity>
                 </View>

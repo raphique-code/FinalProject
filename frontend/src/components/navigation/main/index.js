@@ -47,13 +47,13 @@ export default function Route(){
 */
 // was edited
 
-if ( currentUserObj.currentUserType !== "customer")
+if ( currentUserObj.currentUserType == "customer")
         { 
           return(
             <View style={{height:"100%"}}>
             <NavigationContainer>
             <Stack.Navigator>
-                {currentUserObj.currentUser == null ?
+                {currentUserObj.currentUser !== null ?
 
                     // first one is for login<Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
                     <Stack.Screen name="home" component={AuthScreen} options={{ headerShown: false }} />
@@ -76,7 +76,7 @@ if ( currentUserObj.currentUserType !== "customer")
                 <View style={{height:"100%"}}>
                 <NavigationContainer>
                 <Stack.Navigator>
-                    {currentUserObj.currentUser == null ?
+                    {currentUserObj.currentUser !== null ?
     
                         // first one is for login<Stack.Screen name="auth" component={AuthScreen} options={{ headerShown: false }} />
                         <Stack.Screen name="home" component={AuthScreen} options={{ headerShown: false }} />

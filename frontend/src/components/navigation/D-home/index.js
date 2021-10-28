@@ -30,6 +30,7 @@ import DriverEdit_Profile from '../../Driver_components/driver_editProfile';
 
 
 
+
 //setPackage_detail={setPackage_detail} setHome={setHome}
 export default function D_HomeNav(){
       
@@ -59,11 +60,15 @@ export default function D_HomeNav(){
             
             driver_first?
 
-            <Driver_First setDriver_first = {setDriver_first} setDriverCustomer_list = {setDriverCustomer_list} setDriverEdit_Profile = {setDriverEdit_Profile}/> 
+            <Driver_First setSignOut={setSignOut} setDriver_first = {setDriver_first} setDriverCustomer_list = {setDriverCustomer_list} setDriverEdit_Profile = {setDriverEdit_Profile}/> 
             :
             driverEdit_Profile?
         
             <DriverEdit_Profile setDriver_first = {setDriver_first} setDriverCustomer_list = {setDriverCustomer_list} setDriverEdit_Profile = {setDriverEdit_Profile}  setDriver_OrderDetails = {setDriver_OrderDetails}/> // only pass the set if you need to change value if not pass the read only variable
+            :
+            signOut?
+
+            <Logout  setSignOut={setSignOut}/>
             :
             
             driverCustomer_list?
