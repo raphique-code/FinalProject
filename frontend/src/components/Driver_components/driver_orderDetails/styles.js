@@ -166,7 +166,7 @@ export const styles = StyleSheet.create({
       justifyContent: 'center',
       alignItems: 'center',
       borderRadius: 10,
-      backgroundColor:'#F0843C',
+      backgroundColor: 'black' ,//'#F0843C',
       //flexDirection: 'row',
       marginBottom: 20,
       //marginRight: 20
@@ -197,24 +197,34 @@ export const styles = StyleSheet.create({
     mapContainer: {
         marginTop: 10,
         marginBottom: 10,
-        height: '100%'
+        height: '40%'
     },
   
     bottomButtonShortLeft: {
       width: '50%',
-      height:'10%',
+      marginBottom: 10,
+      marginRight:10,
       //flexDirection: 'row',
-      backgroundColor: '#F4ECE7',
-      alignItems: 'flex-start'
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10,
+      height: 50,
+      backgroundColor:'#F0843C',
+     // alignItems: 'flex-start'
 
     },
 
     bottomButtonShortRight: {
       width: '50%',
-      height:'10%',
-      //flexDirection: 'row',
-      backgroundColor: '#F4ECE7',
-      alignItems: 'flex-end'
+      marginBottom: 10,
+      
+      height: 50,
+      justifyContent: 'center',
+      alignItems: 'center',
+      borderRadius: 10,
+      //flexDirection: 'row',,
+      backgroundColor:'#F0843C',
+     // alignItems: 'flex-end'
     },
     
     });

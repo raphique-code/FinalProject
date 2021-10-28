@@ -1,4 +1,3 @@
-
 import constants from "jest-haste-map/build/constants";
 import { StatusBar } from "expo-status-bar";
 import { ActivityIndicator } from 'react-native';
@@ -17,7 +16,7 @@ import MapViewDirections from "react-native-maps-directions";
 import { getDistance } from "geolib";
 import { useState } from "react";
 import { styles } from "./styles";
-import { Feather } from "@expo/vector-icons";
+import { Feather, AntDesign } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
 //import styles from "./styles";
 
@@ -104,10 +103,12 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
           <View style={styles.container}>
             <StatusBar
         animated={true}
-        backgroundColor="#61dafb"
+        //backgroundColor="#61dafb"
+        backgroundColor='#F4ECE7'
         barStyle= "dark-content"
         
         />
+        
 
 
           
@@ -180,16 +181,27 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
           />
 
           </MapView>
-         
+          
+          
 
           <View style ={styles.inner_container}>
+              <View style={styles.header}>
+                <TouchableOpacity>
+                    <AntDesign 
+                        name="arrowleft" // panah
+                        color="black"
+                        size={30}
+                        style= {{paddingTop: 12, paddingBottom: 20, paddingRight: 120, paddingLeft: 10}}
+                    />
+                  </TouchableOpacity>
+              </View>
 
               <TouchableOpacity style ={styles.Box_button_top} onPress={() => {setPick_up(true); setMaps_nav(false)}}>
               <Feather
                       name="search" // panah
                       color="black"
-                      size={30}
-                      style= {{paddingTop: 5, paddingBottom: 5, paddingRight: 5, paddingLeft: 5}}
+                      size={25}
+                      style= {{paddingTop:10, paddingBottom: 5, paddingRight: 5, paddingLeft:8}}
                       
                       
                   />
@@ -200,9 +212,9 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
               <Feather
                       name="search" // panah
                       color="black"
-                      size={30}s
+                      size={25}
                     
-                      style= {{paddingTop: 5, paddingBottom: 5, paddingRight: 5, paddingLeft: 5}}
+                      style= {{paddingTop: 10, paddingBottom: 5, paddingRight: 5, paddingLeft: 8}}
                       
                       
                   />
@@ -212,7 +224,7 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
             
 
           </View>
-          <View style ={[styles.inner_container_two,{marginTop:670}]}>
+          <View style ={[styles.inner_container_two,{marginTop:690}]}>
 
           <TouchableOpacity
                         onPress={() => {setOrder_summary(true); setMaps_nav(false)}}
@@ -250,139 +262,3 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
           </View>
           );
       }
-/*
-     
-      const styles = StyleSheet.create({
-        container: {
-          flex: 1,
-          backgroundColor: 'grey'
-          
-      
-        },
-        container_SB: {  
-        
-          backgroundColor: 'blue',
-          fontSize: 20,
-          alignContent: "center",
-          justifyContent: "center",
-          padding: 20,
-          
-    
-      
-          flex: 1
-        },
-        inner_container_one: {
-          marginBottom: 0,
-          margin: 580,
-          backgroundColor: 'azure',
-          position: 'absolute',
-          marginLeft: 10,
-          marginRight: 10,
-          borderRadius: 10
-          
-        },
-    
-        inner_container: {
-          marginBottom: 10,
-          marginTop: 20,
-          marginLeft: 12,
-          marginRight: 10,
-          position: 'absolute',
-          width: "94%",
-          height: "20%",
-          alignContent: "center",
-          borderRadius: 20,
-          backgroundColor: 'azure'
-          },
-        
-        display_text: {
-    
-          fontSize : 20,
-          fontWeight: 'bold',
-          marginBottom: 5,
-          marginLeft: 10,
-          marginRight: 10,
-    
-    
-        },
-        
-        display_text_two: {
-    
-          fontSize : 15,
-          fontWeight: 'normal',
-         
-          marginLeft: 10,
-          marginTop: 5,
-          marginRight: 10,
-    
-    
-    
-        },
-        display_text_three: {
-    
-          fontSize : 15,
-          fontWeight: 'normal',
-         
-          marginLeft: 15,
-          marginTop: 5,
-          marginRight: 10,
-    
-    
-    
-        },
-        display_text_four: {
-    
-          fontSize : 15,
-          fontWeight: 'normal',
-         
-          marginLeft: 10,
-          marginTop: 5,
-          marginRight: 10,
-    
-    
-    
-        },
-        
-    
-        Box_button_top: {
-         // marginBottom: 10,
-          marginTop: 2,
-          marginLeft: 12,
-          marginRight: 10,
-          //position: 'absolute',
-          width: "94%",
-          height: "25%",
-          alignContent: "center",
-          borderRadius: 8,
-          backgroundColor: 'gainsboro'
-       
-        },
-    
-        Box_button_bottom: {
-          marginBottom: 10,
-          marginTop: 2,
-          marginLeft: 12,
-          marginRight: 10,
-          //position: 'absolute',
-          width: "94%",
-          height: "25%",
-          alignContent: "center",
-          borderRadius: 8,
-          backgroundColor: 'gainsboro'
-        },
-          
-          
-        map: {
-          flex: 3,
-          marginTop: 10,
-        width: Dimensions.get('window').width,
-        height: Dimensions.get('window').height,
-        },
-    });
-    
-
-
-
-*/
-
-

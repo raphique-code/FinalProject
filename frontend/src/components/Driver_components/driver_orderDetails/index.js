@@ -181,8 +181,8 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                     </View>   
                 </View>
             
-                <TouchableOpacity  onPress={()=> _goToYosemite()}  style = {{height: "48%", marginBottom: 0}}>
-                  
+               {//} <TouchableOpacity  onPress={()=> _goToYosemite()}  style = {{height: "48%", marginBottom: 0}}>
+}
                   
                 <View style={styles.mapContainer}>
                   <MapView
@@ -240,7 +240,8 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
 
                   </MapView>
                 </View>
-                </TouchableOpacity>
+            {//}    </TouchableOpacity>
+}
 
                 <View style={styles.containerBottom}>
                   <View style={styles.conatinerLeft2}>
@@ -273,17 +274,21 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
               
 
                 <View style={{flexDirection: 'row'}}>
-                  <View style={styles.bottomButtonShortLeft}>
-                    <TouchableOpacity onPress={() => { _callPickUp(); setConPickUp(true); writeDoc()}} style={styles.pickUpDropOffButton}> 
+                  {//<View style={styles.bottomButtonShortLeft}>
+}
+                    <TouchableOpacity onPress={() => { _callPickUp(); setConPickUp(true); writeDoc()}} style={styles.bottomButtonShortLeft}> 
                       <Text style={styles.buttonText}>Pick Up</Text>
                     </TouchableOpacity>
-                  </View>
+                 {//} </View>
+}
                   
-                  <View style={styles.bottomButtonShortRight}>
-                    <TouchableOpacity onPress={() => { _callDropOff(); setConDropOff(true); writeDoc()}} style={styles.pickUpDropOffButton}>
+                  {//<View style={styles.bottomButtonShortRight}>
+}
+                    <TouchableOpacity onPress={() => { _callDropOff(); setConDropOff(true); writeDoc()}} style={styles.bottomButtonShortRight}>
                     <Text style={styles.buttonText}>Drop Off</Text>
                     </TouchableOpacity>
-                  </View>
+                 {// </View>
+}
                 </View>
                 
 

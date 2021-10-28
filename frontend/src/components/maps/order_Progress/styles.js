@@ -34,7 +34,26 @@ const styles = StyleSheet.create({
       borderRadius: 10,
       flexDirection: 'row',
       marginBottom: 20,
+      backgroundColor:'#F0843C',
     },
+    
+    inner_container: {
+      marginBottom: 10,
+      marginTop: 20,
+
+      marginLeft: 12,
+      marginRight: 10,
+      position: 'absolute',
+      width: "94%",
+      height: "25%",
+      alignContent: "center",
+      borderRadius: 20,
+      justifyContent: "space-evenly",
+      backgroundColor: 'azure'
+      
+      
+      },
+
 
     start: {
         width: 200,

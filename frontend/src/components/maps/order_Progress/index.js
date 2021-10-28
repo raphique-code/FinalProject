@@ -18,6 +18,7 @@ export default function OrderProgress({setOrder_summary,setOrderProgress}) {
     const [lPlate, setLPlate] = React.useState('')
     const [vType, setVType] = React.useState('')
     const [vColor, setVColor] = React.useState('')
+    const [conDropOff, setConDropOff] = React.useState(false)
     
   function getOrder() {//membaca function 1 doc dalam user1, trus push semua data ke array yg namanya items,
     //to read the object, use querysnapshot.get('object name in firebase (e.g DriverName)')
@@ -26,6 +27,7 @@ export default function OrderProgress({setOrder_summary,setOrderProgress}) {
          setLPlate(querySnapshot.get('license'));
          setVType(querySnapshot.get('vtype'));
          setVColor(querySnapshot.get('vcolor'));
+        // setConDropOff(querySnapshot.get('ConfirmDropOff'));
          
 
       });
@@ -34,6 +36,22 @@ export default function OrderProgress({setOrder_summary,setOrderProgress}) {
   React.useEffect(() => {
       getOrder();
   }, []);
+
+  const ref2 =  firebase.firestore().collection("order");
+
+let data ={
+    ConfirmDropOff: conDropOff
+ }
+
+     function writeDoc () {
+        ref2.doc('order1').update(data);
+      }
+
+      /**  function writeDoc () {
+    ref2.doc('order1').update(data);
+  }
+ */
+  
     return( 
   
         <View style={styles.container}>
@@ -48,6 +66,7 @@ export default function OrderProgress({setOrder_summary,setOrderProgress}) {
               </TouchableOpacity>
               <Text style={[styles.orderDetails, {marginTop: 6}]}>Driver Details</Text>
             </View>
+         
 
 
             <View  style={styles.container_SB}>
@@ -60,6 +79,48 @@ export default function OrderProgress({setOrder_summary,setOrderProgress}) {
                         style= {{paddingTop: 40, paddingBottom: 15, paddingLeft: 70, paddingRight: 15, width: 235}}
                     />
                 </View>
+
+                <View style ={[styles.inner_container, {marginTop:15,width: "80%",marginLeft: 50, backgroundColor: "white"}]}>
+                    
+          {/*
+            conDropOff?
+            
+
+            null//{() => setConDropOff(false)};console.log(`${conDropOff}`) 
+            
+            :
+            <View>
+
+              <Text style={[styles.textSign, {
+                            color: 'black'
+                            ,marginLeft:50,
+                            marginBottom: 10,
+                            marginTop: 20
+                        }]}>Confirm dropoff</Text>
+
+            
+              <TouchableOpacity
+                        onPress={() => {setConDropOff(true)}}
+                        style={[styles.confirm, {
+                            borderColor: '#F0843C',
+                            borderWidth: 1,width: "70%", height: "30%",marginLeft: 35,
+
+                            //marginTop: 15
+                            
+                        }]}
+                    >
+                        <Text style={[styles.textSign, {
+                            color: '#fff'
+                        }]}>Okey</Text>
+                    </TouchableOpacity>
+
+                   </View>
+            
+           // console.log(`${conDropOff}`)
+            
+                    */ }
+
+          </View>
                 
 
                 <View style={styles.containerMiddle}>
@@ -100,6 +161,8 @@ export default function OrderProgress({setOrder_summary,setOrderProgress}) {
                     </View>
                 
                 </View>
+                    
+         
 
 
                 <TouchableOpacity style={styles.start}>

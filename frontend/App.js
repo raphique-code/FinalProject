@@ -49,6 +49,7 @@ import DriverEdit_Profile from "./src/components/Driver_components/driver_editPr
 import DriversCustomer_List from "./src/components/Driver_components/driver_customerList";
 import Driver_OrderDetails from "./src/components/Driver_components/driver_orderDetails";
 import DropOff from "./src/components/maps/drop_off";
+import Cus_AuthDetails from "./src/components/auth/Cus_details";
 
 
 const Stack = createStackNavigator();
@@ -73,8 +74,12 @@ export default function App() {
       //<DriverEdit_Profile/>
 
       // <Driver_First/>
-      //<Split_page/>
+     // <Split_page/>
+
+      //  <Cus_AuthDetails/>
+
        <Route/>
+      //<AuthScreen/>
       }
       </Provider>
 
