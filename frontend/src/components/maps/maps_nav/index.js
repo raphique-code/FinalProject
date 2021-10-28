@@ -182,11 +182,8 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
 
           </MapView>
           
-          
-
-          <View style ={styles.inner_container}>
-              <View style={styles.header}>
-                <TouchableOpacity>
+          <View style={styles.header}>
+                <TouchableOpacity style= {{backgroundColor: "transparent", marginTop:10}} onPress={() => setMaps_nav(false)}>
                     <AntDesign 
                         name="arrowleft" // panah
                         color="black"
@@ -195,6 +192,9 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
                     />
                   </TouchableOpacity>
               </View>
+
+          <View style ={[styles.inner_container]}>
+              
 
               <TouchableOpacity style ={styles.Box_button_top} onPress={() => {setPick_up(true); setMaps_nav(false)}}>
               <Feather

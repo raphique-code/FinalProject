@@ -110,7 +110,7 @@ export default function Drive_AuthDetails({authPage, Drive_setDetailsPage, setDr
                         Already have an account? <TouchableOpacity 
                         
                         onPress={() => {setDrive_login(true); Drive_setDetailsPage(false)}}>
-                        <Text style={styles.small_word}> Sign in </Text>
+                        <Text style={styles.small_word}> Login </Text>
                     </TouchableOpacity>
                     </Text>
                 </View>

@@ -92,16 +92,16 @@ export default function Drive_login({authPage, Drive_setDetailsPage, setDrive_lo
                     <TouchableOpacity  style={styles.start}
                         
                         onPress={() => handleLogin()} >
-                        <Text style={styles.buttonText}>Sign Up</Text>
+                        <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>
 
                 </View>
                 <View>
                     <Text>
-                        Already have an account? <TouchableOpacity 
+                        Don't have an account? <TouchableOpacity 
                         
                         onPress={() => {setDrive_login(false); Drive_setDetailsPage(true)}}>
-                        <Text style={styles.small_word}> Sign in </Text>
+                        <Text style={styles.small_word}> Sign up </Text>
                     </TouchableOpacity>
                     </Text>
                 </View>

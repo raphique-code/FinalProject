@@ -79,10 +79,10 @@ let data ={
                         style= {{paddingTop: 40, paddingBottom: 15, paddingLeft: 70, paddingRight: 15, width: 235}}
                     />
                 </View>
-
+{/*
                 <View style ={[styles.inner_container, {marginTop:15,width: "80%",marginLeft: 50, backgroundColor: "white"}]}>
                     
-          {/*
+          
             conDropOff?
             
 
@@ -118,9 +118,9 @@ let data ={
             
            // console.log(`${conDropOff}`)
             
-                    */ }
+                 
 
-          </View>
+          </View>   */ }
                 
 
                 <View style={styles.containerMiddle}>

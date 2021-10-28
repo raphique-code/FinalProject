@@ -105,7 +105,7 @@ export default function Cus_AuthDetails({authPage, Cus_setDetailsPage, setCus_lo
                        Already have an account? <TouchableOpacity  
                         
                         onPress={() => {setCus_login(true); Cus_setDetailsPage(false)}}>
-                        <Text style={styles.small_word}> Sign in </Text>
+                        <Text style={styles.small_word}> Login </Text>
                     </TouchableOpacity>
                     </Text>
                 </View>

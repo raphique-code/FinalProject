@@ -126,6 +126,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
     const transportPlan = 'm';
   
     OpenMapDirections(startPoint, endPoint, transportPlan).then(res => {
+      console.log("res")
       console.log(res)
     });
   }
@@ -293,7 +294,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                 
 
                 <View>
-                  <TouchableOpacity onPress={() => setConDropOff(true)} style={styles.containerFinish}>
+                  <TouchableOpacity onPress={() => {setConDropOff(true);writeDoc()}} style={styles.containerFinish}>
                     <Text style={styles.buttonText}>Complete Order</Text>
                   </TouchableOpacity>
                 </View>

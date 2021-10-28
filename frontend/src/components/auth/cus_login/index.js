@@ -92,7 +92,7 @@ export default function Cus_login({authPage, Cus_setDetailsPage,setCus_login}){
                     <TouchableOpacity  style={styles.start}
                         
                         onPress={() => handleLogin() }>
-                        <Text style={styles.buttonText}>Sign In</Text>
+                        <Text style={styles.buttonText}>Login</Text>
                     </TouchableOpacity>
 
                 </View>

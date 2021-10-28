@@ -5,7 +5,21 @@ export const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: 'grey',
-      marginTop: 20
+      marginTop: 10
+    },
+
+    header: {
+      flexDirection: 'row',
+      height: 50,
+      width:'100%',
+      backgroundColor: '#F4ECE7',
+      borderBottomWidth: 1,
+      borderColor: '#F4ECE7',
+      position: 'absolute',
+      //elevation: 5,
+      //shadowColor: '#52006A'
+      
+
     },
 
     confirm: {
@@ -37,29 +51,33 @@ export const styles = StyleSheet.create({
     },
     inner_container_one: {
       marginBottom: 0,
-      margin: 580,
-     backgroundColor: 'azure',
+      marginTop: 620,
+     backgroundColor: '#F4ECE7',
     
       position: 'absolute',
-      marginLeft: 10,
+      marginLeft: 12,
       marginRight: 10,
-      borderRadius: 10
+      borderRadius: 10,
+      elevation: 10,
+      shadowColor: '#52006A'
       
     },
 
     inner_container: {
       marginBottom: 10,
-      marginTop: 20,
+      marginTop: 70,
 
-      marginLeft: 12,
+      //marginLeft: 12,
       marginRight: 10,
       position: 'absolute',
-      width: "94%",
-      height: "20%",
+      width: "100%",
+      height: "25%",
       alignContent: "center",
-      borderRadius: 20,
+      borderRadius: 10,
       justifyContent: "space-evenly",
-      backgroundColor: 'azure'
+      backgroundColor: '#F4ECE7',
+      elevation: 10,
+      shadowColor: '#52006A'
       
       
       },
@@ -109,23 +127,26 @@ export const styles = StyleSheet.create({
 
       fontSize : 15,
       fontWeight: 'normal',
-      marginTop: 12,
+      marginTop: 14,
       marginLeft: 10,
       margin: 5,
       marginRight: 10,
+      color: 'grey'
 
 
     },
 
     Box_button_top: {
 
-   
+      
       marginLeft: 10,
-      marginTop: 30,
+      marginTop: 60,
       marginRight: 10,
-      borderRadius: 10,
-      height:"45%",
-      backgroundColor: 'gainsboro',
+      borderRadius: 5,
+      borderWidth: 1,
+      height:"38%",
+      //backgroundColor: 'gainsboro',
+      backgroundColor: '#F4ECE7',
       flexDirection: 'row',
 
     },
@@ -135,11 +156,13 @@ export const styles = StyleSheet.create({
    
       marginLeft: 10,
       marginBottom: 10,
+      borderWidth: 1,
       marginTop: 15,
       marginRight: 10,
-      borderRadius: 10,
-      height:"47%", 
-      backgroundColor: 'gainsboro',
+      borderRadius: 5,
+      height:"45%", 
+      //backgroundColor: 'gainsboro',
+      backgroundColor: '#F4ECE7',
       flexDirection: 'row',
     },
       
