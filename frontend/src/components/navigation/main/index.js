@@ -47,7 +47,7 @@ export default function Route(){
 */
 // was edited
 
-if ( currentUserObj.currentUserType == "customer")
+if ( currentUserObj.currentUserType !== "customer")
         { 
           return(
             <View style={{height:"100%"}}>
@@ -64,7 +64,7 @@ if ( currentUserObj.currentUserType == "customer")
                     //this is just used to show what map functions do
 
                 //<Stack.Screen name="home" component={HomeNav} options={{ headerShown: false }} />
-                    
+                     
                 }
             </Stack.Navigator>
         </NavigationContainer>

@@ -4,7 +4,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'grey',
-    marginTop: 30
+    marginTop: 0
   },
 
   container_SB: {  

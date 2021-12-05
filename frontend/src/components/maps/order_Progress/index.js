@@ -4,9 +4,13 @@ import { TouchableOpacity } from 'react-native';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import FontAwesome from 'react-native-vector-icons/FontAwesome';
 import AntDesign from 'react-native-vector-icons/AntDesign';
-import firebase from '../../navigation/package_details/firebase';
+//import firebase from '../../navigation/package_details/firebase';
+import firebase from 'firebase';
 import styles from './styles';
 
+if(firebase.apps.length == 0){
+    firebase.initializeApp(Constants.manifest.web.config.firebase)
+    }
 export default function OrderProgress({setOrder_summary,setOrderProgress}) {
 
     const ref =  firebase.firestore().collection("driverProfile").doc('driver1');

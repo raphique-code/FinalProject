@@ -7,7 +7,8 @@ import { Marker } from "react-native-maps";
 import MapViewDirections from 'react-native-maps-directions';
 import { getDistance } from "geolib";
 
-import firebase from "../../navigation/package_details/firebase";
+//import firebase from "../../navigation/package_details/firebase";
+import firebase from 'firebase';
 import React from 'react';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import { StyleSheet, Text, View,TextInput, KeyboardAvoidingView, Dimensions } from 'react-native';
@@ -19,6 +20,9 @@ import { styles } from './styles';
 import { Fontisto, Ionicons } from '@expo/vector-icons';
 
 
+if(firebase.apps.length == 0){
+    firebase.initializeApp(Constants.manifest.web.config.firebase)
+    }
 
 export default function DriverEdit_Profile({setDriver_first, setDriverCustomer_list, setDriverEdit_Profile}) {
     const ref =  firebase.firestore().collection("driverProfile");

@@ -9,10 +9,40 @@ import { SliderPicker } from 'react-native-slider-picker';
 import { styles } from './styles';
 import { signOutUser } from '../../../redux/actions';
 import { Feather } from '@expo/vector-icons';
+import firebase from 'firebase';
+
+if(firebase.apps.length == 0){
+    firebase.initializeApp(Constants.manifest.web.config.firebase)
+    }
+  
 
 export default function Driver_First({setSignOut,setDriver_first, setDriverCustomer_list, setDriverEdit_Profile}) {
     
     const [state, setState] = React.useState({value: 1})
+    const ref =  firebase.firestore().collection("driverProfile").doc('driver1');
+
+    const [name, setName] = React.useState('');
+    const [license, setLicense] = React.useState('');
+    const [vtype, setVtype] = React.useState('');
+    const [vcolor, setVcolor] = React.useState('');
+    
+    function getOrder() {//membaca function 1 doc dalam user1, trus push semua data ke array yg namanya items,
+        //to read the object, use querysnapshot.get('object name in firebase (e.g DriverName)')
+         ref.onSnapshot((querySnapshot) => {
+            setName(querySnapshot.get('name'));
+            setLicense(querySnapshot.get('license'));
+            setVtype(querySnapshot.get('vtype'));
+            setVcolor(querySnapshot.get('vcolor'));
+             console.log(name)
+   
+         });
+     }
+   
+   
+     React.useEffect(() => {
+         getOrder();
+     }, []);
+     
 
     return( 
   
@@ -51,16 +81,16 @@ export default function Driver_First({setSignOut,setDriver_first, setDriverCusto
 
                 <View style={styles.containerMiddle}>
                     <Text style={styles.subText2}>Display Name</Text>
-                    <Text style={styles.subText} >Juan</Text>
+                    <Text style={styles.subText} >{name}</Text>
 
                     <Text style={styles.subText2}>License Plate</Text>
-                    <Text style={styles.subText} >12345</Text>
+                    <Text style={styles.subText} >{license}</Text>
 
                     <Text style={styles.subText2}>Vehicle Type</Text>
-                    <Text style={styles.subText} >TOYOTA KIJANG</Text>
+                    <Text style={styles.subText} >{vtype}</Text>
 
                     <Text style={styles.subText2}>Vehicle Color</Text>
-                    <Text style={styles.subText} >PINK</Text>
+                    <Text style={styles.subText} >{vcolor}</Text>
                 </View>
 
 

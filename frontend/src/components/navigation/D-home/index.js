@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import { signOutUser } from '../../../redux/actions';
 //import HomeScreen from '../home';
 //import SavePostScreen from '../../screens/savePost';
-import Maps_nav from '../../maps/maps_nav';
+
 import Maps_control from '../../../screens/map_control';
 import Pick_Up from '../../maps/pick_up';
 

@@ -12,10 +12,14 @@ import AntDesign from 'react-native-vector-icons/AntDesign';
 import { Divider } from 'react-native-elements';
 import { Fontisto, Ionicons } from '@expo/vector-icons';
 import {OpenMapDirections} from 'react-native-navigation-directions';
-import firebase from "../../navigation/package_details/firebase";
+//import firebase from "../../navigation/package_details/firebase";
+import firebase from 'firebase';
 import { styles } from './styles';
 import openMap from 'react-native-open-maps';
 
+if(firebase.apps.length == 0){
+  firebase.initializeApp(Constants.manifest.web.config.firebase)
+  }
 
 //in node modules folder, open react-native-navigation-direction index.js, in line 43, add  || _transportType === 'm'
 // line 47, return 'm'
@@ -30,6 +34,8 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
   const [dropOffLatLang, setDropOffLatLang] = React.useState('')
   const [conDropOff, setConDropOff] = React.useState(false)
   const [conPickUp, setConPickUp] = React.useState(false)
+  const [OTWDropOff, setOTWDropOff] = React.useState(false)
+  const [OTWPickUp, setOTWPickUp] = React.useState(false)
   
   //copy address
 
@@ -60,8 +66,9 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
   let data ={
 
    ConfirmDropOff: conDropOff,
-
-   ConfirmPickOff: conPickUp
+   ConfirmPickOff: conPickUp,
+   OtwPickUp:  OTWPickUp,
+   OtwDropOff:   OTWDropOff
 
   }
 
@@ -77,14 +84,22 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
           setDropOff(querySnapshot.get('DropOffAddrDetails'));
           setPickUpLatLang(querySnapshot.get('pickUpLatLang'));
           setDropOffLatLang(querySnapshot.get('DropOffLatLang'));
-          console.log(dropOffLatLang.longitude)
+          setConDropOff(querySnapshot.get('ConfirmDropOff'));
+          console.log("conDropOff")
+          console.log(conDropOff)
+          console.log("OTWPickUp")
+          console.log(OTWPickUp)
+          console.log("OTWDropOff")
+          console.log(OTWDropOff)
+          console.log("pick up")
+          console.log(pickUp)
+          console.log(" drop off")
+          console.log(dropOff)
+
 
       });
   }
-  const _goToYosemite =()=>{
-    openMap({start: dropOff,
-     end:pickUp});
-  }
+
 
   React.useEffect(() => {
       getOrder();
@@ -277,7 +292,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                 <View style={{flexDirection: 'row'}}>
                   {//<View style={styles.bottomButtonShortLeft}>
 }
-                    <TouchableOpacity onPress={() => { _callPickUp(); setConPickUp(true); writeDoc()}} style={styles.bottomButtonShortLeft}> 
+                    <TouchableOpacity onPress={() => {setOTWPickUp(true); setOTWDropOff(false); writeDoc(); _callPickUp()}} style={styles.bottomButtonShortLeft}> 
                       <Text style={styles.buttonText}>Pick Up</Text>
                     </TouchableOpacity>
                  {//} </View>
@@ -285,7 +300,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                   
                   {//<View style={styles.bottomButtonShortRight}>
 }
-                    <TouchableOpacity onPress={() => { _callDropOff(); setConDropOff(true); writeDoc()}} style={styles.bottomButtonShortRight}>
+                    <TouchableOpacity onPress={() => {  setOTWDropOff(true); setOTWPickUp(false); writeDoc();  _callDropOff()}} style={styles.bottomButtonShortRight}>
                     <Text style={styles.buttonText}>Drop Off</Text>
                     </TouchableOpacity>
                  {// </View>
@@ -294,7 +309,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                 
 
                 <View>
-                  <TouchableOpacity onPress={() => {setConDropOff(true);writeDoc();setDriver_first(true);  setDriver_OrderDetails(false)}} style={styles.containerFinish}>
+                  <TouchableOpacity onPress={() => {setConDropOff(true);setOTWDropOff(false);  setOTWPickUp(false); setDriver_first(true);  setDriver_OrderDetails(false); writeDoc();}} style={styles.containerFinish}>
                     <Text style={styles.buttonText}>Complete Order</Text>
                   </TouchableOpacity>
                 </View>

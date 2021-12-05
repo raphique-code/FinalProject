@@ -6,6 +6,13 @@ import { Marker } from "react-native-maps";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import MapViewDirections from 'react-native-maps-directions';
 import { getDistance } from "geolib";
+import firebase from 'firebase';
+
+if(firebase.apps.length == 0){
+  firebase.initializeApp(Constants.manifest.web.config.firebase)
+  }
+
+
 /*
 
 components needed:

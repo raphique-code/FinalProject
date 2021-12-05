@@ -67,16 +67,45 @@ export default function DriversCustomer_List({ setDriver_first, setDriverEdit_Pr
                     <Text style={styles.subText2}> Service Fee</Text>
                     <Text style={styles.insubText}> NTD {ServiceFee}</Text>
                 </View>
-              </TouchableOpacity>
+              </TouchableOpacity>          
+          </View> 
+
+          <View  style={styles.container_SB}>
+              <TouchableOpacity style={styles.confirm}  onPress= {() => {setDriver_OrderDetails (true); setDriverCustomer_list(false)}}>
+                <AntDesign 
+                        name="user" // logo user
+                        color="black"
+                        size={60}
+                        style= {{paddingTop: 40, paddingBottom: 15, paddingLeft: 15, paddingRight: 5,
+                                    width: 75}}
+                />
+                <View>
+                    <Text style={styles.subText2}> Driver &ensp;  
+                    <AntDesign 
+                    name="arrowright" // panah
+                    color="black"
+                    size={15}
+                    style= {{paddingBottom: 25}}
+                    />
+                    &ensp; Pick Up </Text>
+                    <Text style={styles.insubText}> {PickUp} km</Text>
 
 
+                    <Text style={styles.subText2}> Pick Up &ensp;
+                    <AntDesign 
+                    name="arrowright" // panah
+                    color="black"
+                    size={15}
+                    style= {{paddingBottom: 25}}
+                    />
+                    &ensp; Drop Off</Text>
+                    <Text style={styles.insubText}> {DropOff} km</Text>
 
 
-              
-              
-             
-            
-            
+                    <Text style={styles.subText2}> Service Fee</Text>
+                    <Text style={styles.insubText}> NTD {ServiceFee}</Text>
+                </View>
+              </TouchableOpacity>          
           </View> 
        </View>
 )};

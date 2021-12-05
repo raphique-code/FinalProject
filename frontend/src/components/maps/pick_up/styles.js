@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'grey',
-    marginTop: 40
+    marginTop: 0
   
   
   },
@@ -93,7 +93,7 @@ const styles = StyleSheet.create({
   inputAddr: {
     backgroundColor: '#F4ECE7',
     flexDirection: 'row',
-    marginTop: 40
+    marginTop: 0
 
   },
 

@@ -6,9 +6,12 @@ import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplet
 import AntDesign from 'react-native-vector-icons/AntDesign'
 import { TouchableOpacity } from 'react-native-gesture-handler';
 //import styles from '../../../screens/auth/styles';
-import firebase from "../../navigation/package_details/firebase"
+//import firebase from "../../navigation/package_details/firebase"
+import firebase from 'firebase';
 import styles from "./styles"
-
+if(firebase.apps.length == 0){
+  firebase.initializeApp(Constants.manifest.web.config.firebase)
+  }
 
 export default function Pick_Up({setPick_up,setDrop_off,setMaps_nav}) {
 
@@ -46,7 +49,7 @@ let data ={
 }
 
 function writeDoc () {
-  ref.doc('order1').update(data);
+  ref2.doc('order1').update(data);
 }
 
     return( 

@@ -6,7 +6,7 @@ import AuthMenu from '../../components/auth/menu';
 import Cus_AuthDetails from '../../components/auth/Cus_details';
 import Drive_AuthDetails from '../../components/auth/Drive_details';
 
-import Maps_nav from '../../components/maps/maps_nav';
+
 import AuthMen from '../../components/auth/test';
 import PackageDetails from '../../components/navigation/package_details';
 import Cus_login from '../../components/auth/cus_login';
