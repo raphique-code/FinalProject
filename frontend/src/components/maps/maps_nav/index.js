@@ -1,5 +1,6 @@
 //import constants from "jest-haste-map/build/constants";
 import { StatusBar } from "expo-status-bar";
+import { useEffect } from 'react'
 import { ActivityIndicator } from 'react-native';
 import { useFocusEffect } from '@react-navigation/native';
 import { NavigationContainer, StackActions } from '@react-navigation/native';
@@ -17,12 +18,14 @@ import { getDistance } from "geolib";
 import { useState } from "react";
 import { styles } from "./styles";
 import { Feather, AntDesign } from "@expo/vector-icons";
-
+import { useDispatch, useSelector } from 'react-redux'
 import { TouchableOpacity } from "react-native-gesture-handler";
 import firebase from "../../navigation/package_details/firebase"
 //import styles from "./styles";
+// when the driver pick the costumer the status bar will move
+// put status in Driver details
 
-export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_summary}) {
+export default function Maps_nav({setTime_temp,setDuration_temp,setMaps_nav, setPick_up, setDrop_off,setOrder_summary}) {
     
   const [searchLoc, setSearchLoc] = React.useState({latitude: 24.989856, longitude: 121.313283, latitudeDelta: 0.0922, longitudeDelta: 0.0421});
   const [searchDes, setSearchDes] = React.useState({latitude: 24.990086, longitude: 121.344370, latitudeDelta: 0.0922, longitudeDelta: 0.0421});
@@ -33,7 +36,16 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
   const [dropOff, setDropOff] = React.useState('');
   const [pickUpLatLang, setPickUpLatLang] = React.useState('');
   const [dropOffLatLang, setDropOffLatLang] = React.useState('');
-  const [conDropOff, setConDropOff] = React.useState('');
+  const [otwPickUp, setOtwPickUp] = React.useState(false);
+  const [otwDropOff, setOtwDropOff] = React.useState(false);
+  const [conDropOff, setConDropOff] = React.useState(false);
+  const [dur_temp, setDur_temp] = React.useState('');
+  const dispatch = useDispatch();
+
+  const timer = useSelector(state => state.time)
+   
+  //console.log(timer)
+
 
   this.state = {
     latitude:0,
@@ -52,6 +64,8 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
          setConDropOff(querySnapshot.get('ConfirmDropOff'));
          setPickUpLatLang(querySnapshot.get('pickUpLatLang'));
          setDropOffLatLang(querySnapshot.get('DropOffLatLang'));
+         setOtwPickUp(querySnapshot.get('OtwPickUp'));
+         setOtwDropOff(querySnapshot.get('OtwDropOff'));
 
          console.log("DropOff")
          console.log(dropOff)
@@ -65,12 +79,42 @@ export default function Maps_nav({setMaps_nav, setPick_up, setDrop_off,setOrder_
 
  React.useEffect(() => {
   getOrder();
+  //writeDoc();
  // return () => {
 //    cleanup
 //}
-console.log("in useeffect")
+//console.log("in useeffect")
   
 }, []);
+
+let data = {
+  OtwPickUp: otwPickUp,
+  OtwDropOff: otwDropOff,
+  ConfirmDropOff: conDropOff
+
+}
+
+function writeDoc () {
+  ref.update(data);
+  console.log(data)
+}
+
+function GetDuration () {
+  
+  console.log(dur_temp)
+ 
+ }
+
+function writeDoc_pick () {
+  console.log(data)
+  console.log("after setOtw")
+  setOtwPickUp(false);
+
+  console.log(data)
+  
+  ref.update(data);
+  console.log("PickUp")
+}
 
   React.useEffect(() => {
     Location.installWebGeolocationPolyfill()
@@ -144,8 +188,8 @@ console.log("in useeffect")
 
             <Marker
               coordinate={{
-                latitude: pickUpLatLang.latitude ? pickUpLatLang.latitude:0,
-                longitude: pickUpLatLang.longitude? pickUpLatLang.longitude:0
+                latitude: dropOffLatLang.latitude ? dropOffLatLang.latitude:0,
+                longitude: dropOffLatLang.longitude? dropOffLatLang.longitude:0
               }}
               
             >
@@ -169,6 +213,9 @@ console.log("in useeffect")
               console.log(`Distance: ${result.distance} km`)
               console.log(`Duration: ${result.duration} min.`)
               setTemp(Math.ceil(result.duration))
+
+              //setDuration_temp(Math.ceil(result.duration))
+              
 
             }}
 
@@ -224,20 +271,19 @@ console.log("in useeffect")
           <View style ={[styles.inner_container_two,{marginTop:690}]}>
 
           <TouchableOpacity
-                        onPress={() => {setOrder_summary(true); setMaps_nav(false)}}
+                        onPress={() => {setOrder_summary(true); setMaps_nav(false); setDur_temp(temp); GetDuration()}}
                         style={[styles.confirm, {
                             borderColor: '#F0843C',
-                            borderWidth: 1,
+                            borderWidth: 1,//otwPickUp ==
                             //marginTop: 15
                         }]}
                     >
                         <Text style={[styles.textSign, {
                             color: '#fff'
                         }]}>Confirm</Text>
-                    </TouchableOpacity>
+                    </TouchableOpacity> 
           </View>
-        
-        
+
 
           <View style ={styles.inner_container_one}>
 
@@ -249,12 +295,7 @@ console.log("in useeffect")
               {temp} min.
               </Text>
              
-            </View>
-            
-
-                  
-          
-
+            </View>  
    
           </View>
           );

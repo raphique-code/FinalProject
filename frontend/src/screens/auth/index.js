@@ -7,7 +7,7 @@ import Cus_AuthDetails from '../../components/auth/Cus_details';
 import Drive_AuthDetails from '../../components/auth/Drive_details';
 
 
-import AuthMen from '../../components/auth/test';
+//import AuthMen from '../../components/auth/test';
 import PackageDetails from '../../components/navigation/package_details';
 import Cus_login from '../../components/auth/cus_login';
 import Drive_login from '../../components/auth/Drive_login';

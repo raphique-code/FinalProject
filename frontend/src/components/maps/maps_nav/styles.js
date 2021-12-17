@@ -63,6 +63,21 @@ export const styles = StyleSheet.create({
       
     },
 
+    inner_container_one_half: {
+      marginBottom: 0,
+      marginTop: 550,
+      height: 50,
+     backgroundColor: '#32cd32',
+    
+      position: 'absolute',
+      marginLeft: 12,
+      marginRight: 10,
+      borderRadius: 10,
+      elevation: 10,
+      shadowColor: '#52006A'
+      
+    },
+
     inner_container: {
       marginBottom: 10,
       marginTop: 70,

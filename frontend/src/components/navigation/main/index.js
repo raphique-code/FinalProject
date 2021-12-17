@@ -26,6 +26,7 @@ export default function Route(){
 
     const currentUserObj = useSelector(state => state.auth)
     const currentUserObj_2 = useSelector(state => state.type)
+   
     console.log(currentUserObj)
     console.log(currentUserObj_2)
 

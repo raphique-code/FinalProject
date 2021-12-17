@@ -43,6 +43,9 @@ export default function HomeNav(){
     const [Drive_detailsPage, Drive_setDetailsPage] = useState(false);
     const [order_summary, setOrder_summary] = useState (false);
     const [orderProgress, setOrderProgress]= useState (false);
+    const [time_temp, setTime_temp] = useState ('');
+    const [duration_temp, setDuration_temp] = useState ('');
+
     
     return(
         <View style = {{height: "100%"}}>
@@ -51,7 +54,7 @@ export default function HomeNav(){
             
             maps_nav?
 
-            <Maps_nav setMaps_nav = {setMaps_nav} setPick_up={setPick_up} setDrop_off={setDrop_off} setOrder_summary={setOrder_summary}/> 
+            <Maps_nav setTime_temp={setTime_temp} setDuration={setDuration_temp} setMaps_nav = {setMaps_nav} setPick_up={setPick_up} setDrop_off={setDrop_off} setOrder_summary={setOrder_summary}/> 
 
             :
             signOut?
@@ -76,7 +79,7 @@ export default function HomeNav(){
             :
             orderProgress?
 
-            <OrderProgress setMaps_nav = {setMaps_nav} setOrder_summary= {setOrder_summary} setOrderProgress={setOrderProgress}/>
+            <OrderProgress duration_temp = {duration_temp} setMaps_nav = {setMaps_nav} setOrder_summary= {setOrder_summary} setOrderProgress={setOrderProgress}/>
 
             :
  
