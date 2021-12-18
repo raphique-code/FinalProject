@@ -5,7 +5,7 @@ import * as Location from 'expo-location';
 import { Marker } from "react-native-maps";
 import MapViewDirections from 'react-native-maps-directions';
 import { getDistance } from "geolib";
-
+import firebase from '../../navigation/package_details/firebase'
 
 import React from 'react';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
@@ -21,10 +21,38 @@ export default function OrderSummary({setMaps_nav, setOrder_summary,setOrderProg
 
     const [selectedValue, setSelectedValue] = React.useState("Payment Option");
     const basePrice = 10;
-    const [distance, setDistance] = React.useState(8);
-    const rate = (basePrice * distance);
-    const box = 60;
-    const total = (rate + box);
+    //const [distance, setDistance] = React.useState(8);
+    //const rate = (basePrice * temp);
+    //const box = 60;
+    
+    const[boxSize, setBoxSize]= React.useState(0)
+    const[boxPrice, setBoxPrice]= React.useState(0)
+    const [pickUpLatLang, setPickUpLatLang] = React.useState('');
+    const [dropOffLatLang, setDropOffLatLang] = React.useState('');
+    const[temp, setTemp] = React.useState(0);
+    const rate = (basePrice * temp);
+    const total = (rate + boxPrice);
+
+   
+    const ref1 =  firebase.firestore().collection("order").doc('order1');
+      //to read the object, use querysnapshot.get('object name in firebase (e.g DriverName)')
+
+    function getOrder() {  
+     ref1.onSnapshot((querySnapshot) => {
+       setPickUpLatLang(querySnapshot.get('pickUpLatLang'));
+       setDropOffLatLang(querySnapshot.get('DropOffLatLang'));
+       setBoxPrice(querySnapshot.get('BoxPrice'))
+
+       console.log("order summary")
+      // console.log(pickUpLatLang)
+    });
+
+    }
+
+    
+    React.useEffect(() => {
+        getOrder();
+    }, []);
 
 
     return( 
@@ -39,6 +67,34 @@ export default function OrderSummary({setMaps_nav, setOrder_summary,setOrderProg
                   />
               </TouchableOpacity>
             <Text style={[styles.orderDetails, {marginTop: 6}]}>Order Summary</Text>
+
+            <MapView
+            provider={PROVIDER_GOOGLE}
+          >
+          <MapViewDirections
+            lineDashPattern={[0]}
+            origin={pickUpLatLang}
+            destination={dropOffLatLang}
+            apikey={"AIzaSyCfTyHPV_ZFkfogI2IXsFhMefmdZ4WSjms"}
+            strokeWidth={5}
+            strokeColor= 'orange'  //"mediumseagreen"
+            mode='DRIVING'
+
+            onReady={result => {
+              console.log(`Distance: ${result.distance} km`)
+              console.log(`Duration: ${result.duration} min.`)
+              setTemp(Math.ceil(result.duration))
+
+              //setDuration_temp(Math.ceil(result.duration))
+
+            }}
+
+            onError={(errorMessage) => {
+               console.log('GOT AN ERROR');
+            }}
+          />
+
+          </MapView>
           </View>
 
 
@@ -57,10 +113,10 @@ export default function OrderSummary({setMaps_nav, setOrder_summary,setOrderProg
 
                     <View style={styles.containerRight}>
                         <Text numberOfLines={1} style={styles.subText} >NTD {basePrice} / Km</Text>
-                        <Text numberOfLines={1} style={styles.subText} >{distance}Km</Text>
+                        <Text numberOfLines={1} style={styles.subText} >{temp}Km</Text>
                         <Divider orientation="vertical" width={50} style={{marginTop: 9.5}}/>
                         <Text numberOfLines={1} style={[styles.subText, {fontWeight: 'bold'}]} >NTD {rate}</Text>
-                        <Text numberOfLines={1} style={styles.subText} >NTD {box}</Text>
+                        <Text numberOfLines={1} style={styles.subText} >NTD {boxPrice}</Text>
                         <Divider orientation="vertical" width={50} style={{marginTop: 10}}/>
                         <Text numberOfLines={1} style={[styles.subText, {fontWeight: 'bold'}]} >NTD {total}</Text>
                     </View>

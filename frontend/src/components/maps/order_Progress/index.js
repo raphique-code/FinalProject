@@ -71,7 +71,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
         console.log(dropOff)
         
         console.log("PickUp")
-        console.log(  pickUpLatLang)
+        console.log( pickUpLatLang)
         
 
      });
@@ -88,6 +88,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
     let data ={
         ConfirmDropOff: conDropOff
     }
+
     function writeDoc () {
        ref2.doc('order1').update(data);
       }
@@ -176,12 +177,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
 
                 <View style={styles.containerMiddle2}>
                     <View style={styles.containerStatus}>
-                        <View style={styles.containerLeft}>
-
-                            
-                            <Text style={styles.subText2}>Est. Time to Pick Up</Text>
-                            <Text style={styles.subText} >{duruation_temp} min</Text>
-                        </View>
+                       
 
                         <View style={styles.containerRight}>
                             

@@ -11,11 +11,18 @@ import styles from "./styles"
 import { useDispatch, useSelector } from 'react-redux'
 import { signOutUser } from '../../../redux/actions';
 
+
 export default function PackageDetails({setPackage_detail, setSignOut,  setMaps_nav}) {
+
   const ref2 =  firebase.firestore().collection("order");
-  const[boxSize, setBoxSize]= React.useState(null)
-  const[boxPrice, setBoxPrice]= React.useState(null)
+
+  const[boxSize, setBoxSize]= React.useState(0)
+  const[boxPrice, setBoxPrice]= React.useState(0)
+  const[message,setMessage]=React.useState(false)
   const dispatch = useDispatch()
+
+  
+  
 
   let data = {
     BoxSize: boxSize,
@@ -24,6 +31,7 @@ export default function PackageDetails({setPackage_detail, setSignOut,  setMaps_
   
   function writeDoc () {
     ref2.doc('order1').update(data);
+    console.log('writing ..............')
   }
   //onPress={() => setPackage_detail(false)} 
 
@@ -46,8 +54,35 @@ return(
             <Text style={[styles.subText, {marginTop: 10}]}> Package Details </Text>
           </View>
 
+                      
+            {message?
+
+            <View>
+              
+              <TouchableOpacity
+                      onPress = {() => {writeDoc(); setPackage_detail(false); setMaps_nav(true)}}
+                      style={[styles.confirm, {
+                          borderColor: '#F0843C',
+                          borderWidth: 1,
+                          marginTop: 15
+                      }]}
+                  >
+                      <Text style={[styles.textSign, {
+                          color: '#fff'
+                      }]}>Confirm</Text>
+                  </TouchableOpacity>
+
+
+            </View>
+            :
+            null
+
+            }
+
+
            <View  style={styles.container_SB}>
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Small Box"); writeDoc(); setBoxPrice(60); setPackage_detail(false);  setMaps_nav(true)}}>
+
+              <TouchableOpacity style={styles.confirm} onPress={() => { setBoxSize("Small Box"); setBoxPrice(60); writeDoc(); setMessage(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -64,7 +99,7 @@ return(
 
 
 
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Medium Box"); writeDoc(); setBoxPrice(75);setPackage_detail(false); setMaps_nav(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Medium Box"); writeDoc(); setBoxPrice(75);setMessage(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -80,7 +115,7 @@ return(
               </TouchableOpacity>
 
 
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Large Box"); writeDoc(); setBoxPrice(100); setPackage_detail(false);  setMaps_nav(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Large Box"); writeDoc(); setBoxPrice(100); setMessage(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -96,7 +131,7 @@ return(
               </TouchableOpacity>
               
               
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Extra Large Box"); writeDoc();setBoxPrice(130); setPackage_detail(false);  setMaps_nav(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Extra Large Box"); writeDoc();setBoxPrice(130); setMessage(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -109,6 +144,7 @@ return(
                     <Text style={styles.boxDimension}>Max. weight: 18 kg</Text>
                     <Text style={styles.boxDimension}>40.16 cm x 32.86 cm x 25.88 cm</Text>
                 </View>
+
               </TouchableOpacity>
             
             
