@@ -1,5 +1,3 @@
-//page for driver to edit the details that the customer can see and their profile
-
 import MapView, { Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 
 import * as Location from 'expo-location';
@@ -7,8 +5,7 @@ import { Marker } from "react-native-maps";
 import MapViewDirections from 'react-native-maps-directions';
 import { getDistance } from "geolib";
 
-//import firebase from "../../navigation/package_details/firebase";
-import firebase from 'firebase';
+import firebase from "../../navigation/package_details/firebase";
 import React from 'react';
 import { ActivityIndicator, TouchableOpacity } from 'react-native';
 import { StyleSheet, Text, View,TextInput, KeyboardAvoidingView, Dimensions } from 'react-native';
@@ -20,9 +17,6 @@ import { styles } from './styles';
 import { Fontisto, Ionicons } from '@expo/vector-icons';
 
 
-if(firebase.apps.length == 0){
-    firebase.initializeApp(Constants.manifest.web.config.firebase)
-    }
 
 export default function DriverEdit_Profile({setDriver_first, setDriverCustomer_list, setDriverEdit_Profile}) {
     const ref =  firebase.firestore().collection("driverProfile");
@@ -30,13 +24,15 @@ export default function DriverEdit_Profile({setDriver_first, setDriverCustomer_l
     const [license, onChangeLicense] = React.useState(null);
     const [vtype, onChangeVtype] = React.useState(null);
     const [vcolor, onChangeVcolor] = React.useState(null);
+    const [phone, onChangePhone] = React.useState(null);
     
 
     let data = {
       name: name,
       license: license,
       vcolor: vcolor,
-      vtype : vtype
+      vtype : vtype,
+      phone:phone
 
     }
 
@@ -98,11 +94,21 @@ export default function DriverEdit_Profile({setDriver_first, setDriverCustomer_l
                         style={styles.input}
                         onChangeText={onChangeVcolor}
                         value={vcolor}
-                        placeholder='e.g Black's
+                        placeholder='e.g Black'
                     />
                 </View>
 
-                <View style={{height: '35%', justifyContent: 'flex-end'}}>
+                <View style={styles.containerMiddle}>
+                    <Text style={styles.subText2}>Contact Number</Text>
+                    <TextInput
+                        style={styles.input}
+                        onChangeText={onChangePhone}
+                        value={phone}
+                        placeholder='e.g 0976******'
+                    />
+                </View>
+
+                <View style={{height: '20%', justifyContent: 'flex-end'}}>
                   <TouchableOpacity onPress= {() => {writeDoc(); setDriver_first(true); setDriverEdit_Profile(false)}} 
                     style={styles.containerSave}>
                     <Text style={styles.buttonText}>Save</Text>
@@ -114,6 +120,5 @@ export default function DriverEdit_Profile({setDriver_first, setDriverCustomer_l
        
         </View>
     )};
-
 
 

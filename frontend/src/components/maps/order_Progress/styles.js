@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
         alignItems: 'flex-start',
         justifyContent: 'flex-start',
         //flexDirection: 'row',
-        marginTop: 20
+        marginTop: 10
     },
 
     containerBottom: {

@@ -68,9 +68,9 @@ export default function DriversCustomer_List({ setDriver_first, setDriverEdit_Pr
                     <Text style={styles.insubText}> NTD {ServiceFee}</Text>
                 </View>
               </TouchableOpacity>          
-          </View> 
+         
 
-          <View  style={styles.container_SB}>
+        
               <TouchableOpacity style={styles.confirm}  onPress= {() => {setDriver_OrderDetails (true); setDriverCustomer_list(false)}}>
                 <AntDesign 
                         name="user" // logo user

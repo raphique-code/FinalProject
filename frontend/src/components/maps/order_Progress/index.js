@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import MapView, { Callout, PROVIDER_GOOGLE } from 'react-native-maps';
-import { TouchableOpacity } from 'react-native';
+import { TouchableOpacity,Linking } from 'react-native';
 import * as Location from 'expo-location';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import { Marker } from "react-native-maps";
@@ -39,6 +39,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
     const [userPos, setUserPos] = React.useState({lat: null, long: null});
     const dispatch = useDispatch();
     const[temp, setTemp] = React.useState('');
+    const [phone, setPhone] = React.useState('');
 
     
     
@@ -52,6 +53,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
          setLPlate(querySnapshot.get('license'));
          setVType(querySnapshot.get('vtype'));
          setVColor(querySnapshot.get('vcolor'));
+         setPhone(querySnapshot.get('phone'));
         // setConDropOff(querySnapshot.get('ConfirmDropOff'));
          
 
@@ -66,12 +68,13 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
         setDropOffLatLang(querySnapshot.get('DropOffLatLang'));
         setOtwPickUp(querySnapshot.get('OtwPickUp'));
         setOtwDropOff(querySnapshot.get('OtwDropOff'));
+       
 
         console.log("DropOff")
         console.log(dropOff)
         
         console.log("PickUp")
-        console.log( pickUpLatLang)
+        console.log(  pickUpLatLang)
         
 
      });
@@ -88,7 +91,6 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
     let data ={
         ConfirmDropOff: conDropOff
     }
-
     function writeDoc () {
        ref2.doc('order1').update(data);
       }
@@ -220,7 +222,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
          
 
 
-                <TouchableOpacity style={styles.start}>
+                <TouchableOpacity style={styles.start} onPress= {() => {Linking.openURL(`tel:${phone}`)}}>
                     
                     <Text style={styles.buttonText}>Contact Driver</Text> 
                 </TouchableOpacity>

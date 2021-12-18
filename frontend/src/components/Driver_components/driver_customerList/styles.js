@@ -51,7 +51,7 @@ export const styles = StyleSheet.create({
       borderRadius: 10,
       backgroundColor:'#F4ECE7',
       flexDirection: 'row',
-      marginBottom: 20,
+      marginBottom: 12,
       elevation: 10,
       shadowColor: '#52006A'
     },

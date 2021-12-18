@@ -47,22 +47,22 @@ export default function Driver_First({setSignOut,setDriver_first, setDriverCusto
     return( 
   
         <View style={styles.container}>
-            <View  style={styles.container_SB}>
-                
 
-                <View style={styles.containerTop}>
-                <View style={styles.header}>
+        <View style={styles.header}>
                     <TouchableOpacity style={{marginTop: 1}} onPress={() => {setSignOut(true); setDriver_first(false)}}>
                         <Feather
                             name="log-out" // panah
                             color="black"
                             size={30}
-                            style= {{paddingTop: 10, paddingBottom:10, paddingRight: 80, paddingLeft: 5}}
+                            style= {{paddingTop: 20, paddingBottom:10, paddingRight: 80, paddingLeft: 5}}
                             
                         />
                     </TouchableOpacity>
                    
                 </View>
+            <View  style={styles.container_SB}>
+                <View style={styles.containerTop}>
+                
                     <FontAwesome
                         name="user-circle-o" // driver icon + edit profile button
                         color="black"

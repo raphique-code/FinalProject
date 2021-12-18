@@ -6,7 +6,7 @@ import { Marker } from "react-native-maps";
 import MapViewDirections from 'react-native-maps-directions';
 import React from 'react';
 import { TouchableOpacity } from 'react-native';
-import { StyleSheet, Text, View,  Clipboard, ToastAndroid } from 'react-native';
+import { StyleSheet, Text, View,  Clipboard, ToastAndroid,Modal, Pressable } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import { Divider } from 'react-native-elements';
@@ -15,6 +15,7 @@ import {OpenMapDirections} from 'react-native-navigation-directions';
 //import firebase from "../../navigation/package_details/firebase";
 import firebase from 'firebase';
 import { styles } from './styles';
+import { useState } from 'react';
 import openMap from 'react-native-open-maps';
 
 if(firebase.apps.length == 0){
@@ -36,6 +37,13 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
   const [conPickUp, setConPickUp] = React.useState(false)
   const [OTWDropOff, setOTWDropOff] = React.useState(false)
   const [OTWPickUp, setOTWPickUp] = React.useState(false)
+  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible1, setModalVisible1] = useState(false);
+  const[temp, setTemp] = React.useState('');
+  const[temp2, setTemp2] = React.useState('');
+
+
+
   
   //copy address
 
@@ -149,6 +157,36 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
     return( 
   
         <View style={styles.container}>
+          
+          <MapView
+            provider={PROVIDER_GOOGLE}
+          >
+          <MapViewDirections
+            lineDashPattern={[0]}
+            origin={pickUpLatLang}
+            destination={dropOffLatLang}
+            apikey={"AIzaSyCfTyHPV_ZFkfogI2IXsFhMefmdZ4WSjms"}
+            strokeWidth={5}
+            strokeColor= 'orange'  //"mediumseagreen"
+            mode='DRIVING'
+
+            onReady={result => {
+              console.log(`Distance: ${result.distance} km`)
+              console.log(`Duration: ${result.duration} min.`)
+              setTemp(Math.ceil(result.duration))
+              setTemp2(Math.ceil(result.distance))
+
+
+              //setDuration_temp(Math.ceil(result.duration))
+
+            }}
+
+            onError={(errorMessage) => {
+               console.log('GOT AN ERROR');
+            }}
+          />
+
+          </MapView>
             <View style={styles.header}>
               <TouchableOpacity onPress={() => {setDriverCustomer_list(true);  setDriver_OrderDetails(false)}}>
                   <AntDesign 
@@ -267,7 +305,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                       size={20}
                       //style= {{paddingTop: , paddingBottom: 20, paddingRight: 58, paddingLeft: 20}}
                     />
-                    <Text style={styles.kmMin}> 7 km</Text>
+                    <Text style={styles.kmMin}> {temp2} km </Text>
                   </View>
 
 
@@ -278,7 +316,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                       size={20}
                       //style= {{paddingTop: , paddingBottom: 20, paddingRight: 58, paddingLeft: 20}}
                     /> 
-                    <Text style={styles.kmMin}> 25 min</Text>
+                    <Text style={styles.kmMin}> {temp} min</Text>
                   </View>
                   
   
@@ -292,7 +330,51 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                 <View style={{flexDirection: 'row'}}>
                   {//<View style={styles.bottomButtonShortLeft}>
 }
-                    <TouchableOpacity onPress={() => {setOTWPickUp(true); setOTWDropOff(false); writeDoc(); _callPickUp()}} style={styles.bottomButtonShortLeft}> 
+                       <Modal
+                          animationType="slide"
+                          transparent={true}
+                          visible={modalVisible}
+                          onRequestClose={() => {
+                            Alert.alert("Modal has been closed.");
+                            setModalVisible(!modalVisible);
+                          }}
+                        >
+                          <View style={styles.centeredView}>
+                            <View style={styles.modalView}>
+                              <Text style={styles.modalText}>Opening google maps!</Text>
+                              <Pressable
+                                style={[styles.button, styles.buttonClose]}
+                                onPress={() => {setModalVisible(!modalVisible);_callPickUp();writeDoc();}}
+                              >
+                                <Text style={styles.buttonText}>Confirm</Text>
+                              </Pressable>
+                            </View>
+                          </View>
+                        </Modal>
+
+                        <Modal
+                          animationType="slide"
+                          transparent={true}
+                          visible={modalVisible1}
+                          onRequestClose={() => {
+                            Alert.alert("Modal has been closed.");
+                            setModalVisible(!modalVisible1);
+                          }}
+                        >
+                          <View style={styles.centeredView}>
+                            <View style={styles.modalView}>
+                              <Text style={styles.modalText}>Opening google maps!</Text>
+                              <Pressable
+                                style={[styles.button, styles.buttonClose]}
+                                onPress={() => {setModalVisible1(!modalVisible1);_callDropOff();writeDoc();}}
+                              >
+                                <Text style={styles.buttonText}>Confirm</Text>
+                              </Pressable>
+                            </View>
+                          </View>
+                        </Modal>
+
+                    <TouchableOpacity onPress={() => {setOTWPickUp(true); setOTWDropOff(false); writeDoc(); setModalVisible(true)}} style={styles.bottomButtonShortLeft}> 
                       <Text style={styles.buttonText}>Pick Up</Text>
                     </TouchableOpacity>
                  {//} </View>
@@ -300,7 +382,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                   
                   {//<View style={styles.bottomButtonShortRight}>
 }
-                    <TouchableOpacity onPress={() => {  setOTWDropOff(true); setOTWPickUp(false); writeDoc();  _callDropOff()}} style={styles.bottomButtonShortRight}>
+                    <TouchableOpacity onPress={() => {  setOTWDropOff(true); setOTWPickUp(false); writeDoc();  setModalVisible1(true)}} style={styles.bottomButtonShortRight}>
                     <Text style={styles.buttonText}>Drop Off</Text>
                     </TouchableOpacity>
                  {// </View>

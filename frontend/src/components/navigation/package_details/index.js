@@ -1,15 +1,16 @@
 import React from 'react';
 
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { StyleSheet, Text, View, Dimensions, Modal, Pressable } from 'react-native';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import Octicons from 'react-native-vector-icons/Octicons';
 
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import firebase from "./firebase"
+import firebase from "./firebase" 
 import { Feather } from '@expo/vector-icons';
 import styles from "./styles"
 import { useDispatch, useSelector } from 'react-redux'
 import { signOutUser } from '../../../redux/actions';
+import { useState } from 'react';
 
 
 export default function PackageDetails({setPackage_detail, setSignOut,  setMaps_nav}) {
@@ -19,6 +20,7 @@ export default function PackageDetails({setPackage_detail, setSignOut,  setMaps_
   const[boxSize, setBoxSize]= React.useState(0)
   const[boxPrice, setBoxPrice]= React.useState(0)
   const[message,setMessage]=React.useState(false)
+  const [modalVisible, setModalVisible] = useState(false);
   const dispatch = useDispatch()
 
   
@@ -55,34 +57,33 @@ return(
           </View>
 
                       
-            {message?
-
-            <View>
-              
-              <TouchableOpacity
-                      onPress = {() => {writeDoc(); setPackage_detail(false); setMaps_nav(true)}}
-                      style={[styles.confirm, {
-                          borderColor: '#F0843C',
-                          borderWidth: 1,
-                          marginTop: 15
-                      }]}
-                  >
-                      <Text style={[styles.textSign, {
-                          color: '#fff'
-                      }]}>Confirm</Text>
-                  </TouchableOpacity>
-
-
-            </View>
-            :
-            null
-
-            }
+            
 
 
            <View  style={styles.container_SB}>
+           <Modal
+                          animationType="slide"
+                          transparent={true}
+                          visible={modalVisible}
+                          onRequestClose={() => {
+                            Alert.alert("Modal has been closed.");
+                            setModalVisible(!modalVisible);
+                          }}
+                        >
+                          <View style={styles.centeredView}>
+                            <View style={styles.modalView}>
+                              <Text style={styles.modalText}>Confirm box size!</Text>
+                              <Pressable
+                                style={[styles.button, styles.buttonClose]}
+                                onPress={() => {setModalVisible(!modalVisible);setPackage_detail(false); setMaps_nav(true);writeDoc();}}
+                              >
+                                <Text style={styles.buttonText}>   Okey   </Text>
+                              </Pressable>
+                            </View>
+                          </View>
+                        </Modal>
 
-              <TouchableOpacity style={styles.confirm} onPress={() => { setBoxSize("Small Box"); setBoxPrice(60); writeDoc(); setMessage(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => { setBoxSize("Small Box"); setBoxPrice(60); writeDoc();  setModalVisible(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -97,9 +98,8 @@ return(
                 </View>
               </TouchableOpacity>
 
-
-
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Medium Box"); writeDoc(); setBoxPrice(75);setMessage(true)}}>
+                
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Medium Box"); writeDoc(); setBoxPrice(75); setModalVisible(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -115,7 +115,7 @@ return(
               </TouchableOpacity>
 
 
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Large Box"); writeDoc(); setBoxPrice(100); setMessage(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Large Box"); writeDoc(); setBoxPrice(100);  setModalVisible(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
@@ -131,7 +131,7 @@ return(
               </TouchableOpacity>
               
               
-              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Extra Large Box"); writeDoc();setBoxPrice(130); setMessage(true)}}>
+              <TouchableOpacity style={styles.confirm} onPress={() => {setBoxSize("Extra Large Box"); writeDoc();setBoxPrice(130); setModalVisible(true)}}>
                 <Octicons
                         name="package" // logo user
                         color="black"
