@@ -45,7 +45,7 @@ export const styles = StyleSheet.create({
     
     confirm: {
       width: '100%',
-      height: '25%',
+      height: '20%',
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
       borderRadius: 10,

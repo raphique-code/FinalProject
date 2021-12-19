@@ -16,7 +16,7 @@ import { signOutUser } from '../../../redux/actions';
 
 
 
-export default function Logout({setSignOut,setHome}){
+export default function Logout({setSignOut,setDriver_first}){
     const Stack = createStackNavigator()
     
     const dispatch = useDispatch()
@@ -35,11 +35,24 @@ export default function Logout({setSignOut,setHome}){
     return(
 
             <View style= {styles.container}>
-                <TouchableOpacity  style={styles.start}
+                  <View style= {styles.container_SB}>
+                    <View style= {styles.containerBottom3}>
+                    <Text style={styles.subText2} >Are you sure?</Text>
+                <TouchableOpacity  style={styles.start1}
                         
                         onPress={() => signOut()}>
                         <Text style={styles.buttonText} >Log out</Text>
                 </TouchableOpacity>
+                </View>
+                <View style= {styles.containerBottom3}>
+                <TouchableOpacity style={styles.start}
+                     onPress={() => {setSignOut(false); setDriver_first(true)}}>
+                    <Text style={styles.buttonText}>Back</Text> 
+                </TouchableOpacity>
+                </View>
+
+                </View>
+             
             </View>
     )
     }

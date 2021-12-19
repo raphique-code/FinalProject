@@ -7,8 +7,8 @@ import { getDistance } from "geolib";
 
 import firebase from "../../navigation/package_details/firebase";
 import React from 'react';
-import { ActivityIndicator, TouchableOpacity } from 'react-native';
-import { StyleSheet, Text, View,TextInput, KeyboardAvoidingView, Dimensions } from 'react-native';
+import { ActivityIndicator, TouchableOpacity,  TouchableWithoutFeedback,Platform} from 'react-native';
+import { StyleSheet, Text, View,TextInput, KeyboardAvoidingView, Dimensions,Button, Keyboard  } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 //import { SliderPicker } from 'react-native-slider-picker';
 import AntDesign from 'react-native-vector-icons/AntDesign';

@@ -54,7 +54,7 @@ export default function Driver_First({setSignOut,setDriver_first, setDriverCusto
                             name="log-out" // panah
                             color="black"
                             size={30}
-                            style= {{paddingTop: 20, paddingBottom:10, paddingRight: 80, paddingLeft: 5}}
+                            style= {{paddingTop: 30, paddingBottom:10, paddingRight: 80, paddingLeft: 20}}
                             
                         />
                     </TouchableOpacity>

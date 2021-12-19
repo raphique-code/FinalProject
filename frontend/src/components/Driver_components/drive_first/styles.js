@@ -113,10 +113,10 @@ export const styles = StyleSheet.create({
     
     header: {
       flexDirection: 'row',
-      height: 50,
+      height: 60,
       backgroundColor: '#F4ECE7',
-      borderBottomWidth: 2,
-      borderColor: 'grey'
+      //borderBottomWidth: 2,
+     // borderColor: 'grey'
     },
     
 
@@ -137,7 +137,7 @@ export const styles = StyleSheet.create({
 
     containerBottom: {
         backgroundColor: '#F4ECE7',
-        height: 300,
+        height: 270,
         alignItems: 'center',
         justifyContent: 'flex-end'
     },

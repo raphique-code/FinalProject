@@ -68,7 +68,7 @@ export default function D_HomeNav(){
             :
             signOut?
 
-            <Logout  setSignOut={setSignOut}/>
+            <Logout  setSignOut={setSignOut}  setDriver_first = {setDriver_first}/>
             :
             
             driverCustomer_list?

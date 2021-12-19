@@ -22,7 +22,7 @@ export default function AuthScreen(){
     const [cus_login, setCus_login] = useState(false)
     const [drive_login, setDrive_login] = useState(false)
     return(
-        <View style = {{marginTop:30}}>
+        <View style = {{marginTop:0}}>
 
             
 

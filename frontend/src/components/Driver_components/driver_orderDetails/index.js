@@ -41,6 +41,7 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
   const [modalVisible1, setModalVisible1] = useState(false);
   const[temp, setTemp] = React.useState('');
   const[temp2, setTemp2] = React.useState('');
+  const [acceptOrder, setAcceptOrder]= React.useState(true)
 
 
 
@@ -76,7 +77,8 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
    ConfirmDropOff: conDropOff,
    ConfirmPickOff: conPickUp,
    OtwPickUp:  OTWPickUp,
-   OtwDropOff:   OTWDropOff
+   OtwDropOff:   OTWDropOff,
+   AcceptOrder: acceptOrder
 
   }
 
@@ -391,9 +393,10 @@ export default function Driver_OrderDetails({ setDriver_first, setDriverEdit_Pro
                 
 
                 <View>
-                  <TouchableOpacity onPress={() => {setConDropOff(true);setOTWDropOff(false);  setOTWPickUp(false); setDriver_first(true);  setDriver_OrderDetails(false); writeDoc();}} style={styles.containerFinish}>
+                  <Pressable onPressOut={()=> {setConDropOff(true);setOTWDropOff(false);  setOTWPickUp(false); setDriver_first(true);  setDriver_OrderDetails(false); writeDoc();}} 
+                                onPressIn={() => {setConDropOff(true);setOTWDropOff(false);  setOTWPickUp(false); writeDoc();}} style={styles.containerFinish}>
                     <Text style={styles.buttonText}>Complete Order</Text>
-                  </TouchableOpacity>
+                  </Pressable>
                 </View>
             </View>
         </View>

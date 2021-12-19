@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
     container: {
         flex: 1,
         backgroundColor: 'grey',
-        marginTop: 30
+        marginTop: 0
      
       },
     
@@ -49,7 +49,7 @@ export const styles = StyleSheet.create({
       },
     
       start: {
-          width: '100',
+          //width: '100',
           height: '18%',
           justifyContent: 'center',
           alignItems: 'center',

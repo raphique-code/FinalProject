@@ -6,6 +6,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'grey',
         height: "100%",
         //marginTop: 30
+        alignContent: "center",
     },
     small_word: {
       color: "blue",
@@ -40,10 +41,10 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         fontSize: 20,
-        color: '#1A130E',
+        color: 'black',
         fontWeight: 'bold',
-        color: '#F0843C',
-        marginLeft: 12,
+        //color: '#F0843C',
+        marginLeft: 0,
         marginTop: 5
       },
       
@@ -66,17 +67,34 @@ const styles = StyleSheet.create({
         backgroundColor: '#F0843C',
         borderWidth: 2,
         borderRadius: 10,
-        marginTop:50,
-        margin: 30,
+        marginTop:10,
+        margin: 10,
         width: 300
-        //flexDirection: 'row',
+        //flexDirection: 'row', #dc143c
         //marginTop: 20,
         //marginBottom: 80,
       
       },
+      start1: {
+        // width: 200,
+          height: 50,
+          justifyContent: 'center',
+          alignItems: 'center',
+          borderColor: '#dc143c',
+          backgroundColor: '#dc143c',
+          borderWidth: 2,
+          borderRadius: 10,
+          marginTop:10,
+          margin: 10,
+          width: 300
+          //flexDirection: 'row', #dc143c
+          //marginTop: 20,
+          //marginBottom: 80,
+        
+        },
 
     containerBottom3:{
-        height:'30%',
+        height:'50%',
         //backgroundColor: 'pink',
         alignItems: 'center',
         justifyContent: 'flex-end',

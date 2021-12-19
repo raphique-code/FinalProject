@@ -40,20 +40,21 @@ export default function Maps_nav({setTime_temp,setDuration_temp,setMaps_nav, set
   const [otwDropOff, setOtwDropOff] = React.useState(false);
   const [conDropOff, setConDropOff] = React.useState(false);
   const [dur_temp, setDur_temp] = React.useState('');
+  const [startOrder, setStartOrder] = React.useState(false);
   const dispatch = useDispatch();
 
   const timer = useSelector(state => state.time)
    
   //console.log(timer)
 
-
+/*
   this.state = {
     latitude:0,
     longitude: 0,
     latitudeDelta: 0.09,
     longitudeDelta: 0.02,
   };
-  
+  */
 
    const ref =  firebase.firestore().collection("order").doc('order1');
 
@@ -66,7 +67,7 @@ export default function Maps_nav({setTime_temp,setDuration_temp,setMaps_nav, set
          setDropOffLatLang(querySnapshot.get('DropOffLatLang'));
          setOtwPickUp(querySnapshot.get('OtwPickUp'));
          setOtwDropOff(querySnapshot.get('OtwDropOff'));
-
+         setStartOrder(querySnapshot.get('StartOrder'));
          console.log("DropOff")
          console.log(dropOff)
          
@@ -271,7 +272,7 @@ function writeDoc_pick () {
           <View style ={[styles.inner_container_two,{marginTop:690}]}>
 
           <TouchableOpacity
-                        onPress={() => {setOrder_summary(true); setMaps_nav(false); setDur_temp(temp); GetDuration()}}
+                        onPress={() => {setStartOrder(true);setOrder_summary(true); setMaps_nav(false); setDur_temp(temp);  writeDoc(); GetDuration()}}
                         style={[styles.confirm, {
                             borderColor: '#F0843C',
                             borderWidth: 1,//otwPickUp ==

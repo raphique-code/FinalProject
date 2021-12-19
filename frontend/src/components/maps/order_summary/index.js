@@ -1,14 +1,15 @@
 
-import MapView, { Callout, PROVIDER_GOOGLE } from 'react-native-maps';
+
 
 import * as Location from 'expo-location';
 import { Marker } from "react-native-maps";
+import MapView, { Callout, PROVIDER_GOOGLE } from 'react-native-maps';
 import MapViewDirections from 'react-native-maps-directions';
 import { getDistance } from "geolib";
 import firebase from '../../navigation/package_details/firebase'
-
+import { useState } from 'react';
 import React from 'react';
-import { ActivityIndicator, TouchableOpacity } from 'react-native';
+import { ActivityIndicator, TouchableOpacity, Modal, Pressable  } from 'react-native';
 import { StyleSheet, Text, View, Picker, Dimensions } from 'react-native';
 import Feather from 'react-native-vector-icons/Feather';
 //import { SliderPicker } from 'react-native-slider-picker';
@@ -32,6 +33,8 @@ export default function OrderSummary({setMaps_nav, setOrder_summary,setOrderProg
     const[temp, setTemp] = React.useState(0);
     const rate = (basePrice * temp);
     const total = (rate + boxPrice);
+    const [startOrder, setStartOrder] = React.useState(false);
+    const [modalVisible, setModalVisible] = useState(false);
 
    
     const ref1 =  firebase.firestore().collection("order").doc('order1');
@@ -41,6 +44,7 @@ export default function OrderSummary({setMaps_nav, setOrder_summary,setOrderProg
      ref1.onSnapshot((querySnapshot) => {
        setPickUpLatLang(querySnapshot.get('pickUpLatLang'));
        setDropOffLatLang(querySnapshot.get('DropOffLatLang'));
+       setStartOrder(querySnapshot.get('StartOrder'));
        setBoxPrice(querySnapshot.get('BoxPrice'))
 
        console.log("order summary")
@@ -50,14 +54,25 @@ export default function OrderSummary({setMaps_nav, setOrder_summary,setOrderProg
     }
 
     
+let data = {
+  StartOrder: startOrder,
+
+
+}
     React.useEffect(() => {
         getOrder();
     }, []);
+
+    function writeDoc () {
+      ref1.update(data);
+      console.log(data)
+    }
 
 
     return( 
   
         <View style={styles.container}>
+          
             <View style={styles.header}>
               <TouchableOpacity style={{marginTop: 10, marginLeft: 15}}  onPress={() =>{setOrder_summary(false); setMaps_nav(true)}}>
                   <AntDesign 
@@ -99,6 +114,29 @@ export default function OrderSummary({setMaps_nav, setOrder_summary,setOrderProg
 
 
             <View style={styles.container_SB}>
+
+                        <Modal
+                          animationType="slide"
+                          transparent={true}
+                          visible={modalVisible}
+                          onRequestClose={() => {
+                            Alert.alert("Modal has been closed.");
+                            setModalVisible(!modalVisible);
+                          }}
+                        >
+                          <View style={styles.centeredView}>
+                            <View style={styles.modalView}>
+                              <Text style={styles.modalText}>Confirm order!</Text>
+                              <Pressable
+                                style={[styles.button, styles.buttonClose]}
+                                onPress={() => {setModalVisible(!modalVisible);writeDoc();setStartOrder(true);setOrderProgress(true); setOrder_summary(false);writeDoc();}}
+                              >
+                                <Text style={styles.buttonText}>   Okay   </Text>
+                              </Pressable>
+                            </View>
+                          </View>
+                        </Modal>
+
                 <View style={styles.containerMiddle}>
         
                     <View style={styles.containerLeft}>
@@ -136,7 +174,7 @@ export default function OrderSummary({setMaps_nav, setOrder_summary,setOrderProg
 
 
                 <View style= {{height: '58%', justifyContent: 'flex-end', marginBottom: 20}}>
-                  <TouchableOpacity style={styles.containerFinish} onPress={() => {setOrderProgress(true); setOrder_summary(false)}}>
+                  <TouchableOpacity style={styles.containerFinish} onPress={() => {setStartOrder(true); writeDoc();  setModalVisible(true); }}>
                     <Text style={styles.buttonText}>Order Driver</Text> 
                   </TouchableOpacity>
                 </View>

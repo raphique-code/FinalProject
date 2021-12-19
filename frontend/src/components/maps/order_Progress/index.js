@@ -40,6 +40,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
     const dispatch = useDispatch();
     const[temp, setTemp] = React.useState('');
     const [phone, setPhone] = React.useState('');
+    const [acceptOrder, setAcceptOrder]= React.useState(false)
 
     
     
@@ -54,6 +55,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
          setVType(querySnapshot.get('vtype'));
          setVColor(querySnapshot.get('vcolor'));
          setPhone(querySnapshot.get('phone'));
+
         // setConDropOff(querySnapshot.get('ConfirmDropOff'));
          
 
@@ -68,13 +70,14 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
         setDropOffLatLang(querySnapshot.get('DropOffLatLang'));
         setOtwPickUp(querySnapshot.get('OtwPickUp'));
         setOtwDropOff(querySnapshot.get('OtwDropOff'));
+        setAcceptOrder(querySnapshot.get('AcceptOrder'));
        
 
         console.log("DropOff")
         console.log(dropOff)
         
         console.log("PickUp")
-        console.log(  pickUpLatLang)
+        console.log(  acceptOrder)
         
 
      });
@@ -161,18 +164,42 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
                 <View style={styles.containerMiddle}>
                     <View style={styles.containerLeft}>
                         <Text style={styles.subText2}>Display Name</Text>
+                        {acceptOrder?
                         <Text style={styles.subText} >{dName}</Text>
+                        :
+                        <Text style={styles.subText} >N/A</Text>
+                        }
+                        
 
                         <Text style={styles.subText2}>License Plate</Text>
+
+                        {acceptOrder?
                         <Text style={styles.subText} >{lPlate}</Text>
+                        :
+                        <Text style={styles.subText} >N/A</Text>
+                        }
+
+                        
                     </View>
                     
                     <View style={styles.containerRight}>
                         <Text style={styles.subText2}>Vehicle Type</Text>
+                        {acceptOrder?
                         <Text style={styles.subText} >{vType}</Text>
+                        :
+                        <Text style={styles.subText} >N/A</Text>
+                        }
+
+
+                        
 
                         <Text style={styles.subText2}>Vehicle Color</Text>
+                        {acceptOrder?
                         <Text style={styles.subText} >{vColor}</Text>
+                        :
+                        <Text style={styles.subText} >N/A</Text>
+                        }
+                        
                     </View>
                 </View>
 
@@ -184,7 +211,12 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
                         <View style={styles.containerRight}>
                             
                             <Text style={styles.subText2}>Est. Time to Drop Off</Text>
-                            <Text style={styles.subText} >{temp} min</Text>
+                            {acceptOrder?
+                        <Text style={styles.subText} >{temp} min</Text>
+                        :
+                        <Text style={styles.subText} >N/A</Text>
+                        }
+                            
                         </View>
                     </View>
 
@@ -210,7 +242,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
                             <Text style={styles.subText} >delivered </Text>
                         
                         :
-                        null
+                             <Text style={styles.subText} >Searching for driver </Text>
 
 
                         }

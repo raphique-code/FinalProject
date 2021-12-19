@@ -51,14 +51,15 @@ export default function AuthMenu({ authPage, setAuthPage, Drive_setDetailsPage,C
                     
                 <View style={[styles.containerMiddle]}>
                 <Text style={[styles.subText]}> Sign In as: </Text>
+                
                     <TouchableOpacity style={[styles.start]} 
                     onPress={() =>  { {dispatch(driver()); Drive_setDetailsPage(true)}}}>
-                    <Text style={styles.buttonText}>Driver</Text>
+                    <Text style={[styles.buttonText, {marginRight:100} ]}>Driver</Text>
                     </TouchableOpacity>
 
                     <TouchableOpacity style={[styles.start]}
                     onPress={() =>  { {Cus_setDetailsPage(true); dispatch(customer())}}}>
-                    <Text style={styles.buttonText}>Customer</Text>
+                    <Text style={[styles.buttonText, {marginRight:90} ]}>Customer</Text>
                     </TouchableOpacity>
                   
                 </View>
@@ -91,7 +92,7 @@ const styles = StyleSheet.create({
   container: {
    
     backgroundColor: 'grey',
-    marginTop: 30
+    marginTop: 22
  
   },
 
