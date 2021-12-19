@@ -10,13 +10,13 @@ export const styles = StyleSheet.create({
 
     header: {
       flexDirection: 'row',
-      height: 50,
+      height: 60,
       width:'100%',
       backgroundColor: '#F4ECE7',
       borderBottomWidth: 1,
       borderColor: '#F4ECE7',
       position: 'absolute',
-      //elevation: 5,
+      elevation: 5,
       //shadowColor: '#52006A'
       
 
@@ -77,10 +77,21 @@ export const styles = StyleSheet.create({
       shadowColor: '#52006A'
       
     },
+    subText: { //font color: black
+      justifyContent: 'center',
+      alignItems: 'center',
+      fontSize: 15,
+      color: '#1A130E',
+      //fontWeight: 'bold',
+      lineHeight: 40,
+      marginBottom: 8,
+      marginLeft: 10
+    },
+
 
     inner_container: {
       marginBottom: 10,
-      marginTop: 70,
+      marginTop: 30,
 
       //marginLeft: 12,
       marginRight: 10,
@@ -88,10 +99,10 @@ export const styles = StyleSheet.create({
       width: "100%",
       height: "25%",
       alignContent: "center",
-      borderRadius: 10,
+      borderRadius: 0,
       justifyContent: "space-evenly",
       backgroundColor: '#F4ECE7',
-      elevation: 10,
+      elevation: 0,
       shadowColor: '#52006A'
       
       

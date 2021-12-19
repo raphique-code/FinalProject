@@ -4,6 +4,7 @@ const styles = StyleSheet.create({
     container: {
       flex: 1,
       backgroundColor: 'black',
+      marginTop: 0
      
     
     },
@@ -56,7 +57,7 @@ const styles = StyleSheet.create({
     
     confirm: {
       width: '100%',
-      height: 150,
+      height: 165,
       justifyContent: 'flex-start',
       alignItems: 'flex-start',
       borderRadius: 10,
@@ -88,7 +89,7 @@ const styles = StyleSheet.create({
     insubText: {
         justifyContent: 'center',
         alignItems: 'center',
-        fontSize: 15,
+        fontSize: 14,
         color: 'white',
         marginLeft: 25
     },
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
     },
     
     boxDimension: {
-        fontSize: 15,
+      fontSize: 12,
       color: '#F4ECE7',
       marginLeft: 25
     },

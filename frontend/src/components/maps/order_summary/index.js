@@ -74,7 +74,7 @@ let data = {
         <View style={styles.container}>
           
             <View style={styles.header}>
-              <TouchableOpacity style={{marginTop: 10, marginLeft: 15}}  onPress={() =>{setOrder_summary(false); setMaps_nav(true)}}>
+              <TouchableOpacity style={{marginTop: 13, marginLeft: 15}}  onPress={() =>{setOrder_summary(false); setMaps_nav(true)}}>
                   <AntDesign 
                       name="arrowleft" // panah
                       color="black"
@@ -173,7 +173,7 @@ let data = {
                 </View> 
 
 
-                <View style= {{height: '58%', justifyContent: 'flex-end', marginBottom: 20}}>
+                <View style= {{height: '49%', justifyContent: 'flex-end', marginBottom: 20}}>
                   <TouchableOpacity style={styles.containerFinish} onPress={() => {setStartOrder(true); writeDoc();  setModalVisible(true); }}>
                     <Text style={styles.buttonText}>Order Driver</Text> 
                   </TouchableOpacity>

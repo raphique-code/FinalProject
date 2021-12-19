@@ -138,7 +138,7 @@ const styles = StyleSheet.create({
     
     header: {
         flexDirection: 'row',
-        height: 50,
+        height: 60,
         backgroundColor: '#F4ECE7',
         borderBottomWidth: 2,
         borderColor: '#F4ECE7'
@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
 
     containerMiddle: {
         backgroundColor: '#F4ECE7',
-        height: 160,
+        height: 180,
         elevation: 10,
         shadowColor: '#52006A',
         borderRadius: 3,
@@ -175,7 +175,7 @@ const styles = StyleSheet.create({
 
     containerMiddle2: {
         backgroundColor: '#F4ECE7',
-        height: 160,
+        height: 200,
         elevation: 10,
         shadowColor: '#52006A',
         borderRadius: 3,

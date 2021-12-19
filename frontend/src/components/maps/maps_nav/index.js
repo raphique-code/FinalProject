@@ -250,7 +250,7 @@ function writeDoc_pick () {
                       
                       
                   />
-              <Text style={styles.display_text_three}>{pickUp}</Text>
+              <Text numberOfLines={1} style={styles.subText}>{pickUp}</Text>
               </TouchableOpacity>
  
               <TouchableOpacity style ={styles.Box_button_bottom} onPress={() => {setDrop_off(true); setMaps_nav(false)}} >
@@ -263,13 +263,13 @@ function writeDoc_pick () {
                       
                       
                   />
-              <Text style={styles.display_text_three}>{dropOff}</Text>
+              <Text numberOfLines={1} style={styles.subText}>{dropOff}</Text>
               </TouchableOpacity>    
 
             
 
           </View>
-          <View style ={[styles.inner_container_two,{marginTop:690}]}>
+          <View style ={[styles.inner_container_two,{marginTop:750}]}>
 
           <TouchableOpacity
                         onPress={() => {setStartOrder(true);setOrder_summary(true); setMaps_nav(false); setDur_temp(temp);  writeDoc(); GetDuration()}}
@@ -286,7 +286,7 @@ function writeDoc_pick () {
           </View>
 
 
-          <View style ={styles.inner_container_one}>
+          <View style ={[styles.inner_container_one,{marginTop:670} ]}>
 
               <Text style = {styles.display_text_two}>
               Est. Time Of Trip

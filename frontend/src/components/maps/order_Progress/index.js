@@ -112,7 +112,7 @@ export default function OrderProgress({duruation_temp,setOrder_summary,setOrderP
                       name="arrowleft" // panah
                       color="black"
                       size={30}
-                      style= {{paddingTop: 10, paddingBottom: 20, paddingRight: 58, paddingLeft: 20}}
+                      style= {{paddingTop: 13, paddingBottom: 20, paddingRight: 58, paddingLeft: 20}}
                   />
               </TouchableOpacity>
               <Text style={[styles.orderDetails, {marginTop: 6}]}>Driver Details</Text>

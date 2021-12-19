@@ -61,27 +61,7 @@ return(
 
 
            <View  style={styles.container_SB}>
-           <Modal
-                          animationType="slide"
-                          transparent={true}
-                          visible={modalVisible}
-                          onRequestClose={() => {
-                            Alert.alert("Modal has been closed.");
-                            setModalVisible(!modalVisible);
-                          }}
-                        >
-                          <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
-                              <Text style={styles.modalText}>Confirm box size!</Text>
-                              <Pressable
-                                style={[styles.button, styles.buttonClose]}
-                                onPress={() => {setModalVisible(!modalVisible);setPackage_detail(false); setMaps_nav(true);writeDoc();}}
-                              >
-                                <Text style={styles.buttonText}>   Okey   </Text>
-                              </Pressable>
-                            </View>
-                          </View>
-                        </Modal>
+         
 
               <TouchableOpacity style={styles.confirm} onPress={() => { setBoxSize("Small Box"); setBoxPrice(60); writeDoc();  setModalVisible(true)}}>
                 <Octicons
@@ -92,7 +72,7 @@ return(
                 />
                 <View style>
                     <Text style={styles.subText2}>Small Box </Text>
-                    <Text style={[styles.insubText, {marginTop: 15, marginBottom: 12}]}>For catalogs, file folders, and CDs.{'\n'}Food and snacks are also suitable.</Text>
+                    <Text style={[styles.insubText, {marginTop: 15, marginBottom: 12}]}>For light thin documents. Food{'\n'}and nacks are also suitable.</Text>
                     <Text style={styles.boxDimension}>Max. weight: 5 kg</Text>
                     <Text style={styles.boxDimension}>31.12 cm x 27.69 cm x 3.81 cm</Text>
                 </View>
@@ -124,7 +104,7 @@ return(
                 />
                 <View style>
                     <Text style={styles.subText2}>Large Box </Text>
-                    <Text style={[styles.insubText, {marginTop: 15, marginBottom: 12}]}>For side-by-side paper stacks, small{'\n'}parts and reports</Text>
+                    <Text style={[styles.insubText, {marginTop: 15, marginBottom: 12}]}>For side-by-side paper stacks,{'\n'}small parts and reports</Text>
                     <Text style={styles.boxDimension}>Max. weight: 12 kg</Text>
                     <Text style={styles.boxDimension}>45.40 cm x 31.43 cm x 7.62 cm</Text>
                 </View>
@@ -140,13 +120,33 @@ return(
                 />
                 <View style>
                     <Text style={styles.subText2}>Extra Large Box </Text>
-                    <Text style={[styles.insubText, {marginTop: 15, marginBottom: 12}]}>For heavy documents with a larger{'\n'}size. Clothes are also suitable</Text>
+                    <Text style={[styles.insubText, {marginTop: 15, marginBottom: 12}]}>For larger heavy documents.{'\n'}Clothes are also suitable</Text>
                     <Text style={styles.boxDimension}>Max. weight: 18 kg</Text>
                     <Text style={styles.boxDimension}>40.16 cm x 32.86 cm x 25.88 cm</Text>
                 </View>
 
               </TouchableOpacity>
-            
+              <Modal
+                          animationType="slide"
+                          transparent={true}
+                          visible={modalVisible}
+                          onRequestClose={() => {
+                            Alert.alert("Modal has been closed.");
+                            setModalVisible(!modalVisible);
+                          }}
+                        >
+                          <View style={styles.centeredView}>
+                            <View style={styles.modalView}>
+                              <Text style={styles.modalText}>Confirm box size!</Text>
+                              <Pressable
+                                style={[styles.button, styles.buttonClose]}
+                                onPress={() => {setModalVisible(!modalVisible);setPackage_detail(false); setMaps_nav(true);writeDoc();}}
+                              >
+                                <Text style={styles.buttonText}>   Okay   </Text>
+                              </Pressable>
+                            </View>
+                          </View>
+                        </Modal>
             
           </View> 
        </View>
